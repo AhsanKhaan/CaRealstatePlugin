@@ -77,14 +77,10 @@ function my_activation() {
 
       
    dbDelta($sql);
+   
 }
 function displayListing(){
-global $wpdb;
-$query = $wpdb->get_results(`SELECT ListingID FROM {$wpdb->prefix}_properties WHERE ID=1`);
-echo "<pre>";
-print_r($query);
-echo "</pre>";
-return $query;
+
 
 
 }
