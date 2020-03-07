@@ -31,7 +31,7 @@ register_activation_hook(__FILE__, 'my_activation');
 function my_activation() {
     
     //for making folder locallly for storing images
-	mkdir(ABSPATH.'/wp-content/uploads/propertyimages');
+	//mkdir(ABSPATH.'/wp-content/uploads/propertyimages');
     global $wpdb;
     //     define character of its own query.
         $charset_collate = $wpdb->get_charset_collate();
@@ -86,26 +86,56 @@ function displayListing(){
 ////////////////////////////////////////////////
 ///// Register all style sheets and scripts ///
 ///////////////////////////////////////////////
+add_filter( 'style_loader_src',  'sdt_remove_ver_css_js', 9999, 2 );
+add_filter( 'script_loader_src', 'sdt_remove_ver_css_js', 9999, 2 );
 
+function sdt_remove_ver_css_js( $src, $handle ) 
+{
+    $handles_with_version = [ 'style' ]; // <-- Adjust to your needs!
+
+    if ( strpos( $src, 'ver=' ) && ! in_array( $handle, $handles_with_version, true ) )
+        $src = remove_query_arg( 'ver', $src );
+
+    return $src;
+}
+//error_log(sdt_remove_ver_css_js(plugin_dir_url( __FILE__ ) .'css/bootstrap.min.css','bootstrap.min.css'));
 /*For Stylesheets*/
-wp_enqueue_style( 'bootstrap.min.css', plugin_dir_path( __FILE__ ) .'css/bootstrap.min.css', $ver=false );
-wp_enqueue_style( 'style.css', plugin_dir_path( __FILE__ ) .'css/style.css', $ver=false );
+wp_enqueue_style( 'bootstrap.min.css', plugin_dir_url( __FILE__ ) .'css/bootstrap.min.css');
+wp_enqueue_style( 'style.css', plugin_dir_url( __FILE__ ) .'css/style.css' );
 
 /*For Scripts*/
-wp_enqueue_script( 'jquery-3.2.1.slim.min.js', plugin_dir_path(__FILE__).'js/jquery-3.2.1.slim.min.js', $ver=false, $in_footer=true );
+wp_enqueue_script( 'jquery-3.2.1.slim.min.js', plugin_dir_url(__FILE__).'js/jquery-3.2.1.slim.min.js', $ver=false, $in_footer=true );
 	
-wp_enqueue_script( 'popper.min.js', plugin_dir_path(__FILE__).'js/popper.min.js', $ver=false, $in_footer=true );
+wp_enqueue_script( 'popper.min.js', plugin_dir_url(__FILE__).'js/popper.min.js', $ver=false, $in_footer=true );
 
-wp_enqueue_script( 'bootstrap.min.js', plugin_dir_path(__FILE__).'js/bootstrap.min.js', $ver=false, $in_footer=true );
+wp_enqueue_script( 'bootstrap.min.js', plugin_dir_url(__FILE__).'js/bootstrap.min.js', $ver=false, $in_footer=true );
 
-wp_enqueue_script( 'jquery.min.js', plugin_dir_path(__FILE__).'js/jquery.min.js', $ver=false, $in_footer=true );
+wp_enqueue_script( 'jquery.min.js', plugin_dir_url(__FILE__).'js/jquery.min.js', $ver=false, $in_footer=true );
 
-wp_enqueue_script( 'jquery.twbsPagination.js', plugin_dir_path(__FILE__).'js/jquery.twbsPagination.js', $ver=false, $in_footer=true );
+wp_enqueue_script( 'jquery.twbsPagination.js', plugin_dir_url(__FILE__).'js/jquery.twbsPagination.js', $ver=false, $in_footer=true );
 
-wp_enqueue_script( 'app.js', plugin_dir_path(__FILE__).'js/app.js', $ver=false, $in_footer=true );
+wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $in_footer=true );
 
 /*   For showing listings all data at front end */
+echo ' <div class="container">   
+<div class="wrapper">
+<div class="container-pg">
 
+<div class="row">
+  <div class="col-sm-12">
+    
+    <ul id="pagination-demo" class="pagination-sm"></ul>
+  </div>
+</div>
+
+
+</div>
+</div>
+
+
+<div class="row" id="card-stack">
+
+</div>';
 
 }
 //////////////////////////////////////////////////////////////
