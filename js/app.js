@@ -14,6 +14,7 @@ $(".btn").click(function(){
       <div class="col-md-4">
     <div class="card" >
         <h1>`+data['TransactionType']+`</h1>
+        <h4>ID#`+data['ID']+`</h4>
         <a href="https://www.google.com"><img class="card-img-top" src="`+data['Photo']+`" alt="Card image"></a>
         <div class="card-body">
           <h3 style="text-color:green;">PRICE:$`+data['Price']+`</h3>

@@ -8,7 +8,7 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
     $page=isset($Listing_id)?$Listing_id:1;
     $startwith=($page-1)*$Limit;
 
-    $query="SELECT Address,Price,Building,AgentDetails,Photo,TransactionType FROM `wp_properties_2` LIMIT $startwith,$Limit";
+    $query="SELECT ID,Address,Price,Building,AgentDetails,Photo,TransactionType FROM `wp_properties_2` LIMIT $startwith,$Limit";
     //print_r("QUERY".$query);
 	$result = mysqli_query(
 	$conn,
@@ -30,7 +30,7 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
           //  print_r($row);
             // $response.=$index.":";
              $index++;
-
+            $ID=$row['ID'];
             $TransactionType=$row['TransactionType'];
             $Price=$row['Price'];
            
@@ -143,9 +143,9 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
  	echo response(NULL,NULL,NULL,NULL,NULL,NULL ,NULL,NULL, 400,"Invalid Request");
  }
  
-function response( $AgentDetails,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType){
+function response( $ID,$AgentDetails,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType){
  //$response['order_id'] = $order_id;
- 
+ $response['ID']=$ID;
  $response['Listing Office']=$AgentDetails;
   $response['Size'] = $Building_size;
   $response['Bedroom']=$Building_bed;
