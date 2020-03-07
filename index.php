@@ -77,10 +77,34 @@ function my_activation() {
 
       
    dbDelta($sql);
+
+   
+
    
 }
 function displayListing(){
+////////////////////////////////////////////////
+///// Register all style sheets and scripts ///
+///////////////////////////////////////////////
 
+/*For Stylesheets*/
+wp_enqueue_style( 'bootstrap.min.css', plugin_dir_path( __FILE__ ) .'css/bootstrap.min.css', $ver=false );
+wp_enqueue_style( 'style.css', plugin_dir_path( __FILE__ ) .'css/style.css', $ver=false );
+
+/*For Scripts*/
+wp_enqueue_script( 'jquery-3.2.1.slim.min.js', plugin_dir_path(__FILE__).'js/jquery-3.2.1.slim.min.js', $ver=false, $in_footer=true );
+	
+wp_enqueue_script( 'popper.min.js', plugin_dir_path(__FILE__).'js/popper.min.js', $ver=false, $in_footer=true );
+
+wp_enqueue_script( 'bootstrap.min.js', plugin_dir_path(__FILE__).'js/bootstrap.min.js', $ver=false, $in_footer=true );
+
+wp_enqueue_script( 'jquery.min.js', plugin_dir_path(__FILE__).'js/jquery.min.js', $ver=false, $in_footer=true );
+
+wp_enqueue_script( 'jquery.twbsPagination.js', plugin_dir_path(__FILE__).'js/jquery.twbsPagination.js', $ver=false, $in_footer=true );
+
+wp_enqueue_script( 'app.js', plugin_dir_path(__FILE__).'js/app.js', $ver=false, $in_footer=true );
+
+/*   For showing listings all data at front end */
 
 
 }
@@ -89,7 +113,7 @@ function displayListing(){
 ///////      Add ALL Possible Shortcode               ///////
 ///////                                               ///////
 /////////////////////////////////////////////////////////////
-add_shortcode('displaylist','displayListing');
+add_shortcode('Listing','displayListing');
 
 
 
