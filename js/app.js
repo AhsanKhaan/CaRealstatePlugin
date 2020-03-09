@@ -15,10 +15,10 @@ $(".btn").click(function(){
     <div class="card" >
         <h1>`+data['TransactionType']+`</h1>
         <h4>ID#`+data['ID']+`</h4>
-        <a href="https://www.google.com"><img class="card-img-top" src="`+data['Photo']+`" alt="Card image"></a>
+        <a href="http://localhost:1000/wordpress/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank"><img class="card-img-top" src="`+data['Photo']+`" alt="Card image"></a>
         <div class="card-body">
           <h3 style="text-color:green;">PRICE:$`+data['Price']+`</h3>
-          <a href="https://www.google.com" target="_blank"><h4 class="card-title">`+data['Address']+`</h4></a>
+          <a href="http://localhost:1000/wordpress/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank"><h4 class="card-title">`+data['Address']+`</h4></a>
           <p class="lead mb-2"><strong>`+data['City']+`,`+data['Province']+`</strong></p>
           <ul class="list-unstyled list-inline d-flex justify-content-between mb-0">
         
