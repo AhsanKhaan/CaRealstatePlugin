@@ -1,6 +1,6 @@
 <?php 
 if (isset($_GET['ID'])&& $_GET['ID']!="" ) {
-    echo "<mark>ID=".$_GET['ID']."</mark><br/>";
+   // echo "<mark>ID=".$_GET['ID']."</mark><br/>";
 
 
     $url = "http://localhost:1000/wordpress/wp-content/plugins/crea/listing.php?id=".$_GET['ID'];
@@ -13,7 +13,12 @@ if(!$json) {
     echo curl_error($ch);
 }
 curl_close($ch);
-print_r(json_decode($json));
+$response=stripcslashes($json);
+//$response=json_decode($json,true);
+//$response=json_decode(stripcslashes($json));
+//print_r($response);
+echo $response['ID'];
+//['SequenceId'];
 }
-echo "<h1>hello world</h1>";
+//echo "<h1>hello world</h1>";
 ?>
