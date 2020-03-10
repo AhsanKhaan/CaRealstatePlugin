@@ -86,7 +86,8 @@ $(".btn").click(function(){
     }
 });
     });
-  }
+  }//init ends
+  
 
 
 
