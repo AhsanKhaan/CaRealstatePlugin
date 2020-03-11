@@ -29,7 +29,7 @@ curl_close($ch);
 //print_r($response);
 echo  '<pre>';
  $json=json_decode($json,true);
-  //print_r($json);
+  print_r($json);
 echo  '</pre>';
     //json_decode($json);
 
