@@ -60,57 +60,69 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
             }
             
             
-           if(strpos($row['Building'],'SizeInterior')!==FALSE){
-               $position=strpos($row['Building'],'SizeInterior');
-               // print_r("String postion ".$position);
-               $temp_str=substr($row['Building'],$position);
-               $size_str=substr($temp_str,strpos($temp_str,':'));
+        //    if(strpos($row['Building'],'SizeInterior')!==FALSE){
+        //        $position=strpos($row['Building'],'SizeInterior');
+        //        // print_r("String postion ".$position);
+        //        $temp_str=substr($row['Building'],$position);
+        //        $size_str=substr($temp_str,strpos($temp_str,':'));
                
-               if((bool)strpos($size_str,"[]")!==FALSE){
-                   $Building_size="NULL";
+        //        if((bool)strpos($size_str,"[]")!==FALSE){
+        //            $Building_size="NULL";
                   
-               }else if((bool)strpos($size_str,"\"")!==FALSE){
+        //        }else if((bool)strpos($size_str,"\"")!==FALSE){
                
-                   $Building_size=substr($size_str,strpos($size_str,"\"")+1,strpos($size_str,"sqft")-3);
-                  }
+        //            $Building_size=substr($size_str,strpos($size_str,"\"")+1,strpos($size_str,"sqft")-3);
+        //           }
                
-           }else{
-               $Building_size="Nill";
+        //    }else{
+        //        $Building_size="Nill";
                
-           }
-            
-           if(strpos($row['Building'],'BedroomsTotal')!==FALSE){
-               //print_r($row['Building']);
-               $position=strpos($row['Building'],'BedroomsTotal');
-               // print_r("String postion ".$position);
-               $temp_str=substr($row['Building'],$position);
-               $size_str=substr($temp_str,strpos($temp_str,':'));
-               
-               
-               if((bool)strpos($size_str,"\"")!==FALSE){
-                   
-                  $Building_bed=explode("\"",$size_str)[1];
-               }
+        //    }
+            if(array_key_exists('SizeInterior',$row['Building'])){
+                $Building_size=$row['Building']['SizeInterior'];
             }else{
-               $Building_bed="Nill";
-               }
-           
-               if(strpos($row['Building'],'BathroomTotal')!==FALSE){
-                   //print_r($row['Building']);
-                   $position=strpos($row['Building'],'BathroomTotal');
-                   // print_r("String postion ".$position);
-                   $temp_str=substr($row['Building'],$position);
-                   $size_str=substr($temp_str,strpos($temp_str,':'));
-                   //print_r("string position".$size_str."\n\n");
+                $Building_size="";
+            }
+        //    if(strpos($row['Building'],'BedroomsTotal')!==FALSE){
+        //        //print_r($row['Building']);
+        //        $position=strpos($row['Building'],'BedroomsTotal');
+        //        // print_r("String postion ".$position);
+        //        $temp_str=substr($row['Building'],$position);
+        //        $size_str=substr($temp_str,strpos($temp_str,':'));
+               
+               
+        //        if((bool)strpos($size_str,"\"")!==FALSE){
                    
-                   if((bool)strpos($size_str,"\"")!==FALSE){
+        //           $Building_bed=explode("\"",$size_str)[1];
+        //        }
+        //     }else{
+        //        $Building_bed="Nill";
+        //        }
+        if(array_key_exists('BedroomsTotal',$row['Building'])){
+            $Building_bed=$row['Building']['BedroomsTotal'];
+        }else{
+            $Building_bed="";
+        }   
+            //    if(strpos($row['Building'],'BathroomTotal')!==FALSE){
+            //        //print_r($row['Building']);
+            //        $position=strpos($row['Building'],'BathroomTotal');
+            //        // print_r("String postion ".$position);
+            //        $temp_str=substr($row['Building'],$position);
+            //        $size_str=substr($temp_str,strpos($temp_str,':'));
+            //        //print_r("string position".$size_str."\n\n");
+                   
+            //        if((bool)strpos($size_str,"\"")!==FALSE){
                        
-                      $Building_bath=explode("\"",$size_str)[1];
-                   }
-               }else{
-                   $Building_bath="Nill";
-                   }
-           
+            //           $Building_bath=explode("\"",$size_str)[1];
+            //        }
+            //    }else{
+            //        $Building_bath="Nill";
+            //        }
+            if(array_key_exists('BathroomTotal',$row['Building'])){
+                $Building_bed=$row['Building']['BathroomTotal'];
+            }else{
+                $Building_bed="";
+            }  
             //print_r("\n\n\n\n\n\n\n\n".$row['Building']."\n\n\n\n\n\n\n\n");
             $temp_add=json_decode($row['Address']);
             
