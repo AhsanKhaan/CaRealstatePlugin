@@ -437,14 +437,14 @@ function Insert_to_database($data){
      if(array_key_exists('ViewType',$data)){
         $ViewType=$data['ViewType'];
      }else{
-        $ViewType=json_encode(json_decode("{}"));
+        $ViewType='';
      }
     
      error_log("View Type".$ViewType);
 
-    $AnalyticsClicks=$data['AnalyticsClick'];
+   // $AnalyticsClicks=$data['AnalyticsClick'];
 
-     error_log("Analytics Click".$AnalyticsClicks);
+   //  error_log("Analytics Click".$AnalyticsClicks);
 
     $MoreInformationLink=str_replace("'","\'",$data['MoreInformationLink']);
 

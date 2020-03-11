@@ -71,7 +71,7 @@ $TransactionType=$row['TransactionType'];
 $UtilitiesAvailable=json_decode($row['UtilitiesAvailable']);
 $WaterFrontType=$row['WaterFrontType'];
 $ZoningDescription=$row['ZoningDescription'];
-$ViewType=json_decode($row['ViewType']);
+$ViewType=$row['ViewType'];
 $MoreInformationLink=json_decode($row['MoreInformationLink']);
 		// $id = $row['ID'];
 		// $name = $row['name'];
@@ -125,6 +125,7 @@ function response( $ID, $LastUpdated,$ListingID,$AgentDetails,$Board,$Business,$
  $response['WaterFrontType'] = $WaterFrontType;
  $response['ZoningDescription']=$ZoningDescription;
 // $response['RentalEquipmentType']=$RentalEquipmentType;
+$response['ViewType']=$ViewType;
  $response['MoreInformationLink']=$MoreInformationLink;
  $json_response = json_encode($response,JSON_UNESCAPED_SLASHES);
  echo $json_response;
