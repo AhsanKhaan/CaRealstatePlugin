@@ -46,7 +46,7 @@ function my_activation() {
         AgentDetails BLOB ,
         Board varchar(100) ,
         Business varchar(1000) ,
-        Building varchar(500) ,
+        Building BLOB ,
         Land  varchar(1500),
         Address varchar(2000) ,
         AmmenitiesNearBy varchar(100),
