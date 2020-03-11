@@ -421,7 +421,7 @@ function Insert_to_database($data){
      if(array_key_exists('WaterFrontType',$data)){
         $WaterFrontType=str_replace("'","\'",$data['WaterFrontType']);
      }else{
-        $WaterFrontType=json_encode(json_decode("{}"));
+        $WaterFrontType='';
      }
 
      error_log("Water Front Type".$WaterFrontType);
@@ -429,7 +429,7 @@ function Insert_to_database($data){
      if(array_key_exists('ZoningDescription',$data)){
         $ZoningDescription=str_replace("'","\'",$data['ZoningDescription']);
      }else{
-        $ZoningDescription=json_encode(json_decode("{}"));
+        $ZoningDescription='';
      }
 
      error_log("Zoning Description".$ZoningDescription);
