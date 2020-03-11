@@ -394,7 +394,7 @@ function Insert_to_database($data){
     if(array_key_exists('RentalEquipmentType',$data)){
         $RentalEquipmentType=str_replace("'","\'",$data['RentalEquipmentType']);
      }else{
-        $RentalEquipmentType=json_encode(json_decode("{}"));
+        $RentalEquipmentType='';
      }
 
      error_log("Rental Equioment Type".$RentalEquipmentType);
