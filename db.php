@@ -402,7 +402,7 @@ function Insert_to_database($data){
      if(array_key_exists('Structure',$data)){
         $Structure=str_replace("'","\'",$data['Structure']);
      }else{
-        $Structure=json_encode(json_decode("{}"));
+        $Structure='';
      }
      error_log("Structure".$Structure);
     
