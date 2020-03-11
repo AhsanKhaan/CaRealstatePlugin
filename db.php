@@ -397,18 +397,18 @@ function Insert_to_database($data){
         $RentalEquipmentType='';
      }
 
-     error_log("Rental Equioment Type".$RentalEquipmentType);
+   //  error_log("Rental Equioment Type".$RentalEquipmentType);
 
      if(array_key_exists('Structure',$data)){
         $Structure=str_replace("'","\'",$data['Structure']);
      }else{
         $Structure='';
      }
-     error_log("Structure".$Structure);
+     //error_log("Structure".$Structure);
     
     $TransactionType=$data['TransactionType'];
     
-    error_log($TransactionType);
+    //error_log($TransactionType);
 
     if(array_key_exists('UtilitiesAvailable',$data)){
         $UtilitiesAvailable=str_replace("'","\'",json_encode($data['UtilitiesAvailable']));
