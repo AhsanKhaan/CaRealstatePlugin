@@ -54,7 +54,7 @@ $(".btn").click(function(){
     //total number of pages can be shown from here
     //uses for displaying total pages
   $("#LastPage").text($('#TotalCount').text()/10);
-  $.get("http://localhost:1000/prototype2/card.php?Page=1", function(data, status){
+  $.get("http://localhost:1000/wordpress/wp-content/plugins/crea/card.php?Page=1", function(data, status){
      
     var dataset=JSON.parse(data);
     //Setting the text on UI
@@ -75,7 +75,7 @@ $(".btn").click(function(){
     onPageClick: function (event, page) {
         //fetch content and render here
         $("#card-stack").empty();  
-        $.get("http://localhost:1000/prototype2/card.php?Page="+page, function(data, status){
+        $.get("http://localhost:1000/wordpress/wp-content/plugins/crea/card.php?Page="+page, function(data, status){
            
           var dataset=JSON.parse(data);
           
