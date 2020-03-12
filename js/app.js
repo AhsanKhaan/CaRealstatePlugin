@@ -56,15 +56,16 @@ $(".btn").click(function(){
   $("#LastPage").text($('#TotalCount').text()/10);
   $.get("http://localhost:1000/wordpress/wp-content/plugins/crea/card.php?Page=1", function(data, status){
      
-    var dataset=JSON.parse(data);
+    //var dataset=JSON.parse(data);
     //Setting the text on UI
     //Set total Listing On UI
-    $("#TotalCount").text(dataset["TotalCount"]);
+    $("#TotalCount").text(data["TotalCount"]);
 
    //Set Lsiting on UI
-   showdata(dataset);
+   showdata(data);
+   //showdata(dataset);
    //Use for calculating number of pages on UI
-   var Pages=dataset["TotalCount"];
+   var Pages=data["TotalCount"];
     //Set last Page to the UI
     $("#LastPage").text(Pages);   
    $('#pagination-demo').twbsPagination({
@@ -77,9 +78,9 @@ $(".btn").click(function(){
         $("#card-stack").empty();  
         $.get("http://localhost:1000/wordpress/wp-content/plugins/crea/card.php?Page="+page, function(data, status){
            
-          var dataset=JSON.parse(data);
-          
-         showdata(dataset);
+          //var dataset=JSON.parse(data);
+          showdata(data);
+        // showdata(dataset);
           
           });
        
