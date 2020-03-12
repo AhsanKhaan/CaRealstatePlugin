@@ -77,9 +77,14 @@ $(".btn").click(function(){
         //fetch content and render here
         $("#card-stack").empty();  
         $.get("http://localhost:1000/wordpress/wp-content/plugins/crea/card.php?Page="+page, function(data, status){
-           
+        
           //var dataset=JSON.parse(data);
-          showdata(data);
+          if(data==null){
+            $('#card-stack').text('No Listing was found');
+          }else{
+            showdata(data);
+          }
+          
         // showdata(dataset);
           
           });
