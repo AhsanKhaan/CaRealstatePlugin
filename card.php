@@ -145,7 +145,8 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
          }
          $response.="]}";
          //$response.=str_replace(",","",strpos($response,-2));
-        $response=json_encode($response);
+        $response=json_decode($response);
+         $response=json_encode($response);
         //$response=str_replace("\/","\\",$response);
         //var_dump($response);
         echo $response;
