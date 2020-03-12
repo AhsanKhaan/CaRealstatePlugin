@@ -60,70 +60,72 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
             }
             
             
-           if(strpos($row['Building'],'SizeInterior')!==FALSE){
-               $position=strpos($row['Building'],'SizeInterior');
-               // print_r("String postion ".$position);
-               $temp_str=substr($row['Building'],$position);
-               $size_str=substr($temp_str,strpos($temp_str,':'));
+        //    if(strpos($row['Building'],'SizeInterior')!==FALSE){
+        //        $position=strpos($row['Building'],'SizeInterior');
+        //        // print_r("String postion ".$position);
+        //        $temp_str=substr($row['Building'],$position);
+        //        $size_str=substr($temp_str,strpos($temp_str,':'));
                
-               if((bool)strpos($size_str,"[]")!==FALSE){
-                   $Building_size="NULL";
+        //        if((bool)strpos($size_str,"[]")!==FALSE){
+        //            $Building_size="NULL";
                   
-               }else if((bool)strpos($size_str,"\"")!==FALSE){
+        //        }else if((bool)strpos($size_str,"\"")!==FALSE){
                
-                   $Building_size=substr($size_str,strpos($size_str,"\"")+1,strpos($size_str,"sqft")-3);
-                  }
+        //            $Building_size=substr($size_str,strpos($size_str,"\"")+1,strpos($size_str,"sqft")-3);
+        //           }
                
-           }else{
-               $Building_size="Nill";
+        //    }else{
+        //        $Building_size="";
                
-           }
-            // if(array_key_exists('SizeInterior',$row)){
-            //     $Building_size=$row['Building']['SizeInterior'];
-            //     echo '<h1>'.$Building_size.'</h1>';
-            // }else{
-            //     $Building_size="";
-            // }
-           if(strpos($row['Building'],'BedroomsTotal')!==FALSE){
-               //print_r($row['Building']);
-               $position=strpos($row['Building'],'BedroomsTotal');
-               // print_r("String postion ".$position);
-               $temp_str=substr($row['Building'],$position);
-               $size_str=substr($temp_str,strpos($temp_str,':'));
-               
-               
-               if((bool)strpos($size_str,"\"")!==FALSE){
-                   
-                  $Building_bed=explode("\"",$size_str)[1];
-               }
+        //    }
+        $temp=json_decode($row['Building'],true);
+            if(array_key_exists('SizeInterior',$temp)){
+               // $Building_size=json_decode($row['Building']);
+                $Building_size=$temp['SizeInterior'];
+                
             }else{
-               $Building_bed="Nill";
-               }
-        // if(array_key_exists('BedroomsTotal',$row)){
-        //     $Building_bed=$row['Building']['BedroomsTotal'];
-        // }else{
-        //     $Building_bed="";
-        // }   
-               if(strpos($row['Building'],'BathroomTotal')!==FALSE){
-                   //print_r($row['Building']);
-                   $position=strpos($row['Building'],'BathroomTotal');
-                   // print_r("String postion ".$position);
-                   $temp_str=substr($row['Building'],$position);
-                   $size_str=substr($temp_str,strpos($temp_str,':'));
-                   //print_r("string position".$size_str."\n\n");
+                $Building_size="";
+            }
+        //    if(strpos($row['Building'],'BedroomsTotal')!==FALSE){
+        //        //print_r($row['Building']);
+        //        $position=strpos($row['Building'],'BedroomsTotal');
+        //        // print_r("String postion ".$position);
+        //        $temp_str=substr($row['Building'],$position);
+        //        $size_str=substr($temp_str,strpos($temp_str,':'));
+               
+               
+        //        if((bool)strpos($size_str,"\"")!==FALSE){
                    
-                   if((bool)strpos($size_str,"\"")!==FALSE){
+        //           $Building_bed=explode("\"",$size_str)[1];
+        //        }
+        //     }else{
+        //        $Building_bed="";
+        //        }
+        if(array_key_exists('BedroomsTotal',$temp)){
+            $Building_bed=$temp['BedroomsTotal'];
+        }else{
+            $Building_bed="";
+        }   
+            //    if(strpos($row['Building'],'BathroomTotal')!==FALSE){
+            //        //print_r($row['Building']);
+            //        $position=strpos($row['Building'],'BathroomTotal');
+            //        // print_r("String postion ".$position);
+            //        $temp_str=substr($row['Building'],$position);
+            //        $size_str=substr($temp_str,strpos($temp_str,':'));
+            //        //print_r("string position".$size_str."\n\n");
+                   
+            //        if((bool)strpos($size_str,"\"")!==FALSE){
                        
-                      $Building_bath=explode("\"",$size_str)[1];
-                   }
-               }else{
-                   $Building_bath="Nill";
-                   }
-            // if(array_key_exists('BathroomTotal',$row)){
-            //     $Building_bath=$row['Building']['BathroomTotal'];
-            // }else{
-            //     $Building_bath="";
-            // }  
+            //           $Building_bath=explode("\"",$size_str)[1];
+            //        }
+            //    }else{
+            //        $Building_bath="";
+            //        }
+            if(array_key_exists('BathroomTotal',$temp)){
+                $Building_bath=$temp['BathroomTotal'];
+            }else{
+                $Building_bath="";
+            }  
             //print_r("\n\n\n\n\n\n\n\n".$row['Building']."\n\n\n\n\n\n\n\n");
             $temp_add=json_decode($row['Address']);
             
@@ -134,6 +136,7 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
                    
            
               //$arr.push(response( $AgentDetails,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType));     
+              //response( $ID,$AgentDetails,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType);
               $response.= response( $ID,$AgentDetails,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType);
               if($index!=$Limit){
                 $response.=",";
@@ -150,10 +153,10 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
         mysqli_free_result($result);
         mysqli_close($conn);
 	}else{
-		echo response( NULL,NULL,NULL,NULL,NULL,NULL ,NULL,NULL,200,"No Record Found");
+		echo response( NULL,NULL,NULL,NULL,NULL,NULL,NULL ,NULL,NULL,200,"No Record Found");
 	}
 }else{
- 	echo response(NULL,NULL,NULL,NULL,NULL,NULL ,NULL,NULL, 400,"Invalid Request");
+ 	echo response(NULL,NULL,NULL,NULL,NULL,NULL,NULL ,NULL,NULL, 400,"Invalid Request");
  }
  
 function response( $ID,$AgentDetails,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType){
@@ -173,7 +176,7 @@ function response( $ID,$AgentDetails,$Building_size,$Building_bed,$Building_bath
  
  $response['TransactionType'] = $TransactionType;
  
- $json_response = json_encode($response);
- return $json_response;
+ $json_response = json_encode($response,true);
+return $json_response;
 }
 ?>
