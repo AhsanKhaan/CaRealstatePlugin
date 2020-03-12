@@ -127,12 +127,19 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
                 $Building_bath="";
             }  
             //print_r("\n\n\n\n\n\n\n\n".$row['Building']."\n\n\n\n\n\n\n\n");
-            $temp_add=json_decode($row['Address']);
+            $temp_add=$row['Address'];
             
+            if($temp_add==="{}"){
+                $Address="Address Not Available";
+                $City="";
+                $Province="";
+            }else{
+            $temp_add=json_decode($row['Address']);
             $Address=$temp_add->StreetAddress;
-           
             $City=$temp_add->City;//['City'];
             $Province=$temp_add->Province;//['Province'];
+            }
+            
                    
            
               //$arr.push(response( $AgentDetails,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType));     
