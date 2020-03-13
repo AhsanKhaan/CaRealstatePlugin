@@ -353,7 +353,7 @@ function Insert_to_database($data){
      if(array_key_exists('ParkingSpaceTotal',$data)){
         $ParkingSpaceTotal=str_replace("'","\'",$data['ParkingSpaceTotal']);
      }else{
-        $ParkingSpaceTotal=json_encode(json_decode("{}"));
+        $ParkingSpaceTotal="";
      }
      error_log("Parking Space Total".$ParkingSpaceTotal);
     //photo
