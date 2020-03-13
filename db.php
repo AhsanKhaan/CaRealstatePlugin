@@ -288,7 +288,7 @@ function Insert_to_database($data){
      if (array_key_exists('AmmenitiesNearBy',$data)) {
         $AmmenitiesNearBy=str_replace("'","\'","".$data['AmmenitiesNearBy']);
      }else{
-        $AmmenitiesNearBy=json_encode(json_decode("{}"));
+        $AmmenitiesNearBy="";
      }
 
      error_log("Ammensities".$AmmenitiesNearBy);
