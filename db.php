@@ -236,7 +236,7 @@ function Insert_to_database($data){
 
    //  error_log("Agent Details".$AgentDetails);
 
-    $Board=str_replace("'","\'",json_encode($data['Board']));
+    $Board=$data['Board'];
 
     error_log("Board".$Board);
     
