@@ -325,7 +325,7 @@ function Insert_to_database($data){
          
          //error_log("TullaTullaTullaTullaa".var_dump($ListingContractDate));
      }else{
-        $ListingContractDate=json_encode(json_decode("{}"));
+        $ListingContractDate="";
      }
      
    error_log("Listing Contract Date".$ListingContractDate);
