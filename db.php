@@ -339,7 +339,7 @@ function Insert_to_database($data){
      if (array_key_exists('OwnershipType',$data)) {
         $OwnershipType=str_replace("'","\'",$data['OwnershipType']);
      }else{
-        $OwnershipType=json_encode(json_decode("{}"));
+        $OwnershipType="";
      }
 
      error_log("Ownership type".$OwnershipType);
