@@ -145,7 +145,7 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
               //$arr.push(response( $AgentDetails,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType));     
               //response( $ID,$AgentDetails,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType);
               $response.= response( $ID,$AgentDetails,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType);
-              if($index!=$Limit){
+              if($index!=mysqli_num_rows($result)){
                 $response.=",";
     
               }
