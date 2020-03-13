@@ -113,5 +113,86 @@ echo '<h2>'.$json['Price'].'</h2>';
 echo '<p>'.$json['PublicRemarks'].'</p>';
 ?>
 <h3>Property Details</h3>
+<table>
+<tbody>
+<tr>
+    <td>
+    <strong>MLS® Number</strong>
+    </td>
+  <?php 
+    echo '<td class="text-right">
+    '.$json['ListingID'].'
+    </td>';
+  ?>
+    
+</tr>
+<tr>
+    <td>
+    <strong>Property Type</strong>
+    </td>
+  <?php 
+    echo '<td class="text-right">
+    '.$json['PropertyType'].'
+    </td>';
+  ?>
+    
+</tr>
+<tr>
+    <td>
+    <strong>Amenities NearBy</strong>
+    </td>
+  <?php 
+    echo '<td class="text-right">
+    '.$json['AmmenitiesNearBy'].'
+    </td>';
+  ?>
+    
+</tr>
+<tr>
+    <td>
+    <strong>Equipment Type</strong>
+    </td>
+  <?php 
+    echo '<td class="text-right">
+    '.$json['EquipmentType'].'
+    </td>';
+  ?>
+    
+</tr>
+<tr>
+    <td>
+    <strong>Features</strong>
+    </td>
+  <?php 
+    echo '<td class="text-right">
+    '.implode(" ",$json['Features']).'
+    </td>';
+  ?>
+    
+</tr>
+<tr>
+    <td>
+    <strong>Parking Spaces Total</strong>
+    </td>
+  <?php 
+    echo '<td class="text-right">
+    '.$json['ParkingSpaceTotal'].'
+    </td>';
+  ?>
+    
+</tr>
+<tr>
+    <td>
+    <strong>Rental Equipment Type</strong>
+    </td>
+  <?php 
+    echo '<td class="text-right">
+    '.$json['RentalEquipmentType'].'
+    </td>';
+  ?>
+    
+</tr>
+	</tbody>
+</table>
 </body>
 </html>
