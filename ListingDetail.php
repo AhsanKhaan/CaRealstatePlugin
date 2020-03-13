@@ -27,10 +27,10 @@ curl_close($ch);
 //$response=json_decode($json,true);
 //$response=json_decode(stripcslashes($json));
 //print_r($response);
-echo  '<pre>';
+//echo  '<pre>';
  $json=json_decode($json,true);
-  print_r($json);
-echo  '</pre>';
+ // print_r($json);
+//echo  '</pre>';
     //json_decode($json);
 
     
@@ -55,11 +55,58 @@ echo $json['Address']['PostalCode'];
 <ul>
 <?php
 foreach($json['Photo']['PropertyPhoto'] as $photo){
-echo '<li style="float:left"><a href="#"><img src="'.$photo['PhotoURL'].'"/></a></li>';
+echo '<li><a href="#"><img src="'.$photo['PhotoURL'].'"/></a></li>';
 }
-echo '<span style="clear:both"></span>';
+
 ?>
 </ul>
-<h2></h2>
+<div>
+<?php 
+//print_r($json['Building']);
+foreach($json['Building'] as $key => $item){
+   //print_r('Key:'.$key.'Value:'.$item);
+       switch($key){
+        case 'BedroomsTotal':
+            echo '<span style="font-size:40px;margin-right:30px;">'.$item.'Bedroom</span>';
+    break;
+        case 'BathroomTotal':
+            echo '<span style="font-size:40px;margin-right:30px;">'.$item.'Bathroom</span>';
+    break;
+        case 'SizeInterior':
+            echo '<span style="font-size:40px;margin-right:30px;">'.$item.'</span>';
+    break;
+        case 'ArchitecturalStyle':
+            echo '<span style="font-size:30px;margin-right:30px;">'.$item.'</span>';
+    break;
+        case 'FireplacePresent':
+            if ($item=='True'){
+                echo '<span style="font-size:30px;margin-right:30px;">Fire Place</span>';
+            }else{
+
+            }
+            
+    break;
+        case 'HeatingType':
+            echo '<span style="font-size:30px;margin-right:30px;">'.$item.'</span>';
+    break;
+        case 'CoolingType':
+            if(strpos($item, ",") !== false){
+                $temp=explode(",",$item);
+                //print_r($temp);
+                echo '<span style="font-size:30px;margin-right:30px;">'.$temp[1].'</span>';
+            } else{
+                echo '<span style="font-size:30px;margin-right:30px;">'.$item.'</span>';
+            }
+            
+    break;
+    
+        default:
+    }//switch ends
+
+}//for each ends
+
+
+?>
+</div>
 </body>
 </html>
