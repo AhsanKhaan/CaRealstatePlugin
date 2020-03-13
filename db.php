@@ -384,7 +384,7 @@ function Insert_to_database($data){
     //$PublicRemarks=json_encode(wptexturize($data['PublicRemarks']));
      //$PublicRemarks=json_encode(str_replace("'","",$data['PublicRemarks']));
    //   $PublicRemarks=json_encode(esc_attr($data['PublicRemarks']));
-   $PublicRemarks=str_replace("'","\'",json_encode($data['PublicRemarks']));
+   $PublicRemarks=str_replace("'","\'",$data['PublicRemarks']);
 //    if(strpos($PublicRemarks,"\\'CHEERS\\'")!==false){
 
 // $PublicRemarks=str_replace("\\'CHEERS\\'","CHEERS",$data['PublicRemarks']);
