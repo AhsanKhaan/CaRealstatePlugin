@@ -333,7 +333,7 @@ function Insert_to_database($data){
      if (array_key_exists('LocationDescription',$data)) {
         $LocationDescription=str_replace("'","\'",$data['LocationDescription']);
      }else{
-        $LocationDescription=str_replace("'","\'",json_encode(json_decode("{}")));
+        $LocationDescription="";
      }
      error_log("Location Descripton".$LocationDescription);
      if (array_key_exists('OwnershipType',$data)) {
