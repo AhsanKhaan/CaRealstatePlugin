@@ -105,8 +105,13 @@ foreach($json['Building'] as $key => $item){
 
 }//for each ends
 
+echo '<h2>'.$json['Price'].'</h2>';
 
 ?>
 </div>
+<?php 
+echo '<p>'.$json['PublicRemarks'].'</p>';
+?>
+<h3>Property Details</h3>
 </body>
 </html>
