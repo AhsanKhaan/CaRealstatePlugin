@@ -259,12 +259,38 @@ echo '<p>'.$json['PublicRemarks'].'</p>';
 </tr>
 <tr>
     <td>
+    <strong>Age</strong>
+    </td>
+  <?php 
+  if(array_key_exists('Age',$json['Building'])){
+    echo '<td class="text-right">
+      '.$json['Building']['Age'].'
+      </td>';
+  }
+  ?>
+    
+</tr>
+<tr>
+    <td>
     <strong>Appliances</strong>
     </td>
   <?php 
   if(array_key_exists('Appliances',$json['Building'])){
     echo '<td class="text-right">
       '.$json['Building']['Appliances'].'
+      </td>';
+  }
+  ?>
+    
+</tr>
+<tr>
+    <td>
+    <strong>ArchitecturalStyle</strong>
+    </td>
+  <?php 
+  if(array_key_exists('ArchitecturalStyle',$json['Building'])){
+    echo '<td class="text-right">
+      '.$json['Building']['ArchitecturalStyle'].'
       </td>';
   }
   ?>
@@ -280,6 +306,36 @@ echo '<p>'.$json['PublicRemarks'].'</p>';
       '.$json['Building']['ConstructedDate'].'
       </td>';
   }
+  ?>
+    
+</tr>
+<tr>
+    <td>
+    <strong>Construction Style Attachment</strong>
+    </td>
+  <?php 
+  if(array_key_exists('ConstructionStyleAttachment',$json['Building'])){
+    echo '<td class="text-right">
+      '.$json['Building']['ConstructionStyleAttachment'].'
+      </td>';
+  }
+  ?>
+    
+</tr>
+<tr>
+    <td>
+    <strong>Stories Total</strong>
+    </td>
+  <?php 
+  if(array_key_exists('StoriesTotal',$json['Building'])){
+    if($json['Building']['StoriesTotal']!='None'){
+      echo '<td class="text-right">
+      '.$json['Building']['StoriesTotal'].'
+      </td>';
+    }
+
+  }
+
   ?>
     
 </tr>
@@ -427,6 +483,45 @@ echo '<p>'.$json['PublicRemarks'].'</p>';
     echo '<td class="text-right">
     '.$json['RentalEquipmentType'].'
     </td>';
+  ?>
+    
+</tr>
+<tr>
+    <td>
+    <strong>Size Interior</strong>
+    </td>
+  <?php 
+  if(array_key_exists('SizeInterior',$json['Building'])){
+    echo '<td class="text-right">
+      '.$json['Building']['SizeInterior'].'
+      </td>';
+  }
+  ?>
+    
+</tr>
+<tr>
+    <td>
+    <strong>Utility Water</strong>
+    </td>
+  <?php 
+  if(array_key_exists('UtilityWater',$json['Building'])){
+    echo '<td class="text-right">
+      '.$json['Building']['UtilityWater'].'
+      </td>';
+  }
+  ?>
+    
+</tr>
+<tr>
+    <td>
+    <strong>Type</strong>
+    </td>
+  <?php 
+  if(array_key_exists('Type',$json['Building'])){
+    echo '<td class="text-right">
+      '.$json['Building']['Type'].'
+      </td>';
+  }
   ?>
     
 </tr>
