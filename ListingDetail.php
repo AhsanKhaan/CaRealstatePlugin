@@ -395,6 +395,32 @@ echo '<p>'.$json['PublicRemarks'].'</p>';
 </tr>
 <tr>
     <td>
+    <strong>Heating Type</strong>
+    </td>
+  <?php 
+  if(array_key_exists('HeatingType',$json['Building'])){
+    echo '<td class="text-right">
+      '.$json['Building']['HeatingType'].'
+      </td>';
+  }
+  ?>
+    
+</tr>
+<tr>
+    <td>
+    <strong>Heating Fuel</strong>
+    </td>
+  <?php 
+  if(array_key_exists('HeatingFuel',$json['Building'])){
+    echo '<td class="text-right">
+      '.$json['Building']['HeatingFuel'].'
+      </td>';
+  }
+  ?>
+    
+</tr>
+<tr>
+    <td>
     <strong>Rental Equipment Type</strong>
     </td>
   <?php 
