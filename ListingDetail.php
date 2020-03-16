@@ -197,17 +197,23 @@ echo '<p>'.$json['PublicRemarks'].'</p>';
   ?>
     
 </tr>
-<tr>
-    <td>
-    <strong>Parking Spaces Total</strong>
-    </td>
-  <?php 
-    echo '<td class="text-right">
-    '.$json['ParkingSpaceTotal'].'
-    </td>';
+
+  <?php
+  
+    if($json['ParkingSpaceTotal']=="{}"){
+
+    }else{ 
+      echo '<tr>
+      <td>
+      <strong>Parking Spaces Total</strong>
+      </td><td class="text-right">
+      '.$json['ParkingSpaceTotal'].'
+      </td>
+      </tr>';
+      }
   ?>
     
-</tr>
+
 
   <?php 
     if($json['RentalEquipmentType']==""){
