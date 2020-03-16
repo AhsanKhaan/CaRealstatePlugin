@@ -609,6 +609,51 @@ echo '<p>'.$json['PublicRemarks'].'</p>';
         }//Parking ends
     }
   ?>
+<!-- For Land Details table -->
+    <?php 
+    if(array_key_exists('Land',$json)){
+        
+        if(count($json['Land'])>0){
+          echo '<h3>Land</h3>';
+          echo '<table border=1 >';
+          
+          if(array_key_exists('Acreage',$json['Land'])){
+            if($json['Land']['Acreage']==true){
+              echo '<tr>';
+              echo '<td>Acreage</td><td>Yes</td>';
+              echo '</tr>';
+            }else{
+              echo '<tr>';
+              echo '<td>Acreage</td><td>No</td>';
+              echo '</tr>';
+            }
+          }
 
+          foreach($json['Land'] as $key=>$value){
+            echo '<tr>';
+            if($key=='Acreage'){
+              continue;
+              
+            }else{
+              $label = preg_replace('/(?<!\ )[A-Z]/', ' $0', $key);
+              echo '<td>'.$label.'</td>';
+              if(is_array($value)){
+                if(empty($value)){
+                  echo '<td>Not Define</td>';
+                }else{
+                  echo '<td>'.implode(" ",$value).'</td>';
+                }//check for empty ends
+                
+              }else{
+                echo '<td>'.$value.'</td>';
+              }
+              
+            }
+            echo '</tr>';
+          }//for each end
+          echo '</table>';
+        }//array length check end
+    }//check for existance of array end
+    ?>
 </body>
 </html>
