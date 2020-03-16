@@ -54,9 +54,15 @@ echo $json['Address']['PostalCode'];
 </a>
 <ul>
 <?php
-foreach($json['Photo']['PropertyPhoto'] as $photo){
-echo '<li><a href="#"><img src="'.$photo['PhotoURL'].'"/></a></li>';
+
+if(empty($json['Photo'])){
+  echo '<h2>Images unavailable</h2>';
+}else{
+  foreach($json['Photo']['PropertyPhoto'] as $photo){
+    echo '<li><a href="#"><img src="'.$photo['PhotoURL'].'"/></a></li>';
+    }
 }
+
 
 ?>
 </ul>
