@@ -143,28 +143,42 @@ echo '<p>'.$json['PublicRemarks'].'</p>';
   ?>
     
 </tr>
-<tr>
+
+    
+  <?php 
+  if($json['AmmenitiesNearBy']=="{}"){
+
+  }else{
+    echo '<tr>
     <td>
     <strong>Amenities NearBy</strong>
     </td>
-  <?php 
-    echo '<td class="text-right">
+    <td class="text-right">
     '.$json['AmmenitiesNearBy'].'
-    </td>';
+    </td>
+    </tr>';
+  }
+
   ?>
     
-</tr>
-<tr>
+
+
+  <?php
+   
+  if($json['EquipmentType']=="{}"){
+
+  }else{
+    echo '<tr>
     <td>
     <strong>Equipment Type</strong>
     </td>
-  <?php 
-    echo '<td class="text-right">
+    <td class="text-right">
     '.$json['EquipmentType'].'
-    </td>';
-  ?>
+    </td>
+    </tr>';
+  }
     
-</tr>
+  ?>
 <tr>
     <td>
     <strong>Features</strong>
@@ -194,17 +208,24 @@ echo '<p>'.$json['PublicRemarks'].'</p>';
   ?>
     
 </tr>
-<tr>
-    <td>
-    <strong>Rental Equipment Type</strong>
-    </td>
+
   <?php 
-    echo '<td class="text-right">
-    '.$json['RentalEquipmentType'].'
-    </td>';
+    if($json['RentalEquipmentType']==""){
+
+    }else{
+      echo '<tr>
+      <td>
+      <strong>Rental Equipment Type</strong>
+      </td>
+      <td class="text-right">
+      '.$json['RentalEquipmentType'].'
+      </td>
+      </tr>';
+    }
+
   ?>
     
-</tr>
+
 	</tbody>
 </table>
 
