@@ -639,7 +639,7 @@ echo '<p>'.$json['PublicRemarks'].'</p>';
               echo '<td>'.$label.'</td>';
               if(is_array($value)){
                 if(empty($value)){
-                  echo '<td>Not Define</td>';
+                  echo '<td>Unknown</td>';
                 }else{
                   echo '<td>'.implode(" ",$value).'</td>';
                 }//check for empty ends
