@@ -105,7 +105,7 @@ foreach($json['Building'] as $key => $item){
 
 }//for each ends
 
-echo '<h2>'.$json['Price'].'</h2>';
+echo '<h2>Price: $'.$json['Price'].'</h2>';
 
 ?>
 </div>
@@ -113,7 +113,7 @@ echo '<h2>'.$json['Price'].'</h2>';
 echo '<p>'.$json['PublicRemarks'].'</p>';
 ?>
 <h3>Property Details</h3>
-<table>
+<table border=1>
 <tbody>
 <tr>
     <td>
@@ -204,7 +204,7 @@ echo '<p>'.$json['PublicRemarks'].'</p>';
 
 <!-- Building Output -->
 <h3>Building</h3>
-<table>
+<table border=1>
 <tbody>
 <tr>
     <td>
@@ -492,9 +492,17 @@ echo '<p>'.$json['PublicRemarks'].'</p>';
     </td>
   <?php 
   if(array_key_exists('SizeInterior',$json['Building'])){
-    echo '<td class="text-right">
-      '.$json['Building']['SizeInterior'].'
-      </td>';
+      if(is_array($json['Building']['SizeInterior'])){
+        echo '<td class="text-right">
+        '.implode(" ",$json['Building']['SizeInterior']).'
+        </td>';
+      }else{
+        echo '<td class="text-right">
+        '.$json['Building']['SizeInterior'].'
+        </td>';
+        
+      }
+
   }
   ?>
     
@@ -527,5 +535,80 @@ echo '<p>'.$json['PublicRemarks'].'</p>';
 </tr>
 	</tbody>
 </table>
+   <!-- For Rooms PHP coding -->
+    <?php 
+    if(array_key_exists('Rooms',$json['Building'])){
+       echo '<h3>Rooms</h3>
+       <table border=1>
+         <thead>
+           <tr>
+             <th>Level</th>
+             <th>Type</th>
+             <th>Length</th>
+             <th>Width</th>
+             <th>Dimension</th>
+           </tr>
+         </thead>
+         <tbody>';
+      foreach($json['Building']['Rooms']['Room'] as $item){
+        echo '<tr>';
+        //for level
+        echo '<td colspan=1>'.$item['Level'].'</td>';
+        //for type
+        echo '<td colspan=1>'.$item['Type'].'</td>';
+        //for length
+        if(is_array($item['Length'])){
+          echo '<td colspan=1>'.implode(" ",$item['Length']).'</td>';
+        }else{
+          echo '<td colspan=1>'.$item['Length'].'</td>';
+        }
+        
+        //for width
+        if(is_array($item['Width'])){
+          echo '<td colspan=1>'.implode(" ",$item['Width']).'</td>';
+        }else{
+          echo '<td colspan=1>'.$item['Width'].'</td>';
+        }
+        
+        //for dimension
+        if(is_array($item['Dimension'])){
+          echo '<td colspan=1>'.implode($item['Dimension']).'</td>';
+        }else{
+          echo '<td colspan=1>'.$item['Dimension'].'</td>';
+        }
+        
+        //ending row
+        echo '</tr>';
+
+  
+      }//for each ends
+      echo '</tbody>
+          </table>';
+  
+    }
+  ?>
+  <!-- For Parking table -->
+  <?php 
+    if(array_key_exists('ParkingSpaces',$json)){
+        if(array_key_exists('Parking',$json['ParkingSpaces'])){
+            echo '<h3>Parking</h3>';
+            echo '<table border=1>';
+              
+            foreach($json['ParkingSpaces']['Parking'] as $item){
+              echo '<tr>';
+              // var_dump($item);
+              if(is_array($item)){
+                echo '<td>'.implode($item).'</td>';
+              }else{
+                echo '<td>'.$item.'</td>';
+              }
+              //echo '<td>'.$item.'</td>';  
+              echo '</tr>';
+            }//for each ends
+            echo '</table>';
+        }//Parking ends
+    }
+  ?>
+
 </body>
 </html>
