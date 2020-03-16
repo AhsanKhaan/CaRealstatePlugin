@@ -179,24 +179,32 @@ echo '<p>'.$json['PublicRemarks'].'</p>';
   }
     
   ?>
-<tr>
+
+  <?php 
+var_dump($json['Features']);
+if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json['Features']))&&(count($json['Features'])==0))){
+
+}else{
+    echo '<tr>
     <td>
     <strong>Features</strong>
-    </td>
-  <?php 
+    </td>';
   if(is_array($json['Features'])){
     echo '<td class="text-right">
     '.implode(" ",$json['Features']).'
     </td>';
-  }else{
+   }else{
     echo '<td class="text-right">
     '.$json['Features'].'
     </td>';
-  }
+   }
+   echo "</tr>";
+}
+  
 
   ?>
     
-</tr>
+
 
   <?php
   
