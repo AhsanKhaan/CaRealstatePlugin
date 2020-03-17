@@ -135,6 +135,20 @@ wp_enqueue_script( 'jquery.twbsPagination.js', plugin_dir_url(__FILE__).'js/jque
 wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $in_footer=true );
 
 /*   For showing listings all data at front end */
+echo '<form class="">
+<fieldset>
+ <legend>Property Search</legend>
+   <label for="TransType"></label>
+ <select id="TransType">
+ <option value="All">All Transaction Type</option>
+ <option value="Sale">For Sale</option>
+ <option value="Lease">For Lease</option>
+ <option value="Rent">For Rent</option>
+ <option value="Sale_Rent">For Sale or Rent</option>
+</select><br><br>
+ <input id="search" type="submit" value="Search">
+</fieldset>
+</form>';
 echo ' <div class="container">   
 <div class="wrapper">
 <div class="container-pg">
@@ -151,9 +165,10 @@ echo ' <div class="container">
 </div>
 
 
-<div class="row" id="card-stack">
+<div class="row md-8" id="card-stack">
 
 </div>';
+
 
 }
 //////////////////////////////////////////////////////////////
