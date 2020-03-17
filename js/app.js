@@ -3,11 +3,9 @@ $(document).ready(function(){
 
 $("#search").click(function(){
     var item_selected=$('#TransactionType option:selected').text();
-    //item_selected.toLowercase()
-  $.get("http://localhost:1000/wordpress/wp-content/plugins/crea/card.php?Type=For Sale",function(data,status){
-      var dat=data;
-      alert(dat);
-      var st=status;
+    var url="http://localhost:1000/wordpress/wp-content/plugins/crea/card.php?Type="+item_selected;
+  $.get(url,function(data,status){
+      showdata(data);
   });
   });//Search Button Ends click
    
