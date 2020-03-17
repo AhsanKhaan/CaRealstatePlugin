@@ -2,9 +2,16 @@
 <?php
 header("Content-Type:application/json");
 if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
- prepareAPI();
+    $Listing_id = $_GET['Page'];
+    $Limit=9;
+    $page=isset($Listing_id)?$Listing_id:1;
+    $startwith=($page-1)*$Limit;
+
+    $query="SELECT ID,Address,Price,Building,AgentDetails,Photo,TransactionType FROM `wp_properties_2` LIMIT $startwith,$Limit";
+    $count="SELECT COUNT(ID) FROM `wp_properties_2`";
+ prepareAPI($query,$count,$Limit);
 }else if(isset($_GET['Type'])&& $_GET['Type']!=""){
-    echo '<h2>Hello'.$_GET['Type'].' </h2>';
+    echo json_encode('{"Name":"Hello World"}');
 }else{
  	echo response(NULL,NULL,NULL,NULL,NULL,NULL,NULL ,NULL,NULL, 400,"Invalid Request");
  }
@@ -30,20 +37,15 @@ function response( $ID,$AgentDetails,$Building_size,$Building_bed,$Building_bath
 return $json_response;
 }
 
-function prepareAPI(){
+function prepareAPI($query,$count,$Limit){
     include('db_connection.php');
-    $Listing_id = $_GET['Page'];
-    $Limit=9;
-    $page=isset($Listing_id)?$Listing_id:1;
-    $startwith=($page-1)*$Limit;
-
-    $query="SELECT ID,Address,Price,Building,AgentDetails,Photo,TransactionType FROM `wp_properties_2` LIMIT $startwith,$Limit";
+    
     //print_r("QUERY".$query);
 	$result = mysqli_query(
 	$conn,
     $query);
     
-    $getcount=mysqli_query($conn,"SELECT COUNT(ID) FROM `wp_properties_2`");
+    $getcount=mysqli_query($conn,$count);
 	//print_r($result);
 	if(mysqli_num_rows($result)>0){
         
