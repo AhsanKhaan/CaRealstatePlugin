@@ -2,7 +2,34 @@
 <?php
 header("Content-Type:application/json");
 if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
-	include('db_connection.php');
+ prepareAPI();
+}else{
+ 	echo response(NULL,NULL,NULL,NULL,NULL,NULL,NULL ,NULL,NULL, 400,"Invalid Request");
+ }
+ 
+function response( $ID,$AgentDetails,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType){
+ //$response['order_id'] = $order_id;
+ $response['ID']=$ID;
+ $response['Listing Office']=$AgentDetails;
+  $response['Size'] = $Building_size;
+  $response['Bedroom']=$Building_bed;
+  $response['Bathroom']=$Building_bath;
+  
+  $response['Address'] = $Address;
+  $response['City']=$City;
+  $response['Province']=$Province;
+  
+  $response['Photo'] = $Photo;
+  $response['Price'] = $Price;
+ 
+ $response['TransactionType'] = $TransactionType;
+ 
+ $json_response = json_encode($response,true);
+return $json_response;
+}
+
+function prepareAPI(){
+    include('db_connection.php');
     $Listing_id = $_GET['Page'];
     $Limit=9;
     $page=isset($Listing_id)?$Listing_id:1;
@@ -163,28 +190,5 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
 	}else{
 		echo response( NULL,NULL,NULL,NULL,NULL,NULL,NULL ,NULL,NULL,200,"No Record Found");
 	}
-}else{
- 	echo response(NULL,NULL,NULL,NULL,NULL,NULL,NULL ,NULL,NULL, 400,"Invalid Request");
- }
- 
-function response( $ID,$AgentDetails,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType){
- //$response['order_id'] = $order_id;
- $response['ID']=$ID;
- $response['Listing Office']=$AgentDetails;
-  $response['Size'] = $Building_size;
-  $response['Bedroom']=$Building_bed;
-  $response['Bathroom']=$Building_bath;
-  
-  $response['Address'] = $Address;
-  $response['City']=$City;
-  $response['Province']=$Province;
-  
-  $response['Photo'] = $Photo;
-  $response['Price'] = $Price;
- 
- $response['TransactionType'] = $TransactionType;
- 
- $json_response = json_encode($response,true);
-return $json_response;
 }
 ?>
