@@ -3,6 +3,8 @@
 header("Content-Type:application/json");
 if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
  prepareAPI();
+}else if(isset($_GET['Type'])&& $_GET['Type']!=""){
+    echo '<h2>Hello'.$_GET['Type'].' </h2>';
 }else{
  	echo response(NULL,NULL,NULL,NULL,NULL,NULL,NULL ,NULL,NULL, 400,"Invalid Request");
  }
