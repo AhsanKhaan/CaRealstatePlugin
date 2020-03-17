@@ -1,9 +1,13 @@
 $(document).ready(function(){
   init();
 
-$(".btn").click(function(){
- 
-  });//btn click
+$("#search").click(function(){
+    var item_selected=$('#TransactionType option:selected').text();
+    var url="http://localhost:1000/wordpress/wp-content/plugins/crea/card.php?Type="+item_selected;
+  $.get(url,function(data,status){
+      showdata(data);
+  });
+  });//Search Button Ends click
    
   
 

@@ -2,19 +2,50 @@
 <?php
 header("Content-Type:application/json");
 if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
-	include('db_connection.php');
     $Listing_id = $_GET['Page'];
     $Limit=9;
     $page=isset($Listing_id)?$Listing_id:1;
     $startwith=($page-1)*$Limit;
 
     $query="SELECT ID,Address,Price,Building,AgentDetails,Photo,TransactionType FROM `wp_properties_2` LIMIT $startwith,$Limit";
+    $count="SELECT COUNT(ID) FROM `wp_properties_2`";
+ prepareAPI($query,$count,$Limit);
+}else if(isset($_GET['Type'])&& $_GET['Type']!=""){
+    echo json_encode('{"Name":"Hello World"}');
+}else{
+ 	echo response(NULL,NULL,NULL,NULL,NULL,NULL,NULL ,NULL,NULL, 400,"Invalid Request");
+ }
+ 
+function response( $ID,$AgentDetails,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType){
+ //$response['order_id'] = $order_id;
+ $response['ID']=$ID;
+ $response['Listing Office']=$AgentDetails;
+  $response['Size'] = $Building_size;
+  $response['Bedroom']=$Building_bed;
+  $response['Bathroom']=$Building_bath;
+  
+  $response['Address'] = $Address;
+  $response['City']=$City;
+  $response['Province']=$Province;
+  
+  $response['Photo'] = $Photo;
+  $response['Price'] = $Price;
+ 
+ $response['TransactionType'] = $TransactionType;
+ 
+ $json_response = json_encode($response,true);
+return $json_response;
+}
+
+function prepareAPI($query,$count,$Limit){
+    include('db_connection.php');
+    
     //print_r("QUERY".$query);
 	$result = mysqli_query(
 	$conn,
     $query);
     
-    $getcount=mysqli_query($conn,"SELECT COUNT(ID) FROM `wp_properties_2`");
+    $getcount=mysqli_query($conn,$count);
 	//print_r($result);
 	if(mysqli_num_rows($result)>0){
         
@@ -163,28 +194,5 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
 	}else{
 		echo response( NULL,NULL,NULL,NULL,NULL,NULL,NULL ,NULL,NULL,200,"No Record Found");
 	}
-}else{
- 	echo response(NULL,NULL,NULL,NULL,NULL,NULL,NULL ,NULL,NULL, 400,"Invalid Request");
- }
- 
-function response( $ID,$AgentDetails,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType){
- //$response['order_id'] = $order_id;
- $response['ID']=$ID;
- $response['Listing Office']=$AgentDetails;
-  $response['Size'] = $Building_size;
-  $response['Bedroom']=$Building_bed;
-  $response['Bathroom']=$Building_bath;
-  
-  $response['Address'] = $Address;
-  $response['City']=$City;
-  $response['Province']=$Province;
-  
-  $response['Photo'] = $Photo;
-  $response['Price'] = $Price;
- 
- $response['TransactionType'] = $TransactionType;
- 
- $json_response = json_encode($response,true);
-return $json_response;
 }
 ?>

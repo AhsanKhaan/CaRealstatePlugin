@@ -138,8 +138,8 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
 echo '<form class="">
 <fieldset>
  <legend>Property Search</legend>
-   <label for="TransType"></label>
- <select id="TransType">
+   <label for="TransactionType"></label>
+ <select id="TransactionType">
  <option value="All">All Transaction Type</option>
  <option value="Sale">For Sale</option>
  <option value="Lease">For Lease</option>
