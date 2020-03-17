@@ -1,9 +1,15 @@
 $(document).ready(function(){
   init();
 
-$(".btn").click(function(){
- 
-  });//btn click
+$("#search").click(function(){
+    var item_selected=$('#TransactionType option:selected').text();
+    //item_selected.toLowercase()
+  $.get("http://localhost:1000/wordpress/wp-content/plugins/crea/card.php?Type=For Sale",function(data,status){
+      var dat=data;
+      alert(dat);
+      var st=status;
+  });
+  });//Search Button Ends click
    
   
 
