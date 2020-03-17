@@ -12,6 +12,9 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
  prepareAPI($query,$count,$Limit);
 }else if(isset($_GET['Type'])&& $_GET['Type']!=""){
     echo json_encode('{"Name":"Hello World"}');
+    // $query="SELECT ID,Address,Price,Building,AgentDetails,Photo,TransactionType FROM `wp_properties_2` WHERE TransactionType=".$_GET['Type'];
+    // $count="SELECT COUNT(ID) FROM `wp_properties_2`WHERE TransactionType=".strtolower($_GET['Type']);
+    // prepareAPI($query,$count,9);
 }else{
  	echo response(NULL,NULL,NULL,NULL,NULL,NULL,NULL ,NULL,NULL, 400,"Invalid Request");
  }
