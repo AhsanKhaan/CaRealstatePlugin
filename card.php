@@ -19,26 +19,6 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
  	echo response(NULL,NULL,NULL,NULL,NULL,NULL,NULL ,NULL,NULL, 400,"Invalid Request");
  }
  
-function response( $ID,$AgentDetails,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType){
- //$response['order_id'] = $order_id;
- $response['ID']=$ID;
- $response['Listing Office']=$AgentDetails;
-  $response['Size'] = $Building_size;
-  $response['Bedroom']=$Building_bed;
-  $response['Bathroom']=$Building_bath;
-  
-  $response['Address'] = $Address;
-  $response['City']=$City;
-  $response['Province']=$Province;
-  
-  $response['Photo'] = $Photo;
-  $response['Price'] = $Price;
- 
- $response['TransactionType'] = $TransactionType;
- 
- $json_response = json_encode($response,true);
-return $json_response;
-}
 
 function prepareAPI($query,$count,$Limit){
     include('db_connection.php');
@@ -198,4 +178,24 @@ function prepareAPI($query,$count,$Limit){
 		echo response( NULL,NULL,NULL,NULL,NULL,NULL,NULL ,NULL,NULL,200,"No Record Found");
 	}
 }
+function response( $ID,$AgentDetails,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType){
+    //$response['order_id'] = $order_id;
+    $response['ID']=$ID;
+    $response['Listing Office']=$AgentDetails;
+     $response['Size'] = $Building_size;
+     $response['Bedroom']=$Building_bed;
+     $response['Bathroom']=$Building_bath;
+     
+     $response['Address'] = $Address;
+     $response['City']=$City;
+     $response['Province']=$Province;
+     
+     $response['Photo'] = $Photo;
+     $response['Price'] = $Price;
+    
+    $response['TransactionType'] = $TransactionType;
+    
+    $json_response = json_encode($response,true);
+   return $json_response;
+   }
 ?>
