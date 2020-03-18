@@ -135,41 +135,43 @@ wp_enqueue_script( 'jquery.twbsPagination.js', plugin_dir_url(__FILE__).'js/jque
 wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $in_footer=true );
 
 /*   For showing listings all data at front end */
-echo '<form class="">
-<fieldset>
- <legend>Property Search</legend>
-   <label for="TransactionType"></label>
- <select id="TransactionType">
- <option value="All">All Transaction Type</option>
- <option value="Sale">For Sale</option>
- <option value="Lease">For Lease</option>
- <option value="Rent">For Rent</option>
- <option value="Sale_Rent">For Sale or Rent</option>
-</select><br><br>
- <input id="search" type="submit" value="Search">
-</fieldset>
-</form>';
 
-echo ' <div class="container">   
-<div class="wrapper">
-<div class="container-pg">
-
-<div class="row">
-  <div class="col-sm-12">
-    
-    <ul id="pagination-demo" class="pagination-sm"></ul>
-  </div>
-</div>
-
-
-</div>
-</div>
-
-
-<div class="row" id="card-stack">
-
-</div>';
-
+echo '<div class="container">
+        <div class="row">
+          <div class="col col-lg-auto">
+            <div class="container">   
+             <div class="wrapper">
+             <div class="container-pg">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <ul id="pagination-demo" class="pagination-sm"></ul>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            
+            
+            <div class="row" id="card-stack">
+            </div>  
+          </div>
+          <div class="col col-lg-3">
+            <form class="">
+            <fieldset>
+            <legend>Property Search</legend>
+              <label for="TransactionType"></label>
+            <select id="TransactionType">
+            <option value="All">All Transaction Type</option>
+            <option value="Sale">For Sale</option>
+            <option value="Lease">For Lease</option>
+            <option value="Rent">For Rent</option>
+            <option value="Sale_Rent">For Sale or Rent</option>
+            </select><br><br>
+            <input id="search" type="submit" value="Search">
+            </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>';
 }
 //////////////////////////////////////////////////////////////
 ///////                                                ///////
