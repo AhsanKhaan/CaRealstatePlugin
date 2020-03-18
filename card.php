@@ -92,8 +92,15 @@ function prepareAPI($query,$count,$Limit){
         //        $Building_size="";
                
         //    }
+        
         $temp=json_decode($row['Building'],true);
-            if(array_key_exists('SizeInterior',$temp)){
+        // if($temp==null){
+        //     print_r($row['ID']);
+        //     print_r($row['Building']);
+            
+        //     exit();
+        // }
+        if(array_key_exists('SizeInterior',$temp)){
                // $Building_size=json_decode($row['Building']);
                 $Building_size=$temp['SizeInterior'];
                 
