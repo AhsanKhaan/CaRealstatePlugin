@@ -19,10 +19,10 @@ $("#search").click(function(){
     <div class="card" >
         <h1>`+data['TransactionType']+`</h1>
         <h4>ID#`+data['ID']+`</h4>
-        <a href="http://localhost:80/wordpress/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank"><img class="card-img-top" src="`+data['Photo']+`" alt="Card image"></a>
+        <a href="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank"><img class="card-img-top" src="`+data['Photo']+`" alt="Card image"></a>
         <div class="card-body">
           <h3 style="text-color:green;">PRICE:$`+data['Price']+`</h3>
-          <a href="http://localhost:80/wordpress/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank"><h4 class="card-title">`+data['Address']+`</h4></a>
+          <a href="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank"><h4 class="card-title">`+data['Address']+`</h4></a>
           <p class="lead mb-2"><strong>`+data['City']+`,`+data['Province']+`</strong></p>
           <ul class="list-unstyled list-inline d-flex justify-content-between mb-0">
         
@@ -58,7 +58,7 @@ $("#search").click(function(){
     //total number of pages can be shown from here
     //uses for displaying total pages
   $("#LastPage").text($('#TotalCount').text()/10);
-  $.get("http://localhost:80/wordpress/wp-content/plugins/crea/card.php?Page=1", function(data, status){
+  $.get("http://localhost/wordpress/wordpress/wp-content/plugins/crea/card.php?Page=1", function(data, status){
      
     //var dataset=JSON.parse(data);
     //Setting the text on UI
@@ -80,7 +80,7 @@ $("#search").click(function(){
     onPageClick: function (event, page) {
         //fetch content and render here
         $("#card-stack").empty();  
-        $.get("http://localhost:80/wordpress/wp-content/plugins/crea/card.php?Page="+page, function(data, status){
+        $.get("http://localhost/wordpress/wordpress/wp-content/plugins/crea/card.php?Page="+page, function(data, status){
         
           //var dataset=JSON.parse(data);
           if(data==null){
