@@ -370,7 +370,7 @@ function Insert_to_database($data){
       $Price=str_replace("'","\'",$data['Price']);
    }else{
       //$Price=0;
-      $Price=json_encode(json_decode("{}"));
+      $Price=0;
       
    }
 
