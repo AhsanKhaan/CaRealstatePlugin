@@ -62,7 +62,7 @@ function my_activation() {
 
         Price DOUBLE ,
         PropertyType varchar(100) ,
-        PublicRemarks varchar(1000),
+        PublicRemarks BLOB,
 
         RentalEquipmentType varchar(100),
         Structure varchar(100),
