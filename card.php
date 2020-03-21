@@ -62,7 +62,7 @@ function prepareAPI($query,$count,$Limit){
            }
            
             
-            // $temp2=json_decode(stripslashes($row['Photo']));
+             $temp2=json_decode(stripslashes($row['Photo']));
             // if($temp2==NULL){
             //     //print_r($row['Photo']);
             //     //$arr=stripslashes($row['Photo']);
