@@ -68,6 +68,17 @@ $Photo_txt='{"PropertyPhoto":[{"SequenceId":"1","LastUpdated":"20/03/2020 12:15:
 //             $temp2=json_decode($row['Photo']);
 //coding ends
            $temp2=json_decode($Photo_txt);
+           print_r(substr_count($Photo_txt,"Description"));
+           $arr=explode('Description',$Photo_txt);
+           $desc_arr=array();
+
+           foreach($arr as $key=>$item){
+            $temp=explode(",",$item);
+            $desc_arr[$key]=$temp[0];
+           }
+            unset($desc_arr[0]);//unset() is an inbuilt function that removes the specified element from an array .
+            $desc_arr=array_values($desc_arr);//and reindex an array
+           print_r($desc_arr);
            $pht=preg_match('/"Description":(([a-zA-Z\d\s"]+)("))/',$Photo_txt,$matches);
           //var_dump($pht);
            print_r($matches);
