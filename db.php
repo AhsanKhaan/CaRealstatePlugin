@@ -224,21 +224,21 @@ function Insert_to_database($data){
       $LastUpdated=$data['LastUpdated'];
    }else{
       $LastUpdated=json_encode(json_decode("{}"));
-      //error_log("---".$LastUpdated."----");
+     
    }
-   //error_log("Last Updated".$LastUpdated);
+   
     //$LASTUPDATED=$data['LastUpdated'];
     $ListingID=json_encode($data['ListingID']);
 
-    error_log("Listing ID".$ListingID);
+   
 
     $AgentDetails=str_replace("'","\'",json_encode($data['AgentDetails']));
 
-   //  error_log("Agent Details".$AgentDetails);
+   
 
     $Board=$data['Board'];
 
-    error_log("Board".$Board);
+   
     
      //$wpdb = new wpdb();
    //  $var = $wpdb->_real_escape( $string );
@@ -255,12 +255,12 @@ function Insert_to_database($data){
    //  }
     
     
-    error_log("Buisness".$Business);
+   
 
     //$Building=json_encode(json_decode("{}"));
     $Building=str_replace("'","\'",json_encode($data['Building']));
 
-   error_log("Building".$Building);
+   
 
     //@2
    //$Land=json_encode(wptexturize($data['Land']));
@@ -273,7 +273,7 @@ function Insert_to_database($data){
    //    $Land=json_encode($data['Land']);
       
    //  }
-   //error_log("Land".$Land);
+   
 
    if (array_key_exists('Address',$data)) {
       $Address=str_replace("'","\'",json_encode($data['Address']));
@@ -283,7 +283,7 @@ function Insert_to_database($data){
    }
     
 
-   error_log("Address".$Address);
+   
 
      if (array_key_exists('AmmenitiesNearBy',$data)) {
         $AmmenitiesNearBy=str_replace("'","\'","".$data['AmmenitiesNearBy']);
@@ -291,7 +291,7 @@ function Insert_to_database($data){
         $AmmenitiesNearBy="";
      }
 
-     error_log("Ammensities".$AmmenitiesNearBy);
+   
 
      if (array_key_exists('AlternateURL',$data)) {
         $AlternateURL=str_replace("'","\'",implode(" ",$data['AlternateURL']));
@@ -299,7 +299,7 @@ function Insert_to_database($data){
         $AlternateURL=json_encode(json_decode("{}"));
      }
 
-     error_log("Alternate URL".$AlternateURL);
+   
 
      if (array_key_exists('EquipmentType',$data)) {
         $EquipmentType=str_replace("'","\'",$data['EquipmentType']);
@@ -307,7 +307,7 @@ function Insert_to_database($data){
         $EquipmentType="";
      }
 
-     error_log("Equipment Type:".$EquipmentType);
+   
 
      if (array_key_exists('Features',$data)) {
         $Features=str_replace("'","\'",$data['Features']);
@@ -315,7 +315,7 @@ function Insert_to_database($data){
         $Features=json_encode(json_decode("{}"));
      }
 
-     error_log("Features".$Features);
+   
      
 
 
@@ -328,34 +328,33 @@ function Insert_to_database($data){
         $ListingContractDate="";
      }
      
-   error_log("Listing Contract Date".$ListingContractDate);
+   
 
      if (array_key_exists('LocationDescription',$data)) {
         $LocationDescription=str_replace("'","\'",$data['LocationDescription']);
      }else{
         $LocationDescription="";
      }
-     error_log("Location Descripton".$LocationDescription);
-     if (array_key_exists('OwnershipType',$data)) {
+        if (array_key_exists('OwnershipType',$data)) {
         $OwnershipType=str_replace("'","\'",$data['OwnershipType']);
      }else{
         $OwnershipType="";
      }
 
-     error_log("Ownership type".$OwnershipType);
+   
     
      if (array_key_exists('ParkingSpaces',$data)) {
         $ParkingSpaces=str_replace("'","\'",json_encode($data['ParkingSpaces']));
      }else{
         $ParkingSpaces=json_encode(json_decode("{}"));
      }
-     error_log("Parking Spaces".$ParkingSpaces);
+   
      if(array_key_exists('ParkingSpaceTotal',$data)){
         $ParkingSpaceTotal=str_replace("'","\'",$data['ParkingSpaceTotal']);
      }else{
         $ParkingSpaceTotal="";
      }
-     error_log("Parking Space Total".$ParkingSpaceTotal);
+   
     //photo
      if(array_key_exists('Photo',$data)){
       $Photo=str_replace("'","\'",json_encode($data['Photo']));
@@ -364,7 +363,7 @@ function Insert_to_database($data){
    }
    // $Photo=json_encode($data['Photo']);
 
-    error_log("Photo".$Photo);
+   
     //$Price=$data['Price'];
     if(array_key_exists('Price',$data)){
       $Price=str_replace("'","\'",$data['Price']);
@@ -374,11 +373,11 @@ function Insert_to_database($data){
       
    }
 
-   error_log("Price".$Price);
+   
 
      $PropertyType=str_replace("'","\'",json_encode($data['PropertyType']));
 
-    error_log("Property Type".$PropertyType);
+   
 
    //@3
     //$PublicRemarks=json_encode(wptexturize($data['PublicRemarks']));
@@ -389,7 +388,7 @@ function Insert_to_database($data){
 
 // $PublicRemarks=str_replace("\\'CHEERS\\'","CHEERS",$data['PublicRemarks']);
 //    }
-    error_log("public remarks".$PublicRemarks);
+   
 
     if(array_key_exists('RentalEquipmentType',$data)){
         $RentalEquipmentType=str_replace("'","\'",$data['RentalEquipmentType']);
@@ -397,18 +396,18 @@ function Insert_to_database($data){
         $RentalEquipmentType='';
      }
 
-   //  error_log("Rental Equioment Type".$RentalEquipmentType);
+   
 
      if(array_key_exists('Structure',$data)){
         $Structure=str_replace("'","\'",$data['Structure']);
      }else{
         $Structure='';
      }
-     //error_log("Structure".$Structure);
+   
     
     $TransactionType=$data['TransactionType'];
     
-    //error_log($TransactionType);
+   
 
     if(array_key_exists('UtilitiesAvailable',$data)){
         $UtilitiesAvailable=str_replace("'","\'",json_encode($data['UtilitiesAvailable']));
@@ -416,7 +415,7 @@ function Insert_to_database($data){
         $UtilitiesAvailable=json_encode(json_decode("{}"));
      }
 
-     error_log("Utilities Available".$UtilitiesAvailable);
+   
 
      if(array_key_exists('WaterFrontType',$data)){
         $WaterFrontType=str_replace("'","\'",$data['WaterFrontType']);
@@ -424,7 +423,7 @@ function Insert_to_database($data){
         $WaterFrontType='';
      }
 
-     error_log("Water Front Type".$WaterFrontType);
+    
     
      if(array_key_exists('ZoningDescription',$data)){
         $ZoningDescription=str_replace("'","\'",$data['ZoningDescription']);
@@ -432,23 +431,22 @@ function Insert_to_database($data){
         $ZoningDescription='';
      }
 
-     error_log("Zoning Description".$ZoningDescription);
-    
+        
      if(array_key_exists('ViewType',$data)){
         $ViewType=$data['ViewType'];
      }else{
         $ViewType='';
      }
     
-     error_log("View Type".$ViewType);
+    
 
    // $AnalyticsClicks=$data['AnalyticsClick'];
 
-   //  error_log("Analytics Click".$AnalyticsClicks);
+   
 
     $MoreInformationLink=str_replace("'","\'",$data['MoreInformationLink']);
 
-     error_log("More Info".$MoreInformationLink);
+     
 
         
         //--AnalyticsClicks,  
