@@ -115,7 +115,7 @@ function prepareAPI($query,$count,$Limit){
             }else{
                $Photo=$temp2->PropertyPhoto->PhotoURL;
             }
-        }//IF NULL ends
+        }//IF else NULL ends
             // if(!property_exists($temp2,'PropertyPhoto')){
             //     print_r("asdf");
             //     //var_dump($temp2);
