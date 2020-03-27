@@ -524,7 +524,25 @@ function Insert_to_database($data){
      $TransactionType_card=$TransactionType;
      //Card:Photo
      $Photo_card;   
-        //--AnalyticsClicks,  
+     $temp2=json_decode($row['Photo']);
+     if($temp2==NULL){
+      
+         $split_arr=explode('"PhotoURL":',$row['Photo']);
+         $photo_url_arr=explode(',"LargePhotoURL":',$split_arr[1]);
+         $Photo_card=substr($photo_url_arr[0],1,-1);
+      
+     //     exit();
+    }else{
+        $temp_Photo=$temp2->PropertyPhoto;//['PropertyPhoto'];//[0]['Thembnail URL'];
+        
+        //var_dump($temp_Photo);
+        if(is_array($temp_Photo)){
+           $Photo_card=$temp2->PropertyPhoto[0]->PhotoURL;
+        }else{
+           $Photo_card=$temp2->PropertyPhoto->PhotoURL;
+        }
+    }//IF else NULL ends
+     //--AnalyticsClicks,  
       //   $sql_insert="INSERT INTO `{$wpdb->base_prefix}properties`(ID,LastUpdated,ListingID,Board,Features,ListingContractDate,LocationDescription,OwnershipType,Price,PropertyType,PublicRemarks,TransactionType,WaterFrontType,ZoningDescription)        
       //           VALUES(`$ID`,`$LastUpdated`,`$ListingID`,`$Board`,`$Features`,`$ListingContractDate`,`$LocationDescription`,`$OwnershipType`,`$Price`,`$PropertyType`,`$PublicRemarks`,`$TransactionType`,`$WaterFrontType`,`$ZoningDescription`)";
 // valid query for insertion
