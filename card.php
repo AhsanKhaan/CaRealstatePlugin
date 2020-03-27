@@ -95,12 +95,17 @@ function prepareAPI($query,$count,$Limit){
 
     if($temp2==NULL){
           //  print_r($Photo_txt);
-            //     //$arr=stripslashes($row['Photo']);
-            //     print_r("if->".$temp2);
+             //print_r($row['Photo']);
+             $arr=explode('"PhotoURL":',$row['Photo']);
+             $arr_url=explode(',"LargePhotoURL":',$arr[1]);
+             print_r($arr_url);
+            
+            
+             //     print_r("if->".$temp2);
             //     //print_r(js$arr);
             //     //print_r($row['Photo']);
-//                 exit();
-             }
+         //       exit();
+        }//IF NULL ends
             // if(!property_exists($temp2,'PropertyPhoto')){
             //     print_r("asdf");
             //     //var_dump($temp2);
