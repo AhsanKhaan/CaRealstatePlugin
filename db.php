@@ -449,22 +449,65 @@ function Insert_to_database($data){
      /////////////////////////////////////////////////////////////////////////////
      ///////////////////Data INSERTION fOR CARD /////////////////////////////////
      ///////////////////////////////////////////////////////////////////////////
-     
+     //$ID_card;//get this at the time of card
+     //Card:agent office location
+     $Listing_Office_card;
+     $temp=json_decode($AgentDetails,true);
+           //var_dump($temp);
+           if(is_array($temp)){
+               if(array_key_exists(0,$temp)){
+                  $Listing_Office_card=$temp[0]['Office']['Name'];
+               }else{
+                  $Listing_Office_card=$temp['Office']['Name'];
+               }
+               
+           } else{
+               $Listing_Office_card=$temp['Office']['Name'];
+           }
+      //Card:Building Size Interior     
+     $Building_size_card;
+     $temp_Building=json_decode($Building,true);
+     // if($temp==null){
+     //     print_r($row['ID']);
+     //     print_r($row['Building']);
+         
+     //     exit();
+     // }
+     if(array_key_exists('SizeInterior',$temp_Building)){
+            // $Building_size=json_decode($row['Building']);
+             $Building_size_card=$temp_Building['SizeInterior'];
+             
+         }else{
+             $Building_size_card="";
+         }
+     $Building_bed_card;
+     $Building_bath_card;
+     $Address_card;
+     $City_card;
+     $Province_card;
+     $Photo_card;
+     $Price_card;
+     $TransactionType_card;
 
         
         //--AnalyticsClicks,  
       //   $sql_insert="INSERT INTO `{$wpdb->base_prefix}properties`(ID,LastUpdated,ListingID,Board,Features,ListingContractDate,LocationDescription,OwnershipType,Price,PropertyType,PublicRemarks,TransactionType,WaterFrontType,ZoningDescription)        
       //           VALUES(`$ID`,`$LastUpdated`,`$ListingID`,`$Board`,`$Features`,`$ListingContractDate`,`$LocationDescription`,`$OwnershipType`,`$Price`,`$PropertyType`,`$PublicRemarks`,`$TransactionType`,`$WaterFrontType`,`$ZoningDescription`)";
-                $sql_insert="INSERT INTO wp_properties_2(LastUpdated,ListingID,AgentDetails,Board,Business,Building,Land,Address,AmmenitiesNearBy,AlternateURL,EquipmentType,Features,ListingContractDate,LocationDescription,OwnershipType,ParkingSpaces,ParkingSpaceTotal,Photo,Price,PropertyType,PublicRemarks,RentalEquipmentType,Structure,TransactionType,UtilitiesAvailable,WaterFrontType,ZoningDescription,ViewType,MoreInformationLink)
-                VALUES('$LastUpdated','$ListingID','$AgentDetails','$Board','$Business','$Building','$Land','$Address','$AmmenitiesNearBy','$AlternateURL','$EquipmentType','$Features','$ListingContractDate','$LocationDescription','$OwnershipType','$ParkingSpaces','$ParkingSpaceTotal','$Photo','$Price','$PropertyType','$PublicRemarks','$RentalEquipmentType','$Structure','$TransactionType','$UtilitiesAvailable','$WaterFrontType','$ZoningDescription','$ViewType','$MoreInformationLink')";
-                //VALUES('$ID','$LastUpdated','$ListingID','$AgentDetails','$Board','$Business','$Building','$Land','$Address','$AmmenitiesNearBy','$AlternateURL','$EquipmentType','$Features','$ListingContractDate','$LocationDescription','$OwnershipType','$ParkingSpaces','$ParkingSpaceTotal','$Photo','$Price','$PropertyType','$PublicRemarks','$RentalEquipmentType','$Structure','$TransactionType','$UtilitiesAvailable','$WaterFrontType','$ZoningDescription','$ViewType','$AnalyticsClicks','$MoreInformationLink')";
+// valid query for insertion
+      //                $sql_insert="INSERT INTO wp_properties_2(LastUpdated,ListingID,AgentDetails,Board,Business,Building,Land,Address,AmmenitiesNearBy,AlternateURL,EquipmentType,Features,ListingContractDate,LocationDescription,OwnershipType,ParkingSpaces,ParkingSpaceTotal,Photo,Price,PropertyType,PublicRemarks,RentalEquipmentType,Structure,TransactionType,UtilitiesAvailable,WaterFrontType,ZoningDescription,ViewType,MoreInformationLink)
+ //               VALUES('$LastUpdated','$ListingID','$AgentDetails','$Board','$Business','$Building','$Land','$Address','$AmmenitiesNearBy','$AlternateURL','$EquipmentType','$Features','$ListingContractDate','$LocationDescription','$OwnershipType','$ParkingSpaces','$ParkingSpaceTotal','$Photo','$Price','$PropertyType','$PublicRemarks','$RentalEquipmentType','$Structure','$TransactionType','$UtilitiesAvailable','$WaterFrontType','$ZoningDescription','$ViewType','$MoreInformationLink')";
+ // Query Ends 
+ 
+
+ 
+ //VALUES('$ID','$LastUpdated','$ListingID','$AgentDetails','$Board','$Business','$Building','$Land','$Address','$AmmenitiesNearBy','$AlternateURL','$EquipmentType','$Features','$ListingContractDate','$LocationDescription','$OwnershipType','$ParkingSpaces','$ParkingSpaceTotal','$Photo','$Price','$PropertyType','$PublicRemarks','$RentalEquipmentType','$Structure','$TransactionType','$UtilitiesAvailable','$WaterFrontType','$ZoningDescription','$ViewType','$AnalyticsClicks','$MoreInformationLink')";
                 
          // echo "<pre>";
          // print_r($sql_insert);
          // echo "</pre>";
          //--`$AnalyticsClicks`,
-               
-              dbDelta($sql_insert);
+ //data insertion function              
+ //             dbDelta($sql_insert);
        
 }
 // register_deactivation_hook(__FILE__, 'my_deactivation');
@@ -481,7 +524,27 @@ function Insert_to_database($data){
    
 
 // }
-
+//function response( $ID,$Listing_Office,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType){
+function response( $ID,$Listing_Office,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType){
+   //$response['order_id'] = $order_id;
+   //$response['ID']=$ID;//get card.php at the time of ID
+   $response['Listing Office']=$Listing_Office;
+    $response['Size'] = $Building_size;
+    $response['Bedroom']=$Building_bed;
+    $response['Bathroom']=$Building_bath;
+    
+    $response['Address'] = $Address;
+    $response['City']=$City;
+    $response['Province']=$Province;
+    
+    $response['Photo'] = $Photo;
+    $response['Price'] = $Price;
+   
+   $response['TransactionType'] = $TransactionType;
+   
+   $json_response = json_encode($response,true);
+  return $json_response;
+  }
 function dbDelta($sql_insert){
 
    include 'db_connection.php';
