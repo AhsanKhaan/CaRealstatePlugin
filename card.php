@@ -96,29 +96,32 @@ function prepareAPI($query,$count,$Limit){
     if($temp2==NULL){
           //  print_r($Photo_txt);
              //print_r($row['Photo']);
-             $arr=explode('"PhotoURL":',$row['Photo']);
-             $arr_url=explode(',"LargePhotoURL":',$arr[1]);
-             print_r($arr_url);
+             $split_arr=explode('"PhotoURL":',$row['Photo']);
+             $photo_url_arr=explode(',"LargePhotoURL":',$split_arr[1]);
+             $Photo=substr($photo_url_arr[0],1,-1);
+             //var_dump($Photo);
             
             
              //     print_r("if->".$temp2);
             //     //print_r(js$arr);
             //     //print_r($row['Photo']);
-         //       exit();
-        }//IF NULL ends
-            // if(!property_exists($temp2,'PropertyPhoto')){
-            //     print_r("asdf");
-            //     //var_dump($temp2);
-            //     print_r($row['Photo']);
-            //     print_r("asdf");
-            // }
+         //     exit();
+        }else{
             $temp_Photo=$temp2->PropertyPhoto;//['PropertyPhoto'];//[0]['Thembnail URL'];
+            
             //var_dump($temp_Photo);
             if(is_array($temp_Photo)){
                $Photo=$temp2->PropertyPhoto[0]->PhotoURL;
             }else{
                $Photo=$temp2->PropertyPhoto->PhotoURL;
             }
+        }//IF NULL ends
+            // if(!property_exists($temp2,'PropertyPhoto')){
+            //     print_r("asdf");
+            //     //var_dump($temp2);
+            //     print_r($row['Photo']);
+            //     print_r("asdf");
+            // }            
             
             
         //    if(strpos($row['Building'],'SizeInterior')!==FALSE){
