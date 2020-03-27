@@ -494,9 +494,30 @@ function Insert_to_database($data){
   }else{
       $Building_bath_card="";
   }
+  //Card: 1)For Street Address 
+  //      2)City
+  //      3)Province
+
+
      $Address_card;
      $City_card;
      $Province_card;
+     $temp_add=$row['Address'];
+            
+     if($temp_add==="{}"){
+         $Address="Address Not Available";
+         $City="";
+         $Province="";
+     }else{
+     $temp_add=json_decode($row['Address']);
+     //1)
+     $Address_card=$temp_add->StreetAddress;
+     //2)
+     $City_card=$temp_add->City;//['City'];
+     //3)
+     $Province_card=$temp_add->Province;//['Province'];
+     }
+
      $Photo_card;
      $Price_card;
      $TransactionType_card;
