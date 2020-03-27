@@ -467,7 +467,7 @@ function Insert_to_database($data){
       //Card:Building Size Interior     
      $Building_size_card;
      $temp_Building=json_decode($Building,true);
-     // if($temp==null){
+     // if($temp_Building==null){
      //     print_r($row['ID']);
      //     print_r($row['Building']);
          
@@ -480,8 +480,20 @@ function Insert_to_database($data){
          }else{
              $Building_size_card="";
          }
+      //Card:Building bedrooms   
      $Building_bed_card;
+     if(array_key_exists('BedroomsTotal',$temp_Building)){
+      $Building_bed_card=$temp_Building['BedroomsTotal'];
+  }else{
+      $Building_bed_card="";
+  }
+   //Card: Building bathroom 
      $Building_bath_card;
+     if(array_key_exists('BathroomTotal',$temp_Building)){
+      $Building_bath_card=$temp_Building['BathroomTotal'];
+  }else{
+      $Building_bath_card="";
+  }
      $Address_card;
      $City_card;
      $Province_card;
