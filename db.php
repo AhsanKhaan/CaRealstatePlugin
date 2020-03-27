@@ -518,11 +518,12 @@ function Insert_to_database($data){
      $Province_card=$temp_add->Province;//['Province'];
      }
 
-     $Photo_card;
-     $Price_card;
-     $TransactionType_card;
-
-        
+     //Card:Price
+     $Price_card=$Price;
+     //Card:Transaction Type
+     $TransactionType_card=$TransactionType;
+     //Card:Photo
+     $Photo_card;   
         //--AnalyticsClicks,  
       //   $sql_insert="INSERT INTO `{$wpdb->base_prefix}properties`(ID,LastUpdated,ListingID,Board,Features,ListingContractDate,LocationDescription,OwnershipType,Price,PropertyType,PublicRemarks,TransactionType,WaterFrontType,ZoningDescription)        
       //           VALUES(`$ID`,`$LastUpdated`,`$ListingID`,`$Board`,`$Features`,`$ListingContractDate`,`$LocationDescription`,`$OwnershipType`,`$Price`,`$PropertyType`,`$PublicRemarks`,`$TransactionType`,`$WaterFrontType`,`$ZoningDescription`)";
