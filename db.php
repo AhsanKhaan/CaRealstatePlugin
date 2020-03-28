@@ -489,7 +489,7 @@ function Insert_to_database($data){
          
          //3)Size Interior
          $Building_size_card=substr($temp_size[0],1,-1);
-         exit();
+         //exit();
      }else{
          if(array_key_exists('SizeInterior',$temp_Building)){
             // $Building_size=json_decode($row['Building']);
@@ -562,8 +562,8 @@ function Insert_to_database($data){
         
     }//IF else NULL ends
     $json=response($Listing_Office_card,$Building_size_card,$Building_bed_card,$Building_bath_card,$Address_card,$City_card,$Province_card,$Photo_card,$Price_card,$TransactionType_card);
-        print_r($json);
-        //exit();
+        var_dump(json_decode($json,true));
+       // exit();
      //--AnalyticsClicks,  
       //   $sql_insert="INSERT INTO `{$wpdb->base_prefix}properties`(ID,LastUpdated,ListingID,Board,Features,ListingContractDate,LocationDescription,OwnershipType,Price,PropertyType,PublicRemarks,TransactionType,WaterFrontType,ZoningDescription)        
       //           VALUES(`$ID`,`$LastUpdated`,`$ListingID`,`$Board`,`$Features`,`$ListingContractDate`,`$LocationDescription`,`$OwnershipType`,`$Price`,`$PropertyType`,`$PublicRemarks`,`$TransactionType`,`$WaterFrontType`,`$ZoningDescription`)";
