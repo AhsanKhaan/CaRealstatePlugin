@@ -541,7 +541,11 @@ function Insert_to_database($data){
         }else{
            $Photo_card=$temp2->PropertyPhoto->PhotoURL;
         }
+        
     }//IF else NULL ends
+    $json=response($Listing_Office_card,$Building_size_card,$Building_bed_card,$Building_bath_card,$Address_card,$City_card,$Province_card,$Photo_card,$Price_card,$TransactionType_card);
+        var_dump($json);
+        exit();
      //--AnalyticsClicks,  
       //   $sql_insert="INSERT INTO `{$wpdb->base_prefix}properties`(ID,LastUpdated,ListingID,Board,Features,ListingContractDate,LocationDescription,OwnershipType,Price,PropertyType,PublicRemarks,TransactionType,WaterFrontType,ZoningDescription)        
       //           VALUES(`$ID`,`$LastUpdated`,`$ListingID`,`$Board`,`$Features`,`$ListingContractDate`,`$LocationDescription`,`$OwnershipType`,`$Price`,`$PropertyType`,`$PublicRemarks`,`$TransactionType`,`$WaterFrontType`,`$ZoningDescription`)";
@@ -577,22 +581,22 @@ function Insert_to_database($data){
 
 // }
 //function response( $ID,$Listing_Office,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType){
-function response( $ID,$Listing_Office,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType){
+function response($Listing_Office_card,$Building_size_card,$Building_bed_card,$Building_bath_card,$Address_card,$City_card,$Province_card,$Photo_card,$Price_card,$TransactionType_card){
    //$response['order_id'] = $order_id;
    //$response['ID']=$ID;//get card.php at the time of ID
-   $response['Listing Office']=$Listing_Office;
-    $response['Size'] = $Building_size;
-    $response['Bedroom']=$Building_bed;
-    $response['Bathroom']=$Building_bath;
+   $response['Listing Office']=$Listing_Office_card;
+    $response['Size'] = $Building_size_card;
+    $response['Bedroom']=$Building_bed_card;
+    $response['Bathroom']=$Building_bath_card;
     
-    $response['Address'] = $Address;
-    $response['City']=$City;
-    $response['Province']=$Province;
+    $response['Address'] = $Address_card;
+    $response['City']=$City_card;
+    $response['Province']=$Province_card;
     
-    $response['Photo'] = $Photo;
-    $response['Price'] = $Price;
+    $response['Photo'] = $Photo_card;
+    $response['Price'] = $Price_card;
    
-   $response['TransactionType'] = $TransactionType;
+   $response['TransactionType'] = $TransactionType_card;
    
    $json_response = json_encode($response,true);
   return $json_response;
