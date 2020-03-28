@@ -502,14 +502,14 @@ function Insert_to_database($data){
      $Address_card;
      $City_card;
      $Province_card;
-     $temp_add=$data['Address'];
+     $temp_add=$Address;
             
      if($temp_add==="{}"){
-         $Address="Address Not Available";
-         $City="";
-         $Province="";
+         $Address_card="Address Not Available";
+         $City_card="";
+         $Province_card="";
      }else{
-     $temp_add=json_decode($data['Address']);
+     $temp_add=json_decode($Address);
      //1)
      $Address_card=$temp_add->StreetAddress;
      //2)
@@ -524,10 +524,10 @@ function Insert_to_database($data){
      $TransactionType_card=$TransactionType;
      //Card:Photo
      $Photo_card;   
-     $temp2=json_decode($data['Photo']);
+     $temp2=json_decode($Photo);
      if($temp2==NULL){
       
-         $split_arr=explode('"PhotoURL":',$data['Photo']);
+         $split_arr=explode('"PhotoURL":',$Photo);
          $photo_url_arr=explode(',"LargePhotoURL":',$split_arr[1]);
          $Photo_card=substr($photo_url_arr[0],1,-1);
       
