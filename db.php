@@ -159,15 +159,15 @@ if(empty($totalAvailable) || $totalAvailable == 0)
          //echo "<br>";
          //print_r($results["properties"]);
          //print_r($results["Properties"]);
-         //$index=0;
+         $index=0;
          //print_r($results["Properties"]);
          if(is_array($results["Properties"])){
             foreach($results["Properties"] as $listing)
             {	//print_r($listing);
-               // if($index==20){
-               //    return;
-               // }
-               // $index++;     
+               if($index==20){
+                  return;
+               }
+               $index++;     
                Insert_to_database($listing);            
             }
          }else{
@@ -466,34 +466,52 @@ function Insert_to_database($data){
            }
       //Card:Building Size Interior     
      $Building_size_card;
-     $temp_Building=json_decode($Building,true);
-     // if($temp_Building==null){
-     //     print_r($row['ID']);
-     //     print_r($row['Building']);
-         
-     //     exit();
-     // }
-     if(array_key_exists('SizeInterior',$temp_Building)){
-            // $Building_size=json_decode($row['Building']);
-             $Building_size_card=$temp_Building['SizeInterior'];
-             
-         }else{
-             $Building_size_card="";
-         }
-      //Card:Building bedrooms   
      $Building_bed_card;
-     if(array_key_exists('BedroomsTotal',$temp_Building)){
-      $Building_bed_card=$temp_Building['BedroomsTotal'];
-  }else{
-      $Building_bed_card="";
-  }
-   //Card: Building bathroom 
      $Building_bath_card;
-     if(array_key_exists('BathroomTotal',$temp_Building)){
-      $Building_bath_card=$temp_Building['BathroomTotal'];
-  }else{
-      $Building_bath_card="";
-  }
+     $temp_Building=json_decode($Building,true);
+     if($temp_Building==null){
+        // print_r($data['ID']);
+         print_r($Building);
+         $temp_arr=explode(',"Rooms":',$Building);
+         //for bedroom ,bath room ,
+         $valid_json_str=$temp_arr[0]."}";
+         //echo '<pre>';
+         $valid_json=json_decode($valid_json_str,true);
+
+         //echo '</pre>';
+         //for bedroom and bath room 
+         //1)For Bath room
+         $Building_bath_card=$valid_json['BathroomTotal'];
+         //2)For Bed room
+         $Building_bed_card=$valid_json['BedroomsTotal'];
+         $temp_size_arr=explode('"SizeInterior":',$Building);
+         $temp_size=explode(",",$temp_size_arr[1]);
+         
+         //3)Size Interior
+         $Building_size_card=substr($temp_size[0],1,-1);
+         exit();
+     }else{
+         if(array_key_exists('SizeInterior',$temp_Building)){
+            // $Building_size=json_decode($row['Building']);
+            $Building_size_card=$temp_Building['SizeInterior'];
+            
+         }else{
+            $Building_size_card="";
+         }
+         //Card:Building bedrooms   
+      if(array_key_exists('BedroomsTotal',$temp_Building)){
+         $Building_bed_card=$temp_Building['BedroomsTotal'];
+      }else{
+         $Building_bed_card="";
+      }
+      //Card: Building bathroom 
+      if(array_key_exists('BathroomTotal',$temp_Building)){
+         $Building_bath_card=$temp_Building['BathroomTotal'];
+      }else{
+         $Building_bath_card="";
+      }
+     }
+
   //Card: 1)For Street Address 
   //      2)City
   //      3)Province
@@ -544,8 +562,8 @@ function Insert_to_database($data){
         
     }//IF else NULL ends
     $json=response($Listing_Office_card,$Building_size_card,$Building_bed_card,$Building_bath_card,$Address_card,$City_card,$Province_card,$Photo_card,$Price_card,$TransactionType_card);
-        var_dump($json);
-        exit();
+        print_r($json);
+        //exit();
      //--AnalyticsClicks,  
       //   $sql_insert="INSERT INTO `{$wpdb->base_prefix}properties`(ID,LastUpdated,ListingID,Board,Features,ListingContractDate,LocationDescription,OwnershipType,Price,PropertyType,PublicRemarks,TransactionType,WaterFrontType,ZoningDescription)        
       //           VALUES(`$ID`,`$LastUpdated`,`$ListingID`,`$Board`,`$Features`,`$ListingContractDate`,`$LocationDescription`,`$OwnershipType`,`$Price`,`$PropertyType`,`$PublicRemarks`,`$TransactionType`,`$WaterFrontType`,`$ZoningDescription`)";
