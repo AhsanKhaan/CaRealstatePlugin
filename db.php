@@ -164,7 +164,7 @@ if(empty($totalAvailable) || $totalAvailable == 0)
          if(is_array($results["Properties"])){
             foreach($results["Properties"] as $listing)
             {	//print_r($listing);
-               if($index==20){
+               if($index==200){
                   return;
                }
                $index++;     
@@ -471,7 +471,7 @@ function Insert_to_database($data){
      $temp_Building=json_decode($Building,true);
      if($temp_Building==null){
         // print_r($data['ID']);
-         print_r($Building);
+         //print_r($Building);
          $temp_arr=explode(',"Rooms":',$Building);
          //for bedroom ,bath room ,
          $valid_json_str=$temp_arr[0]."}";
@@ -485,10 +485,16 @@ function Insert_to_database($data){
          //2)For Bed room
          $Building_bed_card=$valid_json['BedroomsTotal'];
          $temp_size_arr=explode('"SizeInterior":',$Building);
+         if(array_key_exists(1,$temp_size_arr)){
          $temp_size=explode(",",$temp_size_arr[1]);
-         
          //3)Size Interior
          $Building_size_card=substr($temp_size[0],1,-1);
+         }else{
+            //3)Size Interior
+            $Building_size_card="";
+         }
+        
+         
          //exit();
      }else{
          if(array_key_exists('SizeInterior',$temp_Building)){
@@ -527,13 +533,27 @@ function Insert_to_database($data){
          $City_card="";
          $Province_card="";
      }else{
-     $temp_add=json_decode($Address);
-     //1)
-     $Address_card=$temp_add->StreetAddress;
-     //2)
-     $City_card=$temp_add->City;//['City'];
-     //3)
-     $Province_card=$temp_add->Province;//['Province'];
+     $temp_add=json_decode(stripslashes($Address));
+      if($temp_add==NULL){
+         //if any exception occurs then display
+         echo "<pre>";
+         print_r($Address);
+         echo "</pre>";
+         var_dump($temp_add);
+         exit();
+         }else{
+         //1)
+         $Address_card=$temp_add->StreetAddress;
+         //2)
+         $City_card=$temp_add->City;//['City'];
+         //3)
+         $Province_card=$temp_add->Province;//['Province'];
+         //   var_dump($Address_card);
+         //   var_dump($City_card);
+         //   var_dump($Province_card);
+         //   exit();
+         }
+
      }
 
      //Card:Price
@@ -562,8 +582,10 @@ function Insert_to_database($data){
         
     }//IF else NULL ends
     $json=response($Listing_Office_card,$Building_size_card,$Building_bed_card,$Building_bath_card,$Address_card,$City_card,$Province_card,$Photo_card,$Price_card,$TransactionType_card);
-        var_dump(json_decode($json,true));
-       // exit();
+      echo "<pre>"; 
+      print_r(json_decode($json,true));
+      echo "</pre>";
+      // exit();
      //--AnalyticsClicks,  
       //   $sql_insert="INSERT INTO `{$wpdb->base_prefix}properties`(ID,LastUpdated,ListingID,Board,Features,ListingContractDate,LocationDescription,OwnershipType,Price,PropertyType,PublicRemarks,TransactionType,WaterFrontType,ZoningDescription)        
       //           VALUES(`$ID`,`$LastUpdated`,`$ListingID`,`$Board`,`$Features`,`$ListingContractDate`,`$LocationDescription`,`$OwnershipType`,`$Price`,`$PropertyType`,`$PublicRemarks`,`$TransactionType`,`$WaterFrontType`,`$ZoningDescription`)";
