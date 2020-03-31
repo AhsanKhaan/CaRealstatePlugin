@@ -72,6 +72,7 @@ function my_activation() {
         ZoningDescription varchar(20),
         ViewType varchar(10),
         MoreInformationLink varchar(200),
+        Card  varchar(1000),
         PRIMARY KEY(ID)
          ) $charset_collate;";
 

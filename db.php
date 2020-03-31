@@ -164,7 +164,7 @@ if(empty($totalAvailable) || $totalAvailable == 0)
          if(is_array($results["Properties"])){
             foreach($results["Properties"] as $listing)
             {	//print_r($listing);
-               if($index==200){
+               if($index==1000){
                   return;
                }
                $index++;     
@@ -575,7 +575,9 @@ function Insert_to_database($data){
         if(!array_key_exists('Photo',$data)){
             $path=getcwd();
             chdir('Assets');
+            
             $path=getcwd().'/default.jpg';
+            chmod($path,0755);
             $Photo_card=$path;
             //echo "<pre>";
             //print_r($data['ListingID']);
@@ -606,8 +608,8 @@ function Insert_to_database($data){
       //   $sql_insert="INSERT INTO `{$wpdb->base_prefix}properties`(ID,LastUpdated,ListingID,Board,Features,ListingContractDate,LocationDescription,OwnershipType,Price,PropertyType,PublicRemarks,TransactionType,WaterFrontType,ZoningDescription)        
       //           VALUES(`$ID`,`$LastUpdated`,`$ListingID`,`$Board`,`$Features`,`$ListingContractDate`,`$LocationDescription`,`$OwnershipType`,`$Price`,`$PropertyType`,`$PublicRemarks`,`$TransactionType`,`$WaterFrontType`,`$ZoningDescription`)";
 // valid query for insertion
-      //                $sql_insert="INSERT INTO wp_properties_2(LastUpdated,ListingID,AgentDetails,Board,Business,Building,Land,Address,AmmenitiesNearBy,AlternateURL,EquipmentType,Features,ListingContractDate,LocationDescription,OwnershipType,ParkingSpaces,ParkingSpaceTotal,Photo,Price,PropertyType,PublicRemarks,RentalEquipmentType,Structure,TransactionType,UtilitiesAvailable,WaterFrontType,ZoningDescription,ViewType,MoreInformationLink)
- //               VALUES('$LastUpdated','$ListingID','$AgentDetails','$Board','$Business','$Building','$Land','$Address','$AmmenitiesNearBy','$AlternateURL','$EquipmentType','$Features','$ListingContractDate','$LocationDescription','$OwnershipType','$ParkingSpaces','$ParkingSpaceTotal','$Photo','$Price','$PropertyType','$PublicRemarks','$RentalEquipmentType','$Structure','$TransactionType','$UtilitiesAvailable','$WaterFrontType','$ZoningDescription','$ViewType','$MoreInformationLink')";
+             $sql_insert="INSERT INTO wp_properties_2(LastUpdated,ListingID,AgentDetails,Board,Business,Building,Land,Address,AmmenitiesNearBy,AlternateURL,EquipmentType,Features,ListingContractDate,LocationDescription,OwnershipType,ParkingSpaces,ParkingSpaceTotal,Photo,Price,PropertyType,PublicRemarks,RentalEquipmentType,Structure,TransactionType,UtilitiesAvailable,WaterFrontType,ZoningDescription,ViewType,MoreInformationLink,Card)
+             VALUES('$LastUpdated','$ListingID','$AgentDetails','$Board','$Business','$Building','$Land','$Address','$AmmenitiesNearBy','$AlternateURL','$EquipmentType','$Features','$ListingContractDate','$LocationDescription','$OwnershipType','$ParkingSpaces','$ParkingSpaceTotal','$Photo','$Price','$PropertyType','$PublicRemarks','$RentalEquipmentType','$Structure','$TransactionType','$UtilitiesAvailable','$WaterFrontType','$ZoningDescription','$ViewType','$MoreInformationLink','$json')";
  // Query Ends 
  
 
@@ -619,7 +621,7 @@ function Insert_to_database($data){
          // echo "</pre>";
          //--`$AnalyticsClicks`,
  //data insertion function              
- //             dbDelta($sql_insert);
+              dbDelta($sql_insert);
        
 }
 // register_deactivation_hook(__FILE__, 'my_deactivation');
