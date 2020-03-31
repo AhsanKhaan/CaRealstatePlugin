@@ -571,6 +571,20 @@ function Insert_to_database($data){
       
      //     exit();
     }else{
+
+        if(!array_key_exists('Photo',$data)){
+
+         $Photo_card="Image Not Available";
+         echo "<pre>";
+         //print_r($data['ListingID']);
+         print_r($Photo_card);
+         var_dump($temp2);
+         var_dump($Photo);
+         echo "</pre>";
+         exit();
+         }else{
+
+         }
         $temp_Photo=$temp2->PropertyPhoto;//['PropertyPhoto'];//[0]['Thembnail URL'];
         
         //var_dump($temp_Photo);
@@ -582,9 +596,9 @@ function Insert_to_database($data){
         
     }//IF else NULL ends
     $json=response($Listing_Office_card,$Building_size_card,$Building_bed_card,$Building_bath_card,$Address_card,$City_card,$Province_card,$Photo_card,$Price_card,$TransactionType_card);
-      echo "<pre>"; 
-      print_r(json_decode($json,true));
-      echo "</pre>";
+     // echo "<pre>"; 
+     // print_r(json_decode($json,true));
+     // echo "</pre>";
       // exit();
      //--AnalyticsClicks,  
       //   $sql_insert="INSERT INTO `{$wpdb->base_prefix}properties`(ID,LastUpdated,ListingID,Board,Features,ListingContractDate,LocationDescription,OwnershipType,Price,PropertyType,PublicRemarks,TransactionType,WaterFrontType,ZoningDescription)        
