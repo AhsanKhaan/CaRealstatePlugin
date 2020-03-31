@@ -45,16 +45,18 @@ function prepareAPI($query,$count,$Limit){
          // $response.=$index.":";
             $index++;
             $ID=$row['ID'];
-            $AgentDetails;
-            $Building_size;
-            $Building_bed;
-            $Building_bath;
-            $Address;
-            $City;
-            $Province;
-            $Photo;
-            $Price;
-            $TransactionType;
+            //conversion to array
+            $json=json_decode($row['Card'],true);
+            $AgentDetails=$json['Listing Office'];
+            $Building_size=$json['Size'];
+            $Building_bed=$json['Bedroom'];
+            $Building_bath=$json['Bathroom'];
+            $Address=$json['Address'];
+            $City=$json['City'];
+            $Province=$json['Province'];
+            $Photo=$json['Photo'];
+            $Price=$json['Price'];
+            $TransactionType=$json['TransactionType'];
             
                 
         
