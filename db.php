@@ -533,25 +533,34 @@ function Insert_to_database($data){
          $City_card="";
          $Province_card="";
      }else{
-     $temp_add=json_decode(stripslashes($Address));
+     $temp_add=json_decode($Address);
       if($temp_add==NULL){
-         //if any exception occurs then display
-         echo "<pre>";
-         print_r($Address);
-         echo "</pre>";
-         var_dump($temp_add);
-         exit();
+            //if any exception occurs then display
+            $temp_add=json_decode(stripslashes($Address));
+            //1)
+            $Address_card=$temp_add->StreetAddress;
+            //2)
+            $City_card=$temp_add->City;//['City'];
+            //3)
+            $Province_card=$temp_add->Province;
+            // echo "<pre>";
+            // print_r($Address_card);
+            // print_r($City_card);
+            // print_r($Province_card);
+            // echo "</pre>";
+            // var_dump($temp_add);
+            // exit();
          }else{
-         //1)
-         $Address_card=$temp_add->StreetAddress;
-         //2)
-         $City_card=$temp_add->City;//['City'];
-         //3)
-         $Province_card=$temp_add->Province;//['Province'];
-         //   var_dump($Address_card);
-         //   var_dump($City_card);
-         //   var_dump($Province_card);
-         //   exit();
+            //1)
+            $Address_card=$temp_add->StreetAddress;
+            //2)
+            $City_card=$temp_add->City;//['City'];
+            //3)
+            $Province_card=$temp_add->Province;//['Province'];
+            //   var_dump($Address_card);
+            //   var_dump($City_card);
+            //   var_dump($Province_card);
+            //   exit();
          }
 
      }
