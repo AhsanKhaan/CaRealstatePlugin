@@ -665,7 +665,7 @@ function response($Listing_Office_card,$Building_size_card,$Building_bed_card,$B
    
    $response['TransactionType'] = $TransactionType_card;
    
-   $json_response = json_encode($response,true);
+   $json_response = str_replace("'","\'",json_encode($response,true));
   return $json_response;
   }
 function dbDelta($sql_insert){
@@ -681,6 +681,8 @@ function dbDelta($sql_insert){
      
    } else {
        echo "Error: " ."<pre>". $sql_insert . "</pre>" . $conn->error;
+       exit();
+       
    }
    $conn -> close();
    
