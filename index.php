@@ -105,18 +105,18 @@ function displayListing(){
 ////////////////////////////////////////////////
 ///// Register all style sheets and scripts ///
 ///////////////////////////////////////////////
-add_filter( 'style_loader_src',  'sdt_remove_ver_css_js', 9999, 2 );
-add_filter( 'script_loader_src', 'sdt_remove_ver_css_js', 9999, 2 );
+// add_filter( 'style_loader_src',  'sdt_remove_ver_css_js', 9999, 2 );
+// add_filter( 'script_loader_src', 'sdt_remove_ver_css_js', 9999, 2 );
 
-function sdt_remove_ver_css_js( $src, $handle ) 
-{
-    $handles_with_version = [ 'style' ]; // <-- Adjust to your needs!
+// function sdt_remove_ver_css_js( $src, $handle ) 
+// {
+//     $handles_with_version = [ 'style' ]; // <-- Adjust to your needs!
 
-    if ( strpos( $src, 'ver=' ) && ! in_array( $handle, $handles_with_version, true ) )
-        $src = remove_query_arg( 'ver', $src );
+//     if ( strpos( $src, 'ver=' ) && ! in_array( $handle, $handles_with_version, true ) )
+//         $src = remove_query_arg( 'ver', $src );
 
-    return $src;
-}
+//     return $src;
+// }
 //error_log(sdt_remove_ver_css_js(plugin_dir_url( __FILE__ ) .'css/bootstrap.min.css','bootstrap.min.css'));
 /*For Stylesheets*/
 wp_enqueue_style( 'bootstrap.min.css', plugin_dir_url( __FILE__ ) .'css/bootstrap.min.css');
@@ -137,7 +137,7 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
 
 /*   For showing listings all data at front end */
 
-echo '<div class="container">
+return '<div class="container">
         <div class="row">
           <div class="col col-lg-auto">
             <div class="container">   
