@@ -125,8 +125,11 @@ h1{
   max-width: 100rem!important;
   /* margin-left: 0px!important; */
 }
-
-/* common */
+/*property search button */ 
+.btn-search{
+  padding:2px 30px;
+}
+/* ribbon */
 .ribbon {
   width: 150px;
   height: 150px;

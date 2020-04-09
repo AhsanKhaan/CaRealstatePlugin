@@ -174,7 +174,9 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
 //         </div>
 //       </div>';
       
-      return '
+      return '<div class="cont">
+      <div class="row">
+      <div class="col-lg-9">
       <div class="row">
       <div class="col-lg-4 ">
       <!-- Card -->
@@ -273,7 +275,16 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
       <!-- Card -->
         </div>
       </div>
-      ';
+      </div><!--ends  col-lg-9-->
+      <div col-lg-3>
+        <div class="card">
+          <div class="card-header">Property Search </div>
+          <div class="card-body">Card Body</div>
+          <div class="card-footer"><button class="btn-search">Search</button></div>
+        </div>
+      </div>
+      </div><!--ends row-->
+      </div>';
       
 }
 //////////////////////////////////////////////////////////////
