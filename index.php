@@ -175,75 +175,14 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
 //       </div>';
       
       return '
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-                  
-          <!-- Card -->
-          
-      <div class="card booking-card">
-      
-        <!-- Card image -->
-        <div class="view overlay">
-            
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/8-col/img (5).jpg" alt="Card image cap">
-          <a href="#!">
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-      
-        <!-- Card content -->
-        <div class="card-body">
-      
-          <!-- Title -->
-          <h4 class="card-title font-weight-bold"><a>Price</a></h4>
-      
-          <p class="mb-2">City, Province</p>
-          
-          <hr class="my-4">
-          <p class="lead"><small>Tonights availability</small></p>
-              
-        </div>
-      
-      </div>
+      <div class="row">
+      <div class="col-lg-4 ">
       <!-- Card -->
-      </div>
-      <div class="col-lg-4">
-      <!-- Card -->
-    <div class="card booking-card">
-    
-      <!-- Card image -->
-      <div class="view overlay">
-        <div class="ribbon ribbon-top-left"><span>ribbon</span></div>
-        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/8-col/img (5).jpg" alt="Card image cap">
-        <a href="#!">
-          <div class="mask rgba-white-slight"></div>
-        </a>
-      </div>
-    
-      <!-- Card content -->
-      <div class="card-body">
-    
-        <!-- Title -->
-        <h4 class="card-title font-weight-bold"><a>Price</a></h4>
-    
-        <p class="mb-2">City, Province</p>
-        
-        <hr class="my-4">
-        <p class="lead"><small>Tonights availability</small></p>
-            
-      </div>
-    
-    </div>
-    <!-- Card -->
-    </div>
-    <div class="col-lg-4">
-    <!-- Card -->
   <div class="card booking-card">
   
     <!-- Card image -->
     <div class="view overlay">
-      <div class="ribbon ribbon-top-left"><span>ribbon</span></div>
+  
       <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/8-col/img (5).jpg" alt="Card image cap">
       <a href="#!">
         <div class="mask rgba-white-slight"></div>
@@ -252,23 +191,90 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
   
     <!-- Card content -->
     <div class="card-body">
-  
+  <div class="ribbon ribbon-top-left"><span>For Lease</span></div>
       <!-- Title -->
-      <h4 class="card-title font-weight-bold"><a>Price</a></h4>
-  
-      <p class="mb-2">City, Province</p>
-      
+      <h2 class="card-title font-weight-bold"><a>Price</a></h2>
+      <!-- Data -->
+      <p class="mb-2">Country,Province</p>
+      <!-- Text -->
+      <p class="card-text">Country</p>
       <hr class="my-4">
-      <p class="lead"><small>Tonights availability</small></p>
-          
+      <p class="lead"><strong>Office Location</strong></p>
+      <!-- Button -->
+      
+  
     </div>
   
   </div>
   <!-- Card -->
-  </div>
+    </div>
+    <div class="col-lg-4 ">
+          <!-- Card -->
+      <div class="card booking-card">
+      
+        <!-- Card image -->
+        <div class="view overlay">
+      
+          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/8-col/img (5).jpg" alt="Card image cap">
+          <a href="#!">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+      
+        <!-- Card content -->
+        <div class="card-body">
+      <div class="ribbon ribbon-top-left"><span>For Lease</span></div>
+          <!-- Title -->
+          <h2 class="card-title font-weight-bold"><a>Price</a></h2>
+          <!-- Data -->
+          <p class="mb-2">Country,Province</p>
+          <!-- Text -->
+          <p class="card-text">Country</p>
+          <hr class="my-4">
+          <p class="lead"><strong>Office Location</strong></p>
+          <!-- Button -->
+          
       
         </div>
-      </div>';
+      
+      </div>
+      <!-- Card -->
+        </div>
+        <div class="col-lg-4 ">
+          <!-- Card -->
+      <div class="card booking-card">
+      
+        <!-- Card image -->
+        <div class="view overlay">
+      
+          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/8-col/img (5).jpg" alt="Card image cap">
+          <a href="#!">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+      
+        <!-- Card content -->
+        <div class="card-body">
+      <div class="ribbon ribbon-top-left"><span>For Lease</span></div>
+          <!-- Title -->
+          <h2 class="card-title font-weight-bold"><a>Price</a></h2>
+          <!-- Data -->
+          <p class="mb-2">Country,Province</p>
+          <!-- Text -->
+          <p class="card-text">Country</p>
+          <hr class="my-4">
+          <p class="lead"><strong>Office Location</strong></p>
+          <!-- Button -->
+          
+      
+        </div>
+      
+      </div>
+      <!-- Card -->
+        </div>
+      </div>
+      ';
+      
 }
 //////////////////////////////////////////////////////////////
 ///////                                                ///////

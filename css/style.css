@@ -126,18 +126,17 @@ h1{
   /* margin-left: 0px!important; */
 }
 
-/* ribbon coding */
+/* common */
 .ribbon {
   width: 150px;
   height: 150px;
   overflow: hidden;
   position: absolute;
-  z-index:-10;
 }
 .ribbon::before,
 .ribbon::after {
   position: absolute;
-  z-index: -1;
+  z-index: -12;
   content: '';
   display: block;
   border: 5px solid #2980b9;
@@ -179,6 +178,7 @@ h1{
   top: 30px;
   transform: rotate(-45deg);
 }
+
 
 
 /*--------------------------------------------------------------
