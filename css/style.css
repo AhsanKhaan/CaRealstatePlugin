@@ -128,6 +128,7 @@ h1{
 /*property search button */ 
 .btn-search{
   padding:2px 30px;
+  margin-left: 10px;
 }
 /* ribbon */
 .ribbon {
