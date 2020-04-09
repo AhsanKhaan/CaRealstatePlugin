@@ -137,206 +137,138 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
 
 /*   For showing listings all data at front end */
 
-return '<div class="cont container-fluid">
+// return '<div class="cont container-fluid">
+//         <div class="row">
+//           <div class="col col-lg-auto">
+//             <div class="container">   
+//              <div class="wrapper">
+//              <div class="container-pg">
+//                 <div class="row">
+//                   <div class="col-sm-12">
+//                     <ul id="pagination-demo" class="pagination-sm"></ul>
+//                     </div>
+//                   </div>
+//               </div>
+//             </div>
+            
+            
+//             <div class="row" id="card-stack">
+//             </div>  
+//           </div>
+//           <div class="col col-lg-3">
+//             <form class="">
+//             <fieldset>
+//             <legend>Property Search</legend>
+//               <label for="TransactionType"></label>
+//             <select id="TransactionType">
+//             <option value="All">All Transaction Type</option>
+//             <option value="Sale">For Sale</option>
+//             <option value="Lease">For Lease</option>
+//             <option value="Rent">For Rent</option>
+//             <option value="Sale_Rent">For Sale or Rent</option>
+//             </select><br><br>
+//             <input id="search" type="submit" value="Search">
+//             </fieldset>
+//             </form>
+//           </div>
+//         </div>
+//       </div>';
+      
+      return '
+      <div class="container">
         <div class="row">
-          <div class="col col-lg-auto">
-            <div class="container">   
-             <div class="wrapper">
-             <div class="container-pg">
-                <div class="row">
-                  <div class="col-sm-12">
-                    <ul id="pagination-demo" class="pagination-sm"></ul>
-                    </div>
-                  </div>
-              </div>
-            </div>
+          <div class="col-lg-4">
+                  
+          <!-- Card -->
+          
+      <div class="card booking-card">
+      
+        <!-- Card image -->
+        <div class="view overlay">
             
+          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/8-col/img (5).jpg" alt="Card image cap">
+          <a href="#!">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+      
+        <!-- Card content -->
+        <div class="card-body">
+      
+          <!-- Title -->
+          <h4 class="card-title font-weight-bold"><a>Price</a></h4>
+      
+          <p class="mb-2">City, Province</p>
+          
+          <hr class="my-4">
+          <p class="lead"><small>Tonights availability</small></p>
+              
+        </div>
+      
+      </div>
+      <!-- Card -->
+      </div>
+      <div class="col-lg-4">
+      <!-- Card -->
+    <div class="card booking-card">
+    
+      <!-- Card image -->
+      <div class="view overlay">
+        <div class="ribbon ribbon-top-left"><span>ribbon</span></div>
+        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/8-col/img (5).jpg" alt="Card image cap">
+        <a href="#!">
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+    
+      <!-- Card content -->
+      <div class="card-body">
+    
+        <!-- Title -->
+        <h4 class="card-title font-weight-bold"><a>Price</a></h4>
+    
+        <p class="mb-2">City, Province</p>
+        
+        <hr class="my-4">
+        <p class="lead"><small>Tonights availability</small></p>
             
-            <div class="row" id="card-stack">
-            </div>  
-          </div>
-          <div class="col col-lg-3">
-            <form class="">
-            <fieldset>
-            <legend>Property Search</legend>
-              <label for="TransactionType"></label>
-            <select id="TransactionType">
-            <option value="All">All Transaction Type</option>
-            <option value="Sale">For Sale</option>
-            <option value="Lease">For Lease</option>
-            <option value="Rent">For Rent</option>
-            <option value="Sale_Rent">For Sale or Rent</option>
-            </select><br><br>
-            <input id="search" type="submit" value="Search">
-            </fieldset>
-            </form>
-          </div>
+      </div>
+    
+    </div>
+    <!-- Card -->
+    </div>
+    <div class="col-lg-4">
+    <!-- Card -->
+  <div class="card booking-card">
+  
+    <!-- Card image -->
+    <div class="view overlay">
+      <div class="ribbon ribbon-top-left"><span>ribbon</span></div>
+      <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/8-col/img (5).jpg" alt="Card image cap">
+      <a href="#!">
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+  
+    <!-- Card content -->
+    <div class="card-body">
+  
+      <!-- Title -->
+      <h4 class="card-title font-weight-bold"><a>Price</a></h4>
+  
+      <p class="mb-2">City, Province</p>
+      
+      <hr class="my-4">
+      <p class="lead"><small>Tonights availability</small></p>
+          
+    </div>
+  
+  </div>
+  <!-- Card -->
+  </div>
+      
         </div>
       </div>';
-      /*
-      return '<div class="cont container-fluid">
-      <div class="row">
-      <div class="col-lg-4">
-        <!-- Card -->
-    <div class="card booking-card">
-    
-      <!-- Card image -->
-      <div class="view overlay">
-        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/8-col/img (5).jpg" alt="Card image cap">
-        <a href="#!">
-          <div class="mask rgba-white-slight"></div>
-        </a>
-      </div>
-    
-      <!-- Card content -->
-      <div class="card-body">
-    
-        <!-- Title -->
-        <h4 class="card-title font-weight-bold"><a>La Sirena restaurant</a></h4>
-        <!-- Data -->
-        <ul class="list-unstyled list-inline rating mb-0">
-          <li class="list-inline-item mr-0"><i class="fas fa-star amber-text"> </i></li>
-          <li class="list-inline-item mr-0"><i class="fas fa-star amber-text"></i></li>
-          <li class="list-inline-item mr-0"><i class="fas fa-star amber-text"></i></li>
-          <li class="list-inline-item mr-0"><i class="fas fa-star amber-text"></i></li>
-          <li class="list-inline-item"><i class="fas fa-star-half-alt amber-text"></i></li>
-          <li class="list-inline-item"><p class="text-muted">4.5 (413)</p></li>
-        </ul>
-        <p class="mb-2">$ • American, Restaurant</p>
-        <!-- Text -->
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-        <hr class="my-4">
-        <p class="lead"><strong>Tonights availability</strong></p>
-        <ul class="list-unstyled list-inline d-flex justify-content-between mb-0">
-          <li class="list-inline-item mr-0">
-            <div class="chip mr-0">5:30PM</div>
-          </li>
-          <li class="list-inline-item mr-0">
-            <div class="chip deep-purple white-text mr-0">7:30PM</div>
-          </li>
-          <li class="list-inline-item mr-0">
-            <div class="chip mr-0">8:00PM</div>
-          </li>
-          <li class="list-inline-item mr-0">
-            <div class="chip mr-0">9:00PM</div>
-          </li>
-        </ul>
-        <!-- Button -->
-        <a href="#" class="btn btn-flat deep-purple-text p-1 mx-0 mb-0">Button</a>
-    
-      </div>
-    
-    </div>
-    <!-- Card -->
-      </div>
-        <div class="col-lg-4">
-        <!-- Card -->
-    <div class="card booking-card">
-    
-      <!-- Card image -->
-      <div class="view overlay">
-        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/8-col/img (5).jpg" alt="Card image cap">
-        <a href="#!">
-          <div class="mask rgba-white-slight"></div>
-        </a>
-      </div>
-    
-      <!-- Card content -->
-      <div class="card-body">
-    
-        <!-- Title -->
-        <h4 class="card-title font-weight-bold"><a>La Sirena restaurant</a></h4>
-        <!-- Data -->
-        <ul class="list-unstyled list-inline rating mb-0">
-          <li class="list-inline-item mr-0"><i class="fas fa-star amber-text"> </i></li>
-          <li class="list-inline-item mr-0"><i class="fas fa-star amber-text"></i></li>
-          <li class="list-inline-item mr-0"><i class="fas fa-star amber-text"></i></li>
-          <li class="list-inline-item mr-0"><i class="fas fa-star amber-text"></i></li>
-          <li class="list-inline-item"><i class="fas fa-star-half-alt amber-text"></i></li>
-          <li class="list-inline-item"><p class="text-muted">4.5 (413)</p></li>
-        </ul>
-        <p class="mb-2">$ • American, Restaurant</p>
-        <!-- Text -->
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-        <hr class="my-4">
-        <p class="lead"><strong>Tonights availability</strong></p>
-        <ul class="list-unstyled list-inline d-flex justify-content-between mb-0">
-          <li class="list-inline-item mr-0">
-            <div class="chip mr-0">5:30PM</div>
-          </li>
-          <li class="list-inline-item mr-0">
-            <div class="chip deep-purple white-text mr-0">7:30PM</div>
-          </li>
-          <li class="list-inline-item mr-0">
-            <div class="chip mr-0">8:00PM</div>
-          </li>
-          <li class="list-inline-item mr-0">
-            <div class="chip mr-0">9:00PM</div>
-          </li>
-        </ul>
-        <!-- Button -->
-        <a href="#" class="btn btn-flat deep-purple-text p-1 mx-0 mb-0">Button</a>
-    
-      </div>
-    
-    </div>
-    <!-- Card -->
-      </div>
-        <div class="col-lg-4">
-        <!-- Card -->
-    <div class="card booking-card">
-    
-      <!-- Card image -->
-      <div class="view overlay">
-        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/8-col/img (5).jpg" alt="Card image cap">
-        <a href="#!">
-          <div class="mask rgba-white-slight"></div>
-        </a>
-      </div>
-    
-      <!-- Card content -->
-      <div class="card-body">
-    
-        <!-- Title -->
-        <h4 class="card-title font-weight-bold"><a>La Sirena restaurant</a></h4>
-        <!-- Data -->
-        <ul class="list-unstyled list-inline rating mb-0">
-          <li class="list-inline-item mr-0"><i class="fas fa-star amber-text"> </i></li>
-          <li class="list-inline-item mr-0"><i class="fas fa-star amber-text"></i></li>
-          <li class="list-inline-item mr-0"><i class="fas fa-star amber-text"></i></li>
-          <li class="list-inline-item mr-0"><i class="fas fa-star amber-text"></i></li>
-          <li class="list-inline-item"><i class="fas fa-star-half-alt amber-text"></i></li>
-          <li class="list-inline-item"><p class="text-muted">4.5 (413)</p></li>
-        </ul>
-        <p class="mb-2">$ • American, Restaurant</p>
-        <!-- Text -->
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-        <hr class="my-4">
-        <p class="lead"><strong>Tonights availability</strong></p>
-        <ul class="list-unstyled list-inline d-flex justify-content-between mb-0">
-          <li class="list-inline-item mr-0">
-            <div class="chip mr-0">5:30PM</div>
-          </li>
-          <li class="list-inline-item mr-0">
-            <div class="chip deep-purple white-text mr-0">7:30PM</div>
-          </li>
-          <li class="list-inline-item mr-0">
-            <div class="chip mr-0">8:00PM</div>
-          </li>
-          <li class="list-inline-item mr-0">
-            <div class="chip mr-0">9:00PM</div>
-          </li>
-        </ul>
-        <!-- Button -->
-        <a href="#" class="btn btn-flat deep-purple-text p-1 mx-0 mb-0">Button</a>
-    
-      </div>
-    
-    </div>
-    <!-- Card -->
-      </div>
-    </div>
-    </div>';*/
 }
 //////////////////////////////////////////////////////////////
 ///////                                                ///////
