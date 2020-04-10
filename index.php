@@ -276,41 +276,43 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
         </div>
       </div>
       </div><!--ends  col-lg-9-->
-      <div col-lg-3>
-        <div class="card">
-          <div class="card-header">Property Search </div>
-          <div class="card-body">
-            <div class="form-group">
-              <select name="input_property_type" id="input_property_type" class="form-control ">
-                <option value="">All Property Types</option>
-                <option value="Agriculture">Agriculture</option>
-                <option value="Business">Business</option>
-                <option value="Hospitality">Hospitality</option>
-                <option value="Industrial">Industrial</option>
-                <option value="Institutional - Special Purpose">Institutional - Special Purpose</option>
-                <option value="Multi-family">Multi-family</option>
-                <option value="Office">Office</option>
-                <option value="Other">Other</option>
-                <option value="Parking">Parking</option>
-                <option value="Recreational">Recreational</option>
-                <option value="Retail">Retail</option>
-                <option value="Single Family">Single Family</option>
-                <option value="Vacant Land">Vacant Land</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <select name="input_transaction_type" id="input_transaction_type" class="form-control ">
-                <option value="">All Transaction Types</option>
-                <option value="for lease">For Lease</option>
-                <option value="for rent">For Rent</option>
-                <option value="for sale">For Sale</option>
-                <option value="for sale or rent">For Sale Or Rent</option>
-              </select>
+      <form method="get">
+        <div col-lg-3>
+          <div class="card">
+            <div class="card-header">Property Search </div>
+            <div class="card-body">
+              <div class="form-group">
+                <select name="input_property_type" id="input_property_type" class="form-control ">
+                  <option value="">All Property Types</option>
+                  <option value="Agriculture">Agriculture</option>
+                  <option value="Business">Business</option>
+                  <option value="Hospitality">Hospitality</option>
+                  <option value="Industrial">Industrial</option>
+                  <option value="Institutional - Special Purpose">Institutional - Special Purpose</option>
+                  <option value="Multi-family">Multi-family</option>
+                  <option value="Office">Office</option>
+                  <option value="Other">Other</option>
+                  <option value="Parking">Parking</option>
+                  <option value="Recreational">Recreational</option>
+                  <option value="Retail">Retail</option>
+                  <option value="Single Family">Single Family</option>
+                  <option value="Vacant Land">Vacant Land</option>
+                </select>
               </div>
+              <div class="form-group">
+                <select name="input_transaction_type" id="input_transaction_type" class="form-control ">
+                  <option value="">All Transaction Types</option>
+                  <option value="for lease">For Lease</option>
+                  <option value="for rent">For Rent</option>
+                  <option value="for sale">For Sale</option>
+                  <option value="for sale or rent">For Sale Or Rent</option>
+                </select>
+                </div>
+            </div>
+            <div class="card-footer"><button class="btn-search">Search</button></div>
           </div>
-          <div class="card-footer"><button class="btn-search">Search</button></div>
-        </div>
-      </div>
+        </div><!-- ends col-lg 3-->
+      </form>
       </div><!--ends row-->
       </div>';
       
