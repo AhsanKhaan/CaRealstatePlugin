@@ -309,8 +309,33 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
                 </select>
               </div>
               <div class="form-group">
-              
+               <input type="text" id="input_city" name="input_city" value="" class="form-control " placeholder="Enter City">
               </div>
+              <div class="form-group">
+                <select name="input_province" id="input_province" class="form-control ">
+                  <option value="">All Provinces</option>
+                  <option value="Ontario">Ontario</option>
+                </select>
+              </div>
+              <div class="form-group">
+                 <input type="text" id="input_mls" name="input_mls" value="" class="form-control " placeholder="Enter MLS® or RP Number"> 
+              </div>
+              <div class="form-check">
+              <label class="form-check-label" for="input_condominium">
+                <input type="checkbox" class="form-check-input" id="input_condominium" name="Condominium" value="something" >Condominium
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label" for="input_pool">
+                <input type="checkbox" class="form-check-input" id="input_pool" name="Pool" value="something">Pool
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label" for="Open House">
+                <input type="checkbox" class="form-check-input" id="Open House">Open House
+              </label>
+            </div>
+        
             </div><!-- Card Body ends-->
             <div class="card-footer"><button class="btn-search">Search</button></div>
           </div>
