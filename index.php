@@ -307,8 +307,11 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
                   <option value="for sale">For Sale</option>
                   <option value="for sale or rent">For Sale Or Rent</option>
                 </select>
-                </div>
-            </div>
+              </div>
+              <div class="form-group">
+              
+              </div>
+            </div><!-- Card Body ends-->
             <div class="card-footer"><button class="btn-search">Search</button></div>
           </div>
         </div><!-- ends col-lg 3-->
