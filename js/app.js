@@ -1,6 +1,6 @@
 $(document).ready(function(){
   init();
-
+  setUserInterface();
 $("#search").click(function(){
     var item_selected=$('#TransactionType option:selected').text();
     var url="http://localhost:80/wordpress/wp-content/plugins/crea/card.php?Type="+item_selected;
@@ -98,7 +98,9 @@ $("#search").click(function(){
     });
   }//init ends
   
-
+function setUserinterface(){
+  
+}
 
 
 
