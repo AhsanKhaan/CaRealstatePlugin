@@ -122,7 +122,7 @@ h1{
 /*most important styling for listing*/
 .cont{
   
-  max-width: 100rem!important;
+  max-width: 100%!important;
   /* margin-left: 0px!important; */
 }
 /*property search button */ 
