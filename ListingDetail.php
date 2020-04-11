@@ -13,7 +13,7 @@ if (isset($_GET['ID'])&& $_GET['ID']!="" ) {
    // echo "<mark>ID=".$_GET['ID']."</mark><br/>";
 
 
-    $url = "http://localhost:1000/wordpress/wp-content/plugins/crea/listing.php?id=".$_GET['ID'];
+    $url = "http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/listing.php?id=".$_GET['ID'];
 $ch = curl_init();
 curl_setopt($ch,CURLOPT_URL,$url);
 curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
