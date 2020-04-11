@@ -98,7 +98,7 @@ $("#search").click(function(){
     });
   }//init ends
   
-function setUserinterface(){
+function setUserInterface(){
   
 }
 
