@@ -276,8 +276,9 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
         </div>
       </div>
       </div><!--ends  col-lg-9-->
-      <form method="get">
-        <div col-lg-3>
+      
+      <div col-lg-3>
+        <form method="get">
           <div class="card">
             <div class="card-header">Property Search </div>
             <div class="card-body">
@@ -339,8 +340,9 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
             </div><!-- Card Body ends-->
             <div class="card-footer"><button class="btn-search">Search</button></div>
           </div>
-        </div><!-- ends col-lg 3-->
-      </form>
+        </form>
+      </div><!-- ends col-lg 3-->
+      
       </div><!--ends row-->
       </div>';
       
