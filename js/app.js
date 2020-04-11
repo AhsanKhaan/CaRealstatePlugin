@@ -55,7 +55,7 @@ $("#search").click(function(){
   <div class="view overlay">
 
     
-    <a href="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+` target="_blank">
+    <a href="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
       <div class="mask rgba-white-slight"><img class="card-img-top" src="`+data['Photo']+`" alt="Card image cap"></div>
     </a>
   </div>
