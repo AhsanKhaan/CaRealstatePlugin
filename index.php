@@ -275,6 +275,7 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
       <!-- Card -->
         </div>
       </div><!--ends row of cards -->
+      <div>pagination Starts</div>
       </div><!--ends  col-lg-9-->
       
       <div col-lg-3>
