@@ -274,7 +274,7 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
       </div>
       <!-- Card -->
         </div>
-      </div>
+      </div><!--ends row of cards -->
       </div><!--ends  col-lg-9-->
       
       <div col-lg-3>
