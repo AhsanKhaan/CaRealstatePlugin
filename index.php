@@ -183,12 +183,12 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
       </div><!--ends  col-lg-9-->
       
       <div col-lg-3>
-        <form method="get">
+        <form id="property_search" method="get">
           <div class="card">
             <div class="card-header">Property Search </div>
             <div class="card-body">
               <div class="form-group">
-                <select name="input_property_type" id="input_property_type" class="form-control ">
+                <select name="input_property_type" id="PropertyType" class="form-control ">
                   <option value="">All Property Types</option>
                   <option value="Agriculture">Agriculture</option>
                   <option value="Business">Business</option>
@@ -206,7 +206,7 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
                 </select>
               </div>
               <div class="form-group">
-                <select name="input_transaction_type" id="input_transaction_type" class="form-control ">
+                <select name="input_transaction_type" id="TransactionType" class="form-control ">
                   <option value="">All Transaction Types</option>
                   <option value="for lease">For Lease</option>
                   <option value="for rent">For Rent</option>
@@ -215,7 +215,7 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
                 </select>
               </div>
               <div class="form-group">
-               <input type="text" id="input_city" name="input_city" value="" class="form-control " placeholder="Enter City">
+               <input type="text" id="city" name="input_city" value="" class="form-control " placeholder="Enter City">
               </div>
               <div class="form-group">
                 <select name="input_province" id="input_province" class="form-control ">
@@ -228,22 +228,22 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
               </div>
               <div class="form-check">
               <label class="form-check-label" for="input_condominium">
-                <input type="checkbox" class="form-check-input" id="input_condominium" name="Condominium" value="something" >Condominium
+                <input type="checkbox" class="form-check-input" id="input_condominium" name="Condominium" value="Cond" >Condominium
               </label>
             </div>
             <div class="form-check">
               <label class="form-check-label" for="input_pool">
-                <input type="checkbox" class="form-check-input" id="input_pool" name="Pool" value="something">Pool
+                <input type="checkbox" class="form-check-input" id="input_pool" name="Pool" value="pool">Pool
               </label>
             </div>
             <div class="form-check">
               <label class="form-check-label" for="Open House">
-                <input type="checkbox" class="form-check-input" id="Open House">Open House
+                <input type="checkbox" class="form-check-input" id="Open House" name="OpenHouse" value="openhouse">Open House
               </label>
             </div>
         
             </div><!-- Card Body ends-->
-            <div class="card-footer"><button class="btn-search">Search</button></div>
+            <div class="card-footer"><button id="search" class="btn-search">Search</button></div>
           </div>
         </form>
       </div><!-- ends col-lg 3-->
