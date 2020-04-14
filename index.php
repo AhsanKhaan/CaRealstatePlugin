@@ -228,17 +228,17 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
               </div>
               <div class="form-check">
               <label class="form-check-label" for="input_condominium">
-                <input type="checkbox" class="form-check-input" id="input_condominium" name="Condominium" value="Cond" >Condominium
+                <input type="checkbox" class="form-check-input" id="input_condominium" name="input_condominium" value="null_cond" >Condominium
               </label>
             </div>
             <div class="form-check">
               <label class="form-check-label" for="input_pool">
-                <input type="checkbox" class="form-check-input" id="input_pool" name="Pool" value="pool">Pool
+                <input type="checkbox" class="form-check-input" id="input_pool" name="input_pool" value="null_pool">Pool
               </label>
             </div>
             <div class="form-check">
               <label class="form-check-label" for="Open House">
-                <input type="checkbox" class="form-check-input" id="Open House" name="OpenHouse" value="openhouse">Open House
+                <input type="checkbox" class="form-check-input" id="Open House" name="OpenHouse" value="null_open_house">Open House
               </label>
             </div>
         
