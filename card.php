@@ -10,8 +10,26 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
     $query="SELECT ID,Card FROM `wp_properties_2` LIMIT $startwith,$Limit";
     $count="SELECT COUNT(ID) FROM `wp_properties_2`";
  prepareAPI($query,$count,$Limit);
-}else if(isset($_GET['Type'])&& $_GET['Type']!=""){
-    echo json_encode('{"Name":"Hello World"}');
+}else if(isset($_SERVER['QUERY_STRING'])&& $_SERVER['QUERY_STRING']!=""){
+    
+    print_r(parse_str($_SERVER['QUERY_STRING'],$params));
+    //print_r($params);
+    if(array_key_exists("input_transaction_type",$params)){
+        if($params['input_transaction_type']==NULL){
+
+        }else{
+            
+            $query="SELECT ID,Card FROM wp_properties_2 WHERE TransactionType=\'".$params["input_transaction_type"]."\'";
+            $query=stripslashes($query);
+            $count="SELECT COUNT(ID) FROM wp_properties_2 WHERE TransactionType=\'".$params["input_transaction_type"]."\'";
+            $count=stripslashes($count);
+      //      print_r($query);
+            //exit();
+            prepareAPI($query,$count,100);
+        }
+    }
+
+    exit();
     // $query="SELECT ID,Address,Price,Building,AgentDetails,Photo,TransactionType FROM `wp_properties_2` WHERE TransactionType=".$_GET['Type'];
     // $count="SELECT COUNT(ID) FROM `wp_properties_2`WHERE TransactionType=".strtolower($_GET['Type']);
     // prepareAPI($query,$count,9);
@@ -23,13 +41,13 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
 function prepareAPI($query,$count,$Limit){
     include('db_connection.php');
     
-    //print_r("QUERY".$query);
+   // print_r("QUERY".$query);
 	$result = mysqli_query(
 	$conn,
     $query);
     
     $getcount=mysqli_query($conn,$count);
-	//print_r($result);
+	//var_dump($result);
 	if(mysqli_num_rows($result)>0){
         
        // $arr=new Array();

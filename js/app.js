@@ -1,16 +1,23 @@
 $(document).ready(function(){
   init();
   setUserInterface();
-$("#search").click(function(){
+ $("#search").click(function(){
     //var PropertyType_selected=$('#PropertyType option:selected').text()
     //var TransactionType_selected=$('#TransactionType option:selected').text();
     //get all data from for and build query string
     data_collection=$('#property_search').serialize();
     //window.location.href="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/card.php?Type="+item_selected;
-    //var url="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/card.php?Type="+item_selected;
-  $.get(url,function(data,status){
-      showdata(data);
-  });
+    var url="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/card.php?"+data_collection;
+    $.get(url,function(data,status){
+      if(data==null){
+
+      }else{
+        showdata(data);
+      }
+      var d=data;
+      //console.log();
+        
+    });
   });//Search Button Ends click
    
   
