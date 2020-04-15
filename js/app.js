@@ -8,21 +8,18 @@ $(document).ready(function(){
     data_collection=$('#property_search').serialize();
     //window.location.href="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/card.php?Type="+item_selected;
     var url="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/card.php?"+data_collection;
-    $.get(url,function(data,status){
-      if(data==null){
 
-      }else{
-        showdata(data);
-      }
-      var d=data;
-      //console.log();
-        
+     $.get( url, function(data) {
+  //    console.log( "success:"+data );
+      showdata(data);
+//      alert(data);
     });
   });//Search Button Ends click
    
   
 
   function showdata(dataset){
+   // $("#card-stack").empty();
     dataset.property.forEach(data => {
      // alert(data["TotalCount"]);
     //   var html=`
@@ -114,7 +111,7 @@ $(document).ready(function(){
     $("#TotalCount").text(data["TotalCount"]);
 
    //Set Lsiting on UI
-   showdata(data);
+   //showdata(data);
    //showdata(dataset);
    //Use for calculating number of pages on UI
    var Pages=data["TotalCount"];
