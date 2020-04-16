@@ -19,7 +19,7 @@ $(document).ready(function(){
   
 
   function showdata(dataset){
-   // $("#card-stack").empty();
+    $("#card-stack").empty();
     dataset.property.forEach(data => {
      // alert(data["TotalCount"]);
     //   var html=`
