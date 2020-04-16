@@ -65,6 +65,11 @@ function prepareAPI($query,$count,$Limit){
             $ID=$row['ID'];
             //conversion to array
             $json=json_decode($row['Card'],true);
+            if($json==NULL){
+                print_r($row['Card']);
+                print_r($ID);
+                exit();
+            }
             $AgentDetails=$json['Listing Office'];
             $Building_size=$json['Size'];
             $Building_bed=$json['Bedroom'];
