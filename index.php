@@ -243,7 +243,7 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
             </div>
         
             </div><!-- Card Body ends-->
-            <div class="card-footer"><button id="search" class="btn-search">Search</button></div>
+            <div class="card-footer"><button id="search" type ="button" class="btn-search">Search</button></div>
           </div>
         </form>
       </div><!-- ends col-lg 3-->
