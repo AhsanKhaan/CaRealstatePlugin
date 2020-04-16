@@ -210,7 +210,7 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
                   <option value="">All Transaction Types</option>
                   <option value="for lease">For Lease</option>
                   <option value="for rent">For Rent</option>
-                  <option value="for sale">For Sale</option>
+                  <option value="for sale">For sale</option>
                   <option value="for sale or rent">For Sale Or Rent</option>
                 </select>
               </div>
