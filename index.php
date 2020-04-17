@@ -192,14 +192,14 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
                   <option value="">All Property Types</option>
                   <option value="Agriculture">Agriculture</option>
                   <option value="Business">Business</option>
-                  <option value="Hospitality">Hospitality</option>
+                       <option value="Hospitality">Hospitality</option>
                   <option value="Industrial">Industrial</option>
                   <option value="Institutional - Special Purpose">Institutional - Special Purpose</option>
                   <option value="Multi-family">Multi-family</option>
                   <option value="Office">Office</option>
                   <option value="Other">Other</option>
-                  <option value="Parking">Parking</option>
-                  <option value="Recreational">Recreational</option>
+                       <option value="Parking">Parking</option>
+                       <option value="Recreational">Recreational</option>
                   <option value="Retail">Retail</option>
                   <option value="Single Family">Single Family</option>
                   <option value="Vacant Land">Vacant Land</option>
@@ -207,11 +207,11 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
               </div>
               <div class="form-group">
                 <select name="input_transaction_type" id="TransactionType" class="form-control ">
-                  <option value="">All Transaction Types</option>
-                  <option value="for lease">For Lease</option>
-                  <option value="for rent">For Rent</option>
-                  <option value="for sale">For sale</option>
-                  <option value="for sale or rent">For Sale Or Rent</option>
+                  <option value="(\'For sale\',\'For rent\',\'For Lease\')">All Transaction Types</option>
+                  <option value="(\'For lease\')">For Lease</option>
+                  <option value="(\'For rent\')">For Rent</option>
+                  <option value="(\'For sale\')">For Sale</option>
+                  <option value="(\'For sale\',\'For rent\')">For Sale Or Rent</option>
                 </select>
               </div>
               <div class="form-group">
