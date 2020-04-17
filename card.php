@@ -14,22 +14,24 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
     
     print_r(parse_str($_SERVER['QUERY_STRING'],$params));
     //print_r($params);
+    $query="SELECT ID,Card FROM wp_properties_2 WHERE ";
+    $count="SELECT COUNT(ID) FROM wp_properties_2 WHERE ";
     if(array_key_exists("input_transaction_type",$params)){
         if($params['input_transaction_type']==NULL){
 
         }else{
             
-            $query="SELECT ID,Card FROM wp_properties_2 WHERE TransactionType IN ".$params["input_transaction_type"];
+            $query.="TransactionType IN ".$params["input_transaction_type"];
             $query=stripslashes($query);
-            $count="SELECT COUNT(ID) FROM wp_properties_2 WHERE TransactionType IN ".$params["input_transaction_type"];
+            $count.=" TransactionType IN ".$params["input_transaction_type"];
             $count=stripslashes($count);
-            // print_r($query);
-            // exit();
+            //print_r($query);
+            //exit();
             prepareAPI($query,$count,100);
         }
     }
 
-    exit();
+    
     // $query="SELECT ID,Address,Price,Building,AgentDetails,Photo,TransactionType FROM `wp_properties_2` WHERE TransactionType=".$_GET['Type'];
     // $count="SELECT COUNT(ID) FROM `wp_properties_2`WHERE TransactionType=".strtolower($_GET['Type']);
     // prepareAPI($query,$count,9);
