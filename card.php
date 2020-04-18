@@ -13,7 +13,7 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
 }else if(isset($_SERVER['QUERY_STRING'])&& $_SERVER['QUERY_STRING']!=""){
     
     print_r(parse_str($_SERVER['QUERY_STRING'],$params));
-    //print_r($params);
+    print_r($params);
     $query="SELECT ID,Card FROM wp_properties_2 WHERE ";
     $count="SELECT COUNT(ID) FROM wp_properties_2 WHERE ";
     if(array_key_exists("input_transaction_type",$params)){
@@ -22,12 +22,28 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
         }else{
             
             $query.="TransactionType IN ".$params["input_transaction_type"];
-            $query=stripslashes($query);
+            //$query=stripslashes($query);
             $count.=" TransactionType IN ".$params["input_transaction_type"];
-            $count=stripslashes($count);
+            //$count=stripslashes($count);
             //print_r($query);
             //exit();
-            prepareAPI($query,$count,100);
+            //prepareAPI($query,$count,100);
+        }
+    }
+    if(array_key_exists("input_property_type",$params)){
+        if($params['input_property_type']==NULL){
+            //do nothing
+            
+        }else{
+            
+            $query.=" AND PropertyType=\'\"".$params["input_property_type"]."\"\'";
+            $query=stripslashes($query);
+            $count.=" AND PropertyType=\'\"".$params["input_property_type"]."\"\'";
+            $count=stripslashes($count);
+            print_r($query);
+            print_r($count);
+            exit();
+            //prepareAPI($query,$count,100);
         }
     }
 
