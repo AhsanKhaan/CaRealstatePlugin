@@ -37,8 +37,24 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
         }else{
             
             $query.=" AND PropertyType=\'\"".$params["input_property_type"]."\"\'";
-            $query=stripslashes($query);
+           // $query=stripslashes($query);
             $count.=" AND PropertyType=\'\"".$params["input_property_type"]."\"\'";
+           // $count=stripslashes($count);
+           // print_r($query);
+           // print_r($count);
+           // exit();
+            //prepareAPI($query,$count,100);
+        }
+    }
+    if(array_key_exists("input_city",$params)){
+        if($params['input_city']==NULL){
+            //do nothing
+            
+        }else{
+            
+            $query.=" AND City Like \'".$params["input_city"]."\'";
+            $query=stripslashes($query);
+            $count.=" AND City Like \'".$params["input_city"]."\'";
             $count=stripslashes($count);
             print_r($query);
             print_r($count);
