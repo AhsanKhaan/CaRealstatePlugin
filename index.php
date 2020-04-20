@@ -73,6 +73,10 @@ function my_activation() {
         ViewType varchar(100),
         MoreInformationLink varchar(200),
         Card  varchar(1000),
+        City varchar(200),
+        Province varchar(200),
+        Bedroom   varchar(100),
+        Bathroom  varchar(100),
         PRIMARY KEY(ID)
          ) $charset_collate;";
 
