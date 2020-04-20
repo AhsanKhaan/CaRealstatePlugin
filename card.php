@@ -13,7 +13,7 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
 }else if(isset($_SERVER['QUERY_STRING'])&& $_SERVER['QUERY_STRING']!=""){
     
     print_r(parse_str($_SERVER['QUERY_STRING'],$params));
-    print_r($params);
+    var_dump($params);
     $query="SELECT ID,Card FROM wp_properties_2 WHERE ";
     $count="SELECT COUNT(ID) FROM wp_properties_2 WHERE ";
     if(array_key_exists("input_transaction_type",$params)){
@@ -65,8 +65,19 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
         }else{
             
             $query.=" AND Province=\'".$params["input_province"]."\'";
-            $query=stripslashes($query);
             $count.=" AND Province=\'".$params["input_province"]."\'";
+            //prepareAPI($query,$count,100);
+        }
+    }
+    if(array_key_exists("input_mls",$params)){
+        if($params['input_mls']==NULL){
+            //do nothing
+            
+        }else{
+            
+            $query.=" AND ListingID=\'\"".$params["input_mls"]."\"\'";
+            $query=stripslashes($query);
+            $count.=" AND ListingID=\'\"".$params["input_mls"]."\"\'";
             $count=stripslashes($count);
             print_r($query);
             print_r($count);
@@ -74,7 +85,6 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
             //prepareAPI($query,$count,100);
         }
     }
-
     
     // $query="SELECT ID,Address,Price,Building,AgentDetails,Photo,TransactionType FROM `wp_properties_2` WHERE TransactionType=".$_GET['Type'];
     // $count="SELECT COUNT(ID) FROM `wp_properties_2`WHERE TransactionType=".strtolower($_GET['Type']);
