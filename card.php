@@ -53,8 +53,20 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
         }else{
             
             $query.=" AND City Like \'".$params["input_city"]."\'";
-            $query=stripslashes($query);
             $count.=" AND City Like \'".$params["input_city"]."\'";
+            //prepareAPI($query,$count,100);
+        }
+    }
+
+    if(array_key_exists("input_province",$params)){
+        if($params['input_province']==NULL){
+            //do nothing
+            
+        }else{
+            
+            $query.=" AND Province=\'".$params["input_province"]."\'";
+            $query=stripslashes($query);
+            $count.=" AND Province=\'".$params["input_province"]."\'";
             $count=stripslashes($count);
             print_r($query);
             print_r($count);
