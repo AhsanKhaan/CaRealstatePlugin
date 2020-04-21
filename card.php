@@ -80,12 +80,13 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
             $query=stripslashes($query);
             $count.=" AND ListingID=\'\"".$params["input_mls"]."\"\'";
             $count=stripslashes($count);
-            print_r($query);
-            print_r($count);
-            exit();
-            //prepareAPI($query,$count,100);
+            
         }
     }
+            //print_r($query);
+            //print_r($count);
+            //exit();
+            prepareAPI($query,$count,100);
     
     // $query="SELECT ID,Address,Price,Building,AgentDetails,Photo,TransactionType FROM `wp_properties_2` WHERE TransactionType=".$_GET['Type'];
     // $count="SELECT COUNT(ID) FROM `wp_properties_2`WHERE TransactionType=".strtolower($_GET['Type']);
