@@ -2,11 +2,8 @@ $(document).ready(function(){
   init();
   setUserInterface();
  $("#search").click(function(){
-    //var PropertyType_selected=$('#PropertyType option:selected').text()
-    //var TransactionType_selected=$('#TransactionType option:selected').text();
     //get all data from for and build query string
     data_collection=$('#property_search').serialize();
-    //window.location.href="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/card.php?Type="+item_selected;
     var url="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/card.php?"+data_collection;
 
      $.get( url, function(data) {
@@ -22,39 +19,7 @@ $(document).ready(function(){
     $("#card-stack").empty();
     dataset.property.forEach(data => {
      // alert(data["TotalCount"]);
-    //   var html=`
-    //   <div class="col-md-4">
-    // <div class="card" >
-    //     <h1>`+data['TransactionType']+`</h1>
-    //     <h4>ID#`+data['ID']+`</h4>
-    //     <a href="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank"><img class="card-img-top" src="`+data['Photo']+`" alt="Card image"></a>
-    //     <div class="card-body">
-    //       <h3 style="text-color:green;">PRICE:$`+data['Price']+`</h3>
-    //       <a href="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank"><h4 class="card-title">`+data['Address']+`</h4></a>
-    //       <p class="lead mb-2"><strong>`+data['City']+`,`+data['Province']+`</strong></p>
-    //       <ul class="list-unstyled list-inline d-flex justify-content-between mb-0">
-        
-    //       <li class="list-inline-item mr-0">
-    //       <div class="chip mr-0">`+data['Bedroom']+` BedRooms</div>
-    //       </li>
 
-    //       <li class="list-inline-item mr-0">
-    //       <div class="chip mr-0">`+data['Bathroom']+` BathRooms</div>
-    //       </li>
-    //     <li class="list-inline-item mr-0">
-    //       <div class="chip deep-purple white-text mr-0">`+data['Size']+` Sqft</div>
-    //       </li>
-        
-
-    //     </ul>
-  
-          
-    //     </div>
-    //     <div class="card-footer"><i>`+data['Listing Office']+`</i></div>
-      
-    // </div>
-    // </div>
-    // `;
     var html=` <div class="col-lg-4 ">
     <!-- Card -->
 <div class="card booking-card">
@@ -134,7 +99,6 @@ $(document).ready(function(){
             showdata(data);
           }
           
-        // showdata(dataset);
           
           });
        
