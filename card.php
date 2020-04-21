@@ -10,6 +10,7 @@ if (isset($_GET['Page'])&& $_GET['Page']!="" ) {
     $query="SELECT ID,Card FROM `wp_properties_2` LIMIT $startwith,$Limit";
     $count="SELECT COUNT(ID) FROM `wp_properties_2`";
  prepareAPI($query,$count,$Limit);
+
 }else if(isset($_SERVER['QUERY_STRING'])&& $_SERVER['QUERY_STRING']!=""){
     
     print_r(parse_str($_SERVER['QUERY_STRING'],$params));
