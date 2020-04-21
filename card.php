@@ -111,7 +111,7 @@ function prepareAPI($query,$count,$Limit){
         $response="";
         if(mysqli_num_rows($getcount)>0){
             $TotalListing=mysqli_fetch_array($getcount,MYSQLI_NUM);
-            $response.='{"TotalCount" : "'.ceil($TotalListing[0]/$Limit).'","property":[';
+            $response.='{"TotalCount" : "'.ceil($TotalListing[0]/$Limit).'","TotalListing":'.$TotalListing[0].',"property":[';
             //$response.=',';
         }
         $index=0;
