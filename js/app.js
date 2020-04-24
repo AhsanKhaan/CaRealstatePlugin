@@ -14,8 +14,7 @@ $(document).ready(function(){
     
     array_chunks=chunkarray(dataset.property,Limit);
     show_chunks(array_chunks[0]);
-    console.log(array_chunks[0]);
-    
+     
    //  $('#pagination-demo').empty();
     $('#pagination-demo-1').twbsPagination({
       totalPages: totalPages,
@@ -26,18 +25,6 @@ $(document).ready(function(){
           //fetch content and render here
           $("#card-stack").empty(); 
           show_chunks(array_chunks[page-1]); 
-          console.log(array_chunks[page-1]);
-          // $.get("http://localhost/wordpress/wordpress/wp-content/plugins/crea/card.php?Page="+page, function(data, status){
-          
-          //   //var dataset=JSON.parse(data);
-          //   if(data==null){
-          //     $('#card-stack').text('No Listing was found');
-          //   }else{
-          //     showdata(data);
-          //   }
-            
-            
-          //   });
          
       }
   });//twbs Pagination
