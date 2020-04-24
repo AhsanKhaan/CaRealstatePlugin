@@ -16,31 +16,31 @@ $(document).ready(function(){
     show_chunks(array_chunks[0]);
     console.log(array_chunks[0]);
     
-  //   $('#pagination-demo').empty();
-  //   $('#pagination-demo').twbsPagination({
-  //     totalPages: totalPages,
-  //     visiblePages: 6,
-  //     next: 'Next',
-  //     prev: 'Prev',
-  //     onPageClick: function (event, page) {
-  //         //fetch content and render here
-  //         $("#card-stack").empty(); 
-  //         console.log(page); 
-  //         console.log();
-  //         // $.get("http://localhost/wordpress/wordpress/wp-content/plugins/crea/card.php?Page="+page, function(data, status){
+   //  $('#pagination-demo').empty();
+    $('#pagination-demo').twbsPagination({
+      totalPages: totalPages,
+      visiblePages: 6,
+      next: 'Next',
+      prev: 'Prev',
+      onPageClick: function (event, page) {
+          //fetch content and render here
+          $("#card-stack").empty(); 
+          show_chunks(array_chunks[page]); 
+          console.log(array_chunks[page]);
+          // $.get("http://localhost/wordpress/wordpress/wp-content/plugins/crea/card.php?Page="+page, function(data, status){
           
-  //         //   //var dataset=JSON.parse(data);
-  //         //   if(data==null){
-  //         //     $('#card-stack').text('No Listing was found');
-  //         //   }else{
-  //         //     showdata(data);
-  //         //   }
+          //   //var dataset=JSON.parse(data);
+          //   if(data==null){
+          //     $('#card-stack').text('No Listing was found');
+          //   }else{
+          //     showdata(data);
+          //   }
             
             
-  //         //   });
+          //   });
          
-  //     }
-  // });//twbs Pagination
+      }
+  });//twbs Pagination
     
 
     });//get ajax function ends
