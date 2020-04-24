@@ -17,7 +17,7 @@ $(document).ready(function(){
     console.log(array_chunks[0]);
     
    //  $('#pagination-demo').empty();
-    $('#pagination-demo').twbsPagination({
+    $('#pagination-demo-1').twbsPagination({
       totalPages: totalPages,
       visiblePages: 6,
       next: 'Next',
@@ -25,8 +25,8 @@ $(document).ready(function(){
       onPageClick: function (event, page) {
           //fetch content and render here
           $("#card-stack").empty(); 
-          show_chunks(array_chunks[page]); 
-          console.log(array_chunks[page]);
+          show_chunks(array_chunks[page-1]); 
+          console.log(array_chunks[page-1]);
           // $.get("http://localhost/wordpress/wordpress/wp-content/plugins/crea/card.php?Page="+page, function(data, status){
           
           //   //var dataset=JSON.parse(data);
@@ -99,8 +99,8 @@ $(document).ready(function(){
 
   function chunkarray(array,size){
     result=[];
-    begin=0;
-    end=size;
+    var begin;
+    var end=size;
 
     while(end<=array.length){
       if(size==array.length){

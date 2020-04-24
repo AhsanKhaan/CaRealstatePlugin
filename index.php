@@ -184,6 +184,7 @@ wp_enqueue_script( 'app.js', plugin_dir_url(__FILE__).'js/app.js', $ver=false, $
       <div id="card-stack" class="row ">
       </div><!--ends row of cards -->
       <div><ul id="pagination-demo" class="pagination-sm"></ul></div>
+      <div><ul id="pagination-demo-1" class="pagination-sm"></ul></div>
       </div><!--ends  col-lg-9-->
       
       <div col-lg-3>

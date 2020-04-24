@@ -104,11 +104,11 @@ p, li, a{
 h1{
   margin-bottom: 1.25em;
 }
-#pagination-demo{
+#pagination-demo-1,#pagination-demo{
   display: inline-block;
   margin-bottom: 1.75em;
 }
-#pagination-demo li{
+#pagination-demo-1,#pagination-demo li{
   display: inline-block;
 }
 
