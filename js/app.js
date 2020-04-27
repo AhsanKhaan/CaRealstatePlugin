@@ -7,8 +7,9 @@ $(document).ready(function(){
     var url="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/card.php?"+data_collection;
 
      $.get( url, function(dataset) {
-  //    console.log( "success:"+data );
-      
+  //    use for destroing old pages
+  $('#pagination-demo').twbsPagination('destroy');
+   
       var Limit=9;
     var totalPages=Math.ceil(dataset.TotalListing/Limit);
     
@@ -16,7 +17,7 @@ $(document).ready(function(){
     show_chunks(array_chunks[0]);
      
   //$('#pagination-demo-1').empty();
-    $('#pagination-demo-1').twbsPagination({
+    $('#pagination-demo').twbsPagination({
       totalPages: totalPages,
       visiblePages: 6,
       next: 'Next',
