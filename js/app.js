@@ -15,7 +15,7 @@ $(document).ready(function(){
     array_chunks=chunkarray(dataset.property,Limit);
     show_chunks(array_chunks[0]);
      
-   //  $('#pagination-demo').empty();
+  //$('#pagination-demo-1').empty();
     $('#pagination-demo-1').twbsPagination({
       totalPages: totalPages,
       visiblePages: 6,
