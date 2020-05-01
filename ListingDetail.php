@@ -9,6 +9,9 @@
 </head>
 <body>
 <?php 
+require_once($_SERVER['DOCUMENT_ROOT'].'/wordpress/wordpress'.'/wp-load.php');
+get_header();
+
 if (isset($_GET['ID'])&& $_GET['ID']!="" ) {
    // echo "<mark>ID=".$_GET['ID']."</mark><br/>";
 
@@ -695,6 +698,7 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
           echo '</table>';
         }//array length check end
     }//check for existance of array end
+    get_footer();
     ?>
 </body>
 </html>
