@@ -914,9 +914,41 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
           ?>
       </div>
   <div class="rps-single-features rps-text-center-sm clearfix">
-          <span class="rps-single-feature-label-sm">Bungalow</span>
-          <span class="rps-single-feature-label-sm">Central Air Conditioning</span>
-          <span class="rps-single-feature-label-sm">Forced Air</span>
+  <?php 
+   foreach($json['Building'] as $key => $item){
+    //print_r('Key:'.$key.'Value:'.$item);
+        switch($key){
+         case 'ArchitecturalStyle':
+             echo '<span class="rps-single-feature-label-sm">'.$item.'</span>';
+     break;
+         case 'FireplacePresent':
+             if ($item=='True'){
+                 echo '<span class="rps-single-feature-label-sm">Fire Place</span>';
+             }else{
+ 
+             }
+             
+     break;
+         case 'HeatingType':
+             echo '<span class="rps-single-feature-label-sm">'.$item.'</span>';
+     break;
+         case 'CoolingType':
+             if(strpos($item, ",") !== false){
+                 $temp=explode(",",$item);
+                 //print_r($temp);
+                 echo '<span class="rps-single-feature-label-sm">'.$temp[1].'</span>';
+             } else{
+                 echo '<span class="rps-single-feature-label-sm">'.$item.'</span>';
+             }
+             
+     break;
+     
+         default:
+     }//switch ends
+ 
+ }//for each ends
+  ?>
+
           </div>
     <!-- Meta -->  
     <meta content="CAD">
