@@ -1,0 +1,285 @@
+
+.bootstrap-realtypress .rps-single-listing {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.bootstrap-realtypress .rps-single-listing .rps-single-listing-favorites-wrap {
+    min-height: 40px;
+    margin-bottom: 4px;
+}
+.bootstrap-realtypress h1 small{
+        font-weight: normal;
+    line-height: 1;
+    color: #777777;
+}
+.bootstrap-realtypress button.rps-add-favorite {
+    padding: 10px 12px;
+}
+.bootstrap-realtypress .rps-property-photo-row {
+    margin-bottom: 30px;
+}
+.bootstrap-realtypress .bx-wrapper {
+    margin: 0 auto;
+    overflow: hidden;
+}
+.bootstrap-realtypress .bx-wrapper .bx-wrapper .bx-viewport {
+    border: none;
+    -webkit-box-shadow: none;
+    left: 0;
+}
+.bootstrap-realtypress .bx-wrapper .bx-viewport ul {
+    margin: 0;
+    padding: 0;
+}
+.bootstrap-realtypress .rps-property-photo-row .bx-slider li {
+    height: 650px;
+}
+.bootstrap-realtypress .bx-slider li {
+    display: inline-block;
+    text-align: center;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    max-height: 100% !important;
+}
+.bootstrap-realtypress .bx-slider li {
+        text-align: center;
+}
+.bootstrap-realtypress .rps-property-photo-row .bx-slider li img {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+    max-width: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: 100%;
+}
+.bootstrap-realtypress .rps-single-listing .bx-wrapper .bx-controls-direction a.bx-prev {
+    background: rgba(0,0,0,0.1) url(img/left.png) center center no-repeat;
+    left: 0;
+}
+.bootstrap-realtypress .rps-single-listing .bx-wrapper .bx-controls-direction a {
+    display: block;
+    background: rgba(0,0,0,0.1);
+    margin-top: 0;
+    width: 30px;
+    height: 100%;
+    top: 0;
+    transition: all 200ms ease-in-out;
+}
+.bootstrap-realtypress .rps-single-listing .bx-wrapper .bx-controls-direction a.bx-next {
+    background: rgba(0,0,0,0.1) url(img/right.png) center center no-repeat;
+    right: 0;
+}
+.bootstrap-realtypress .rps-single-listing .bx-wrapper .bx-controls-direction a {
+    display: block;
+    margin-top: 0;
+    width: 30px;
+    height: 100%;
+    top: 0;
+    transition: all 200ms ease-in-out;
+}
+.bootstrap-realtypress .rps-property-photo-row .bx-pager-wrap {
+    overflow: auto;
+    overflow-x: hidden;
+    max-height: 650px;
+    background: #ffffff;
+    border: 1px solid #e6e6e6;
+}
+.bootstrap-realtypress .rps-single-listing .bx-pager {
+    list-style: none !important;
+    margin: 0;
+    padding: 0;
+}
+.bootstrap-realtypress .rps-single-listing .bx-pager .slide {
+    float: left;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+}
+li {
+    list-style: none;
+}
+.bootstrap-realtypress .rps-single-listing .bx-pager a img {
+    width: 100%;
+}
+.bootstrap-realtypress .rps-single-listing .bx-pager 
+a:hover, .bootstrap-realtypress .rps-single-listing .bx-pager a.active {
+    border: 3px solid #606060;
+}
+.bootstrap-realtypress .rps-single-listing .bx-pager a {
+    border: 3px solid #e6e6e6;
+    margin: 0;
+    padding: 0;
+}
+.bootstrap-realtypress .rps-single-listing .rps-single-feature-label {
+    color: #fff;
+    font-size: 17px;
+    padding: 8px 12px;
+    background: #b3b3b3;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    font-weight: 500;
+    display: block;
+    float: left;
+}
+.bootstrap-realtypress .rps-single-listing .rps-single-feature-label-sm {
+    color: #fff;
+    font-size: 14px;
+    padding: 4px 8px;
+    background: #b3b3b3;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    display: block;
+    float: left;
+    font-weight: 500;
+}
+.bootstrap-realtypress .rps-single-listing .rps-altenate-url {
+    height: 80px;
+    line-height: 80px;
+    font-size: 20px;
+        text-decoration: none;
+}
+
+.bootstrap-realtypress .rps-single-listing .rps-contact-form-wrap-v {
+    background: #ffffff;
+    padding: 0 10px;
+    margin-bottom: 30px;
+    border: 1px solid #e6e6e6;
+}
+.bootstrap-realtypress .rps-single-listing .rps-agent-details {
+    background: #ffffff;
+    padding: 10px;
+    margin-bottom: 30px;
+    font-size: 0.9em;
+    border: 1px solid #e6e6e6;
+    word-break: break-all;
+}
+
+
+
+
+
+
+
+.new_slide {
+    padding: 0;
+    width: 609px;
+    height: 420px;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+}
+
+.new_slides * {
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+}
+
+.new_slide input { display: none; }
+
+.my_slide_container { display: block; }
+
+.my_slide {
+    top: 0;
+    opacity: 0;
+    width: 609px;
+    height: 420px;
+    display: block;
+    position: absolute;
+
+    transform: scale(0);
+
+    transition: all .7s ease-in-out;
+}
+
+.my_slide img {
+      width: 160%;
+    height: 154%;
+}
+
+.nav label {
+    width: 200px;
+    height: 100%;
+    display: none;
+    position: absolute;
+
+	  opacity: 0;
+    z-index: 9;
+    cursor: pointer;
+
+    transition: opacity .2s;
+
+    color: #FFF;
+    font-size: 156pt;
+    text-align: center;
+        line-height: 550px;
+    font-family: "Varela Round", sans-serif;
+    background-color: rgba(255, 255, 255, .3);
+    text-shadow: 0px 0px 15px rgb(119, 119, 119);
+}
+
+.my_slide:hover + .nav label { opacity: 0.5; }
+
+.nav label:hover { opacity: 1; }
+
+.nav .next { right: 0; }
+
+input:checked + .my_slide_container  .my_slide {
+    opacity: 1;
+
+    transform: scale(1);
+
+    transition: opacity 1s ease-in-out;
+}
+
+input:checked + .my_slide_container .nav label { display: block; }
+
+.nav-dots {
+	width: 100%;
+	bottom: 9px;
+	height: 11px;
+	display: block;
+	position: absolute;
+	text-align: center;
+}
+
+.nav-dots .nav-dot {
+	top: -5px;
+	width: 11px;
+	height: 11px;
+	margin: 0 4px;
+	position: relative;
+	border-radius: 100%;
+	display: inline-block;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.nav-dots .nav-dot:hover {
+	cursor: pointer;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+input#img-1:checked ~ .nav-dots label#img-dot-1,
+input#img-2:checked ~ .nav-dots label#img-dot-2,
+input#img-3:checked ~ .nav-dots label#img-dot-3,
+input#img-4:checked ~ .nav-dots label#img-dot-4,
+input#img-5:checked ~ .nav-dots label#img-dot-5,
+input#img-6:checked ~ .nav-dots label#img-dot-6 {
+	background: rgba(0, 0, 0, 0.8);
+}
+
+
+
+
