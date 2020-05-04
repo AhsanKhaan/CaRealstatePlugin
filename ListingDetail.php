@@ -893,8 +893,25 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
        <div class="col-md-9 col-sm-8 col-xs-12">
   <!-- Intro Specs -->
   <div class="rps-single-features rps-text-center-sm clearfix">
-          <span class="rps-single-feature-label" >4 Bedroom</span>
-          <span class="rps-single-feature-label">2 Bathroom</span>
+          <?php 
+            foreach($json['Building'] as $key => $item){
+              //print_r('Key:'.$key.'Value:'.$item);
+                  switch($key){
+                   case 'BedroomsTotal':
+                       echo '<span class="rps-single-feature-label" >'.$item.'Bedroom</span>';
+               break;
+                   case 'BathroomTotal':
+                       echo '<span class="rps-single-feature-label" >'.$item.'Bathroom</span>';
+               break;
+                   case 'SizeInterior':
+                       echo '<span class="rps-single-feature-label" >'.$item.'</span>';
+               break;
+                   default:
+               }//switch ends
+           
+           }//for each ends
+           
+          ?>
       </div>
   <div class="rps-single-features rps-text-center-sm clearfix">
           <span class="rps-single-feature-label-sm">Bungalow</span>
