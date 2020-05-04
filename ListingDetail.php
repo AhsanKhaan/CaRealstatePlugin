@@ -954,7 +954,7 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
     <meta content="CAD">
     <meta content="649000.00">
     <!-- Price -->
-    <h2 class="rps-pricing rps-text-center-sm">$<?php echo $json['Price']?></h2>  
+    <h2 class="rps-pricing rps-text-center-sm">$<?php echo $json['Price'];?></h2>  
   <!-- Description -->
   <p class="rps-text-center-sm">Attention Home Buyers! Do Not Miss Out On This Rare Opportunity To Own A Premium Size Lot In The Heart Of Woburn With  Huge Backyard, Beautiful 4 Bedroom Detached Bungalow With Large Lot Perfect For Starters, Down Sizing Or Investor In A Quiet Residential Area. Close To All Amenities, Like Library, Parks, Schools, Shopping, Transit And Much More! Large Eat-In Kitchen With Huge Pantry. Roof Done In 2018**** EXTRAS **** All Appliance (Gas Stove, Fridge,Freezer Washer, Dryer, All Electrical Fixtures ) (id:35982)
   </p>
