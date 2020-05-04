@@ -729,9 +729,14 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
     <!-- Address -->
     <h1 class="rps-text-center-sm" style="margin-top:0;">
       <span style="display:block;margin-bottom:0;">
-        4 Lisa Rd      </span>
+        <?php echo $json['Address']['StreetAddress'];?>      </span>
       <small>
-        Toronto, Ontario          M1G 2H9      </small>
+        <?php echo $json['Address']['City'];?>,
+        <?php 
+         echo $json['Address']['Province'];
+         echo $json['Address']['PostalCode'];
+        ?>
+      </small>
     </h1>
 
   </div>
