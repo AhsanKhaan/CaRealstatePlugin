@@ -144,17 +144,22 @@ echo '<p>'.$json['PublicRemarks'].'</p>';
   }
 
   ?>
-<tr>
-    <td>
-    <strong>Property Type</strong>
-    </td>
+
   <?php 
-    echo '<td class="text-right">
-    '.$json['PropertyType'].'
-    </td>';
+    if(array_key_exists('PropertyType',$json)){
+      echo '
+      <tr>
+        <td>
+          <strong>Property Type</strong>
+        </td>
+        <td class="text-right">
+        '.$json['PropertyType'].'
+        </td>
+      </tr>';
+    }
   ?>
     
-</tr>
+
 
     
   <?php 
@@ -988,13 +993,19 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
   }
 
   ?>
-	    <tr>
-	        <td>
-	            <strong>Property Type</strong>
-	        </td>
-	        <td class="text-right">
-	            Single Family </td>
-	    </tr>
+    <?php 
+    if(array_key_exists('PropertyType',$json)){
+      echo '
+      <tr>
+        <td>
+          <strong>Property Type</strong>
+        </td>
+        <td class="text-right">
+        '.$json['PropertyType'].'
+        </td>
+      </tr>';
+    }
+  ?>
 	    <tr>
 	        <td>
 	            <strong>Community Name</strong>
