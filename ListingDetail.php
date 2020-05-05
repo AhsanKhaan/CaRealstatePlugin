@@ -130,17 +130,20 @@ echo '<p>'.$json['PublicRemarks'].'</p>';
 <h3>Property Details</h3>
 <table border=1>
 <tbody>
-<tr>
-    <td>
-    <strong>MLS® Number</strong>
-    </td>
+
+
   <?php 
-    echo '<td class="text-right">
-    '.$json['ListingID'].'
-    </td>';
+  if(array_key_exists('ListingID',$json)){
+    echo '<tr>
+            <td>
+              <strong>MLS® Number
+              </strong>
+            </td>
+            <td class="text-right">'.$json['ListingID'].'</td>
+          </tr>';
+  }
+
   ?>
-    
-</tr>
 <tr>
     <td>
     <strong>Property Type</strong>
@@ -973,14 +976,18 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
 <h3>Property Details</h3>
 <table class="table table-hover table-bordered">
 	<tbody>
-	    <tr>
-	        <td>
-	            <strong>MLS® Number</strong>
-	        </td>
-	        <td class="text-right">
-	            E4748229
-	        </td>
-	    </tr>
+  <?php 
+  if(array_key_exists('ListingID',$json)){
+    echo '<tr>
+            <td>
+              <strong>MLS® Number
+              </strong>
+            </td>
+            <td class="text-right">'.$json['ListingID'].'</td>
+          </tr>';
+  }
+
+  ?>
 	    <tr>
 	        <td>
 	            <strong>Property Type</strong>
