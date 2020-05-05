@@ -1013,13 +1013,21 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
 	        <td class="text-right">
 	            Woburn </td>
 	    </tr>
-	    <tr>
-	        <td>
-	            <strong> Amenities Near By</strong>
-	        </td>
-	        <td class="text-right">
-	            Hospital, Park, Public Transit, Schools </td>
-	    </tr>
+      <?php 
+  if($json['AmmenitiesNearBy']=="{}"){
+
+  }else{
+    echo '<tr>
+          <td>
+          <strong>Amenities NearBy</strong>
+          </td>
+          <td class="text-right">
+          '.$json['AmmenitiesNearBy'].'
+          </td>
+    </tr>';
+  }
+
+  ?>
 	    <tr>
 	        <td>
 	            <strong> Parking Space Total</strong>
