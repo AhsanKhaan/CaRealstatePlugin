@@ -1028,13 +1028,20 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
   }
 
   ?>
-	    <tr>
-	        <td>
-	            <strong> Parking Space Total</strong>
-	        </td>
-	        <td class="text-right">
-	            4 </td>
-	    </tr>
+    <?php
+      
+      if($json['ParkingSpaceTotal']=="{}"){
+
+      }else{ 
+        echo '<tr>
+        <td>
+        <strong>Parking Spaces Total</strong>
+        </td><td class="text-right">
+        '.$json['ParkingSpaceTotal'].'
+        </td>
+        </tr>';
+        }
+    ?>
 	</tbody>
 	</table>
 
