@@ -1042,6 +1042,26 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
         </tr>';
         }
     ?>
+      <?php
+   
+   if($json['EquipmentType']=="{}"){
+ 
+   }else{
+     if($json['EquipmentType']==NULL){
+
+     }else{
+      echo '<tr>
+      <td>
+      <strong>Equipment Type</strong>
+      </td>
+      <td class="text-right">
+      '.$json['EquipmentType'].'
+      </td>
+      </tr>';
+     }
+   }
+     
+   ?>
 	</tbody>
 	</table>
 
