@@ -326,19 +326,22 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
   ?>
     
 
-<tr>
-    <td>
-    <strong>Age</strong>
-    </td>
+
+
   <?php 
   if(array_key_exists('Age',$json['Building'])){
-    echo '<td class="text-right">
+    echo '<tr>
+    <td>
+      <strong>Age</strong>
+    </td>
+    <td class="text-right">
       '.$json['Building']['Age'].'
-      </td>';
+      </td>
+      </tr>';
   }
   ?>
     
-</tr>
+
 <tr>
     <td>
     <strong>Appliances</strong>
@@ -1154,7 +1157,19 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
     }
 
   }
+   ?>
 
+    <?php 
+  if(array_key_exists('Age',$json['Building'])){
+    echo '<tr>
+    <td>
+      <strong>Age</strong>
+    </td>
+    <td class="text-right">
+      '.$json['Building']['Age'].'
+      </td>
+      </tr>';
+  }
   ?>
 	    <tr>
 	        <td>
