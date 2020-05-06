@@ -356,19 +356,21 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
   ?>
     
 
-<tr>
+
+  <?php 
+  if(array_key_exists('ArchitecturalStyle',$json['Building'])){
+    echo '<tr>
     <td>
     <strong>ArchitecturalStyle</strong>
     </td>
-  <?php 
-  if(array_key_exists('ArchitecturalStyle',$json['Building'])){
-    echo '<td class="text-right">
+    <td class="text-right">
       '.$json['Building']['ArchitecturalStyle'].'
-      </td>';
+      </td>
+      </tr>';
   }
   ?>
     
-</tr>
+
 <tr>
     <td>
     <strong>Constructed Date</strong>
@@ -1183,6 +1185,19 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
       </tr>';
   }
   ?>
+    <?php 
+  if(array_key_exists('ArchitecturalStyle',$json['Building'])){
+    echo '<tr>
+    <td>
+    <strong>ArchitecturalStyle</strong>
+    </td>
+    <td class="text-right">
+      '.$json['Building']['ArchitecturalStyle'].'
+      </td>
+      </tr>';
+  }
+  ?>
+
 	    <tr>
 	        <td>
 	            <strong> Bedrooms Above Ground</strong>
