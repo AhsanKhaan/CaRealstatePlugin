@@ -1067,6 +1067,34 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
    }
      
    ?>
+    <?php 
+var_dump($json['Features']);
+if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json['Features']))&&(count($json['Features'])==0))){
+
+}else{
+  if(is_array($json['Features'])){
+    echo '<tr>
+    <td>
+    <strong>Features</strong>
+    </td>
+    <td class="text-right">
+    '.implode(" ",$json['Features']).'
+    </td>
+         </tr>';
+   }else{
+    echo '<tr>
+    <td>
+     <strong>Features</strong>
+    </td>
+    <td class="text-right">
+    '.$json['Features'].'
+    </td>
+    </tr>';
+   }
+}
+  
+
+  ?>
 	</tbody>
 	</table>
 
