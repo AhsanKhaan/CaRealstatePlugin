@@ -202,20 +202,25 @@ var_dump($json['Features']);
 if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json['Features']))&&(count($json['Features'])==0))){
 
 }else{
+  if(is_array($json['Features'])){
     echo '<tr>
     <td>
     <strong>Features</strong>
-    </td>';
-  if(is_array($json['Features'])){
-    echo '<td class="text-right">
+    </td>
+    <td class="text-right">
     '.implode(" ",$json['Features']).'
-    </td>';
+    </td>
+         </tr>';
    }else{
-    echo '<td class="text-right">
+    echo '<tr>
+    <td>
+     <strong>Features</strong>
+    </td>
+    <td class="text-right">
     '.$json['Features'].'
-    </td>';
+    </td>
+    </tr>';
    }
-   echo "</tr>";
 }
   
 
