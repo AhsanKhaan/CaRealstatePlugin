@@ -307,23 +307,25 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
   ?>
     
 
-<tr>
-    <td>
-    <strong>Bedrooms Total</strong>
-    </td>
+
   <?php 
   if(array_key_exists('BedroomsTotal',$json['Building'])){
     if($json['Building']['BedroomsTotal']!='None'){
-      echo '<td class="text-right">
+      echo '<tr>
+      <td>
+      <strong>Bedrooms Total</strong>
+      </td>
+      <td class="text-right">
       '.$json['Building']['BedroomsTotal'].'
-      </td>';
+      </td>
+      </tr>';
     }
 
   }
 
   ?>
     
-</tr>
+
 <tr>
     <td>
     <strong>Age</strong>
@@ -1138,7 +1140,22 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
   }
 
   ?>
-	
+	  <?php 
+  if(array_key_exists('BedroomsTotal',$json['Building'])){
+    if($json['Building']['BedroomsTotal']!='None'){
+      echo '<tr>
+      <td>
+      <strong>Bedrooms Total</strong>
+      </td>
+      <td class="text-right">
+      '.$json['Building']['BedroomsTotal'].'
+      </td>
+      </tr>';
+    }
+
+  }
+
+  ?>
 	    <tr>
 	        <td>
 	            <strong> Bedrooms Above Ground</strong>
