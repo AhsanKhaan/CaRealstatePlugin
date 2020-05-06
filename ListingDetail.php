@@ -269,23 +269,25 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
 <h3>Building</h3>
 <table border=1>
 <tbody>
-<tr>
-    <td>
-    <strong>Bathroom Total</strong>
-    </td>
+
   <?php 
   if(array_key_exists('BathroomTotal',$json['Building'])){
     if($json['Building']['BathroomTotal']!='None'){
-      echo '<td class="text-right">
+      echo '<tr>
+      <td>
+      <strong>Bathroom Total</strong>
+      </td>
+      <td class="text-right">
       '.$json['Building']['BathroomTotal'].'
-      </td>';
+      </td>
+      </tr>';
     }
 
   }
 
   ?>
     
-</tr>
+
 <tr>
     <td>
     <strong>Bedroom Above Ground</strong>
@@ -1102,13 +1104,23 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
 <h3>Building</h3>
 <table class="table table-hover table-bordered">
 	<tbody>
-	    <tr>
-	        <td>
-	            <strong> Bathroom Total</strong>
-	        </td>
-	        <td class="text-right">
-	            2 </td>
-	    </tr>
+  <?php 
+  if(array_key_exists('BathroomTotal',$json['Building'])){
+    if($json['Building']['BathroomTotal']!='None'){
+      echo '<tr>
+      <td>
+      <strong>Bathroom Total</strong>
+      </td>
+      <td class="text-right">
+      '.$json['Building']['BathroomTotal'].'
+      </td>
+      </tr>';
+    }
+
+  }
+
+  ?>
+	
 	    <tr>
 	        <td>
 	            <strong> Bedrooms Above Ground</strong>
