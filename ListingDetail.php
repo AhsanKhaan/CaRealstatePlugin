@@ -1512,108 +1512,81 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
         }//array length check end
     }//check for existance of array ennds
     ?>
+     <!-- For Rooms PHP coding -->
+     <?php 
+    if(array_key_exists('Rooms',$json['Building'])){
+       echo '<h3>Rooms</h3>
+       <table class="table table-bordered" border=1>
+         <thead>
+           <tr>
+             <th>Level</th>
+             <th>Type</th>
+             <th class="hidden-xs">Length</th>
+             <th class="hidden-xs">Width</th>
+             <th>Dimension</th>
+           </tr>
+         </thead>
+         <tbody>';
+      foreach($json['Building']['Rooms']['Room'] as $item){
+        echo '<tr>';
+        //for level
+        echo '<td colspan=1>'.$item['Level'].'</td>';
+        //for type
+        echo '<td colspan=1>'.$item['Type'].'</td>';
+        //for length
+        if(is_array($item['Length'])){
+          echo '<td class="hidden-xs" colspan=1>'.implode(" ",$item['Length']).'</td>';
+        }else{
+          echo '<td class="hidden-xs" colspan=1>'.$item['Length'].'</td>';
+        }
+        
+        //for width
+        if(is_array($item['Width'])){
+          echo '<td class="hidden-xs" colspan=1>'.implode(" ",$item['Width']).'</td>';
+        }else{
+          echo '<td class="hidden-xs" colspan=1>'.$item['Width'].'</td>';
+        }
+        
+        //for dimension
+        if(is_array($item['Dimension'])){
+          echo '<td colspan=1>'.implode($item['Dimension']).'</td>';
+        }else{
+          echo '<td colspan=1>'.$item['Dimension'].'</td>';
+        }
+        
+        //ending row
+        echo '</tr>';
+
   
-<!-- Rooms -->
+      }//for each ends
+      echo '</tbody>
+          </table>';
+  
+    }
+  ?>
+  <!-- For Parking table -->
+  <?php 
+    if(array_key_exists('ParkingSpaces',$json)){
+        if(array_key_exists('Parking',$json['ParkingSpaces'])){
+            echo '<h3>Parking</h3>';
+            echo '<table border=1>';
+              
+            foreach($json['ParkingSpaces']['Parking'] as $item){
+              echo '<tr>';
+              // var_dump($item);
+              if(is_array($item)){
+                echo '<td>'.implode($item).'</td>';
+              }else{
+                echo '<td>'.$item.'</td>';
+              }
+              //echo '<td>'.$item.'</td>';  
+              echo '</tr>';
+            }//for each ends
+            echo '</table>';
+        }//Parking ends
+    }
+  ?>
 
-	<h3>Rooms</h3>
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th>Level</th>
-				<th>Type</th>
-				<th class="hidden-xs">Length</th>
-				<th class="hidden-xs">Width</th>
-				<th>Dimensions</th>
-			</tr>
-		</thead>
-		<tbody>
-
-		    <tr>
-		        <td>
-		            Ground Level </td>
-		        <td>
-		            Living Room </td>
-		        <td class="hidden-xs">
-		            5.45 m </td>
-		        <td class="hidden-xs">
-		            6.1 m </td>
-		        <td>
-		            5.45 m x 6.1 m </td>
-		    </tr>
-		    <tr>
-		        <td>
-		            Ground Level </td>
-		        <td>
-		            Dining Room </td>
-		        <td class="hidden-xs">
-		            5.45 m </td>
-		        <td class="hidden-xs">
-		            6.1 m </td>
-		        <td>
-		            5.45 m x 6.1 m </td>
-		    </tr>
-		    <tr>
-		        <td>
-		            Ground Level </td>
-		        <td>
-		            Kitchen </td>
-		        <td class="hidden-xs">
-		            4.42 m </td>
-		        <td class="hidden-xs">
-		            5.18 m </td>
-		        <td>
-		            4.42 m x 5.18 m </td>
-		    </tr>
-		    <tr>
-		        <td>
-		            Ground Level </td>
-		        <td>
-		            Master Bedroom </td>
-		        <td class="hidden-xs">
-		            3.04 m </td>
-		        <td class="hidden-xs">
-		            3.35 m </td>
-		        <td>
-		            3.04 m x 3.35 m </td>
-		    </tr>
-		    <tr>
-		        <td>
-		            Ground Level </td>
-		        <td>
-		            Bedroom 2 </td>
-		        <td class="hidden-xs">
-		            3.9 m </td>
-		        <td class="hidden-xs">
-		            3.35 m </td>
-		        <td>
-		            3.9 m x 3.35 m </td>
-		    </tr>
-		    <tr>
-		        <td>
-		            Ground Level </td>
-		        <td>
-		            Bedroom 3 </td>
-		        <td class="hidden-xs">
-		            3.35 m </td>
-		        <td class="hidden-xs">
-		            3.35 m </td>
-		        <td>
-		            3.35 m x 3.35 m </td>
-		    </tr>
-		    <tr>
-		        <td>
-		            Ground Level </td>
-		        <td>
-		            Bedroom 4 </td>
-		        <td class="hidden-xs">
-		            3.04 m </td>
-		        <td class="hidden-xs">
-		            3.04 m </td>
-		        <td>
-		            3.04 m x 3.04 m </td>
-		    </tr>
-		</tbody>
-	</table>
    </div>
    <div class="col-md-3 col-sm-4 col-xs-12">
   <div class="rps-contact-form-wrap-v">
