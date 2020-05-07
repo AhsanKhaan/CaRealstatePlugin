@@ -1462,55 +1462,6 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
   ?>
     
 
-	    <tr>
-	        <td>
-	            <strong> Cooling Type</strong>
-	        </td>
-	        <td class="text-right">
-	            Central Air Conditioning </td>
-	    </tr>
-	    <tr>
-	        <td>
-	            <strong> Exterior Finish</strong>
-	        </td>
-	        <td class="text-right">
-	            Brick, Wood </td>
-	    </tr>
-	    <tr>
-	        <td>
-	            <strong> Fireplace Present</strong>
-	        </td>
-	        <td class="text-right">
-	            No </td>
-	    </tr>
-	    <tr>
-	        <td>
-	            <strong> Heating Fuel</strong>
-	        </td>
-	        <td class="text-right">
-	            Natural Gas </td>
-	    </tr>
-	    <tr>
-	        <td>
-	            <strong> Heating Type</strong>
-	        </td>
-	        <td class="text-right">
-	            Forced Air </td>
-	    </tr>
-	    <tr>
-	        <td>
-	            <strong> Stories Total</strong>
-	        </td>
-	        <td class="text-right">
-	            1 </td>
-	    </tr>
-	    <tr>
-	        <td>
-	            <strong> Type</strong>
-	        </td>
-	        <td class="text-right">
-	            House </td>
-	    </tr>
 	</tbody>
 </table>
 <!-- Parking -->
