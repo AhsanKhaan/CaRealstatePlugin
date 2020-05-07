@@ -1516,7 +1516,52 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
 <!-- Parking -->
 
 <!-- Land -->
-	<h3>Land</h3>
+<?php 
+    if(array_key_exists('Land',$json)){
+        
+        if(count($json['Land'])>0){
+          echo '<h3>Land</h3>';
+          echo '<table class="table table-hover table-bordered" >';
+          
+          if(array_key_exists('Acreage',$json['Land'])){
+            if($json['Land']['Acreage']==true){
+              echo '<tr>';
+              echo '<td><strong>Acreage</strong></td><td class="text-right">Yes</td>';
+              echo '</tr>';
+            }else{
+              echo '<tr>';
+              echo '<td><strong>Acreage</strong></td><td class="text-right">No</td>';
+              echo '</tr>';
+            }
+          }
+
+          foreach($json['Land'] as $key=>$value){
+            echo '<tr>';
+            if($key=='Acreage'){
+              continue;
+              
+            }else{
+              $label = preg_replace('/(?<!\ )[A-Z]/', ' $0', $key);
+              echo '<td><strong>'.$label.'</strong></td>';
+              if(is_array($value)){
+                if(empty($value)){
+                  echo '<td class="text-right">Unknown</td>';
+                }else{
+                  echo '<td class="text-right">'.implode(" ",$value).'</td>';
+                }//check for empty ends
+                
+              }else{
+                echo '<td class="text-right">'.$value.'</td>';
+              }
+              
+            }
+            echo '</tr>';
+          }//for each end
+          echo '</table>';
+        }//array length check end
+    }//check for existance of array ennds
+    ?>
+  <h3>Land</h3>
 	<table class="table table-hover table-bordered">
 		<tbody>
 		    <tr>
