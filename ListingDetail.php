@@ -839,7 +839,22 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
     <div class="col-md-3 col-xs-12">
         <div class="bx-pager-wrap">
            <ul class="bx-pager" >
-                  <li class="slide">
+           <?php
+
+            if(empty($json['Photo'])){
+              echo '<h2>Images unavailable</h2>';
+            }else{
+              foreach($json['Photo']['PropertyPhoto'] as $key=>$photo){
+                echo '<li class="slide">
+                <a data-slide-index="'.$key.'" href="" rel="nofollow" style="display:block;width:100%;background:url('.$photo['PhotoURL'].') no-repeat center;background-size:contain;" class="active">
+                <img src="'.$photo['PhotoURL'].'"/></a>
+                </li>';
+                }
+            }
+
+
+?>                
+                  <!-- <li class="slide">
                   <a data-slide-index="0" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-1.jpg) no-repeat center;background-size:contain;" class="active">
                   <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
                   </li>
@@ -910,7 +925,7 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
                   <li class="slide">
                   <a data-slide-index="17" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-18.jpg) no-repeat center;background-size:contain;">
                   <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li>
+                  </li> -->
            </ul>
             
         </div>
