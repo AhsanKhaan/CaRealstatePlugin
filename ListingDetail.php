@@ -1561,40 +1561,7 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
         }//array length check end
     }//check for existance of array ennds
     ?>
-  <h3>Land</h3>
-	<table class="table table-hover table-bordered">
-		<tbody>
-		    <tr>
-		        <td>
-		            <strong> Acreage</strong>
-		        </td>
-		        <td class="text-right">
-		            No </td>
-		    </tr>
-		    <tr>
-		        <td>
-		            <strong> Land Amenities</strong>
-		        </td>
-		        <td class="text-right">
-		            Hospital, Park, Public Transit, Schools </td>
-		    </tr>
-		    <tr>
-		        <td>
-		            <strong> Size Irregular</strong>
-		        </td>
-		        <td class="text-right">
-		            42 X 136 Ft </td>
-		    </tr>
-		    <tr>
-		        <td>
-		            <strong> Size Total Text</strong>
-		        </td>
-		        <td class="text-right">
-		            42 X 136 Ft </td>
-		    </tr>
-		</tbody>
-	</table>
-
+  
 <!-- Rooms -->
 
 	<h3>Rooms</h3>
