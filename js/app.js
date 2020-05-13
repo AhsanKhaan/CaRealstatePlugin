@@ -40,44 +40,83 @@ $(document).ready(function(){
     $("#card-stack").empty();
     dataset.property.forEach(data => {
      // alert(data["TotalCount"]);
-
-    var html=` <div class="col-lg-4 ">
-    <!-- Card -->
+if(data['Size']==undefined){
+  var html=` <div class="col-lg-4 ">
+  <!-- Card -->
 <div class="card booking-card">
 
-  <!-- Card image -->
-  <div class="view overlay">
+<!-- Card image -->
+<div class="view overlay">
 
-    
-    <a href="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
-      <div class="mask rgba-white-slight"><img class="card-img-top" src="`+data['Photo']+`" alt="Card image cap"></div>
-    </a>
-  </div>
+  
+  <a href="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
+    <div class="mask rgba-white-slight"><img class="card-img-top" src="`+data['Photo']+`" alt="Card image cap"></div>
+  </a>
+</div>
 
-  <!-- Card content -->
-  <div class="card-body">
+<!-- Card content -->
+<div class="card-body">
 <div class="ribbon ribbon-top-left"><span>`+data['TransactionType']+`</span></div>
-    <!-- Title -->
-    <h2 class="card-title font-weight-bold"><a>`+data['Price']+`</a></h2>
-    <!-- Data -->
-    <p class="mb-2">`+data['City']+`,`+data['Province']+`</p>
-    <!-- Text -->
-    <p class="card-text">
-    <span>`+data['Bathroom']+` BathRooms</span>
-    <span>`+data['Bedroom']+` BedRooms</span>
-    <span>`+data['Size']+` sqft</span>
+  <!-- Title -->
+  <h2 class="card-title font-weight-bold"><a>`+data['Price']+`</a></h2>
+  <!-- Data -->
+  <p class="mb-2">`+data['City']+`,`+data['Province']+`</p>
+  <!-- Text -->
+  <p class="card-text">
+  <span>`+data['Bathroom']+` BathRooms</span>
+  <span>`+data['Bedroom']+` BedRooms</span>
 
-    </p>
-    <hr class="my-4">
-    <p class="lead"><strong>`+data['Listing Office']+`</strong></p>
-    <!-- Button -->
-    
+  </p>
+  <hr class="my-4">
+  <p class="lead"><strong>`+data['Listing Office']+`</strong></p>
+  <!-- Button -->
+  
 
-  </div>
+</div>
 
 </div>
 <!-- Card -->
-  </div>`;
+</div>`;
+}else{
+  var html=` <div class="col-lg-4 ">
+  <!-- Card -->
+<div class="card booking-card">
+
+<!-- Card image -->
+<div class="view overlay">
+
+  
+  <a href="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
+    <div class="mask rgba-white-slight"><img class="card-img-top" src="`+data['Photo']+`" alt="Card image cap"></div>
+  </a>
+</div>
+
+<!-- Card content -->
+<div class="card-body">
+<div class="ribbon ribbon-top-left"><span>`+data['TransactionType']+`</span></div>
+  <!-- Title -->
+  <h2 class="card-title font-weight-bold"><a>`+data['Price']+`</a></h2>
+  <!-- Data -->
+  <p class="mb-2">`+data['City']+`,`+data['Province']+`</p>
+  <!-- Text -->
+  <p class="card-text">
+  <span>`+data['Bathroom']+` BathRooms</span>
+  <span>`+data['Bedroom']+` BedRooms</span>
+  <span>`+data['Size']+` </span>
+
+  </p>
+  <hr class="my-4">
+  <p class="lead"><strong>`+data['Listing Office']+`</strong></p>
+  <!-- Button -->
+  
+
+</div>
+
+</div>
+<!-- Card -->
+</div>`;
+}
+
 
 
     //alert(html);
@@ -118,43 +157,82 @@ $(document).ready(function(){
     $("#card-stack").empty();
     dataset.forEach(data => {
 
-    var html=` <div class="col-lg-4 ">
-    <!-- Card -->
-<div class="card booking-card">
-
-  <!-- Card image -->
-  <div class="view overlay">
-
-    
-    <a href="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
-      <div class="mask rgba-white-slight"><img class="card-img-top" src="`+data['Photo']+`" alt="Card image cap"></div>
-    </a>
-  </div>
-
-  <!-- Card content -->
-  <div class="card-body">
-<div class="ribbon ribbon-top-left"><span>`+data['TransactionType']+`</span></div>
-    <!-- Title -->
-    <h2 class="card-title font-weight-bold"><a>`+data['Price']+`</a></h2>
-    <!-- Data -->
-    <p class="mb-2">`+data['City']+`,`+data['Province']+`</p>
-    <!-- Text -->
-    <p class="card-text">
-    <span>`+data['Bathroom']+` BathRooms</span>
-    <span>`+data['Bedroom']+` BedRooms</span>
-    <span>`+data['Size']+` sqft</span>
-
-    </p>
-    <hr class="my-4">
-    <p class="lead"><strong>`+data['Listing Office']+`</strong></p>
-    <!-- Button -->
-    
-
-  </div>
-
-</div>
-<!-- Card -->
-  </div>`;
+      if(data['Size']==undefined){
+        var html=` <div class="col-lg-4 ">
+        <!-- Card -->
+      <div class="card booking-card">
+      
+      <!-- Card image -->
+      <div class="view overlay">
+      
+        
+        <a href="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
+          <div class="mask rgba-white-slight"><img class="card-img-top" src="`+data['Photo']+`" alt="Card image cap"></div>
+        </a>
+      </div>
+      
+      <!-- Card content -->
+      <div class="card-body">
+      <div class="ribbon ribbon-top-left"><span>`+data['TransactionType']+`</span></div>
+        <!-- Title -->
+        <h2 class="card-title font-weight-bold"><a>`+data['Price']+`</a></h2>
+        <!-- Data -->
+        <p class="mb-2">`+data['City']+`,`+data['Province']+`</p>
+        <!-- Text -->
+        <p class="card-text">
+        <span>`+data['Bathroom']+` BathRooms</span>
+        <span>`+data['Bedroom']+` BedRooms</span>
+      
+        </p>
+        <hr class="my-4">
+        <p class="lead"><strong>`+data['Listing Office']+`</strong></p>
+        <!-- Button -->
+        
+      
+      </div>
+      
+      </div>
+      <!-- Card -->
+      </div>`;
+      }else{
+        var html=` <div class="col-lg-4 ">
+        <!-- Card -->
+      <div class="card booking-card">
+      
+      <!-- Card image -->
+      <div class="view overlay">
+      
+        
+        <a href="http://localhost:80/wordpress/wordpress/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
+          <div class="mask rgba-white-slight"><img class="card-img-top" src="`+data['Photo']+`" alt="Card image cap"></div>
+        </a>
+      </div>
+      
+      <!-- Card content -->
+      <div class="card-body">
+      <div class="ribbon ribbon-top-left"><span>`+data['TransactionType']+`</span></div>
+        <!-- Title -->
+        <h2 class="card-title font-weight-bold"><a>`+data['Price']+`</a></h2>
+        <!-- Data -->
+        <p class="mb-2">`+data['City']+`,`+data['Province']+`</p>
+        <!-- Text -->
+        <p class="card-text">
+        <span>`+data['Bathroom']+` BathRooms</span>
+        <span>`+data['Bedroom']+` BedRooms</span>
+        <span>`+data['Size']+` </span>
+      
+        </p>
+        <hr class="my-4">
+        <p class="lead"><strong>`+data['Listing Office']+`</strong></p>
+        <!-- Button -->
+        
+      
+      </div>
+      
+      </div>
+      <!-- Card -->
+      </div>`;
+      }
 
 
     //alert(html);

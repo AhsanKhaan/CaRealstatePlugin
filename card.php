@@ -167,7 +167,27 @@ function response( $ID,$AgentDetails,$Building_size,$Building_bed,$Building_bath
     //$response['order_id'] = $order_id;
     $response['ID']=$ID;
     $response['Listing Office']=$AgentDetails;
-     $response['Size'] = $Building_size;
+    if(is_array($Building_size)){
+
+        if(count($Building_size)>0){
+            $response['Size']=$Building_size[0];
+
+        }else{
+
+        }
+    }else if(strpos($Building_size,'sqft')==FALSE){
+        
+        if(strlen($Building_size)==0){
+            $response['Size']=$Building_size;
+        }else{
+            $response['Size'] = $Building_size.' sqft';
+        }
+    }else if(strpos($Building_size,'sqft')!==FALSE){
+        $response['Size'] = $Building_size;   
+    } 
+    //$response['Size']="";
+
+    // $response['Size'] = $Building_size;
      $response['Bedroom']=$Building_bed;
      $response['Bathroom']=$Building_bath;
      
