@@ -183,7 +183,15 @@ h1{
   transform: rotate(-45deg);
 }
 
-
+.chips{
+  height: 40px;
+  width: auto;
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 7px 3px #66bcf5;
+}
 
 /*--------------------------------------------------------------
 # Responsive Media Queries
