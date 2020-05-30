@@ -12,6 +12,13 @@
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <!-- Place your stylesheet here-->
         <link href="css/slider.css" rel="stylesheet" type="text/css">
+        <style>
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+    width: 70%;
+    margin: auto;
+  }
+  </style>
 </head>
 <body>
 <?php 
@@ -41,699 +48,17 @@ curl_close($ch);
  // print_r($json);
 //echo  '</pre>';
     //json_decode($json);
+    
+    // echo '<pre>';
+    // print_r($json['Photo']);
+    // echo '</pre>';
 
+//    exit();
     
 }//$_GET[] loop
 
 ?>
-<h1><?php 
-echo $json['Address']['StreetAddress'];
-echo '<br/>';
-echo $json['Address']['City'].',';
-echo $json['Address']['Province'].'    ';
-echo $json['Address']['PostalCode'];
-?>
 
-</h1>
-<a href="#"> 
-<img src="<?php
-    $cover=$json['Photo']['PropertyPhoto'][0]['LargePhotoURL'];
-    echo $cover;
-?>" />
-</a>
-<ul>
-<?php
-
-if(empty($json['Photo'])){
-  echo '<h2>Images unavailable</h2>';
-}else{
-  foreach($json['Photo']['PropertyPhoto'] as $photo){
-    echo '<li><a href="#"><img src="'.$photo['PhotoURL'].'"/></a></li>';
-    }
-}
-
-
-?>
-</ul>
-<div>
-<?php 
-//print_r($json['Building']);
-foreach($json['Building'] as $key => $item){
-   //print_r('Key:'.$key.'Value:'.$item);
-       switch($key){
-        case 'BedroomsTotal':
-            echo '<span style="font-size:40px;margin-right:30px;">'.$item.'Bedroom</span>';
-    break;
-        case 'BathroomTotal':
-            echo '<span style="font-size:40px;margin-right:30px;">'.$item.'Bathroom</span>';
-    break;
-        case 'SizeInterior':
-            echo '<span style="font-size:40px;margin-right:30px;">'.$item.'</span>';
-    break;
-        case 'ArchitecturalStyle':
-            echo '<span style="font-size:30px;margin-right:30px;">'.$item.'</span>';
-    break;
-        case 'FireplacePresent':
-            if ($item=='True'){
-                echo '<span style="font-size:30px;margin-right:30px;">Fire Place</span>';
-            }else{
-
-            }
-            
-    break;
-        case 'HeatingType':
-            echo '<span style="font-size:30px;margin-right:30px;">'.$item.'</span>';
-    break;
-        case 'CoolingType':
-            if(strpos($item, ",") !== false){
-                $temp=explode(",",$item);
-                //print_r($temp);
-                echo '<span style="font-size:30px;margin-right:30px;">'.$temp[1].'</span>';
-            } else{
-                echo '<span style="font-size:30px;margin-right:30px;">'.$item.'</span>';
-            }
-            
-    break;
-    
-        default:
-    }//switch ends
-
-}//for each ends
-
-echo '<h2>Price: $'.$json['Price'].'</h2>';
-
-?>
-</div>
-<?php 
-echo '<p>'.$json['PublicRemarks'].'</p>';
-?>
-<h3>Property Details</h3>
-<table border=1>
-<tbody>
-
-
-  <?php 
-  if(array_key_exists('ListingID',$json)){
-    echo '<tr>
-            <td>
-              <strong>MLS® Number
-              </strong>
-            </td>
-            <td class="text-right">'.$json['ListingID'].'</td>
-          </tr>';
-  }
-
-  ?>
-
-  <?php 
-    if(array_key_exists('PropertyType',$json)){
-      echo '
-      <tr>
-        <td>
-          <strong>Property Type</strong>
-        </td>
-        <td class="text-right">
-        '.$json['PropertyType'].'
-        </td>
-      </tr>';
-    }
-  ?>
-    
-
-
-    
-  <?php 
-  if($json['AmmenitiesNearBy']=="{}"){
-
-  }else{
-    echo '<tr>
-    <td>
-    <strong>Amenities NearBy</strong>
-    </td>
-    <td class="text-right">
-    '.$json['AmmenitiesNearBy'].'
-    </td>
-    </tr>';
-  }
-
-  ?>
-    
-
-
-  <?php
-   
-  if($json['EquipmentType']=="{}"){
-
-  }else{
-    echo '<tr>
-    <td>
-    <strong>Equipment Type</strong>
-    </td>
-    <td class="text-right">
-    '.$json['EquipmentType'].'
-    </td>
-    </tr>';
-  }
-    
-  ?>
-
-  <?php 
-var_dump($json['Features']);
-if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json['Features']))&&(count($json['Features'])==0))){
-
-}else{
-  if(is_array($json['Features'])){
-    echo '<tr>
-    <td>
-    <strong>Features</strong>
-    </td>
-    <td class="text-right">
-    '.implode(" ",$json['Features']).'
-    </td>
-         </tr>';
-   }else{
-    echo '<tr>
-    <td>
-     <strong>Features</strong>
-    </td>
-    <td class="text-right">
-    '.$json['Features'].'
-    </td>
-    </tr>';
-   }
-}
-  
-
-  ?>
-    
-
-
-  <?php
-  
-    if($json['ParkingSpaceTotal']=="{}"){
-
-    }else{ 
-      echo '<tr>
-      <td>
-      <strong>Parking Spaces Total</strong>
-      </td><td class="text-right">
-      '.$json['ParkingSpaceTotal'].'
-      </td>
-      </tr>';
-      }
-  ?>
-    
-
-
-  <?php 
-    if($json['RentalEquipmentType']==""){
-
-    }else{
-      echo '<tr>
-      <td>
-      <strong>Rental Equipment Type</strong>
-      </td>
-      <td class="text-right">
-      '.$json['RentalEquipmentType'].'
-      </td>
-      </tr>';
-    }
-
-  ?>
-    
-
-	</tbody>
-</table>
-
-<!-- Building Output -->
-<h3>Building</h3>
-<table border=1>
-<tbody>
-
-  <?php 
-  if(array_key_exists('BathroomTotal',$json['Building'])){
-    if($json['Building']['BathroomTotal']!='None'){
-      echo '<tr>
-      <td>
-      <strong>Bathroom Total</strong>
-      </td>
-      <td class="text-right">
-      '.$json['Building']['BathroomTotal'].'
-      </td>
-      </tr>';
-    }
-
-  }
-
-  ?>
-    
-
-
-  <?php 
-  if(array_key_exists('BedroomsAboveGround',$json['Building'])){
-    if($json['Building']['BedroomsAboveGround']!='None'){
-      echo '<tr>
-      <td>
-      <strong>Bedroom Above Ground</strong>
-      </td>
-      <td class="text-right">
-      '.$json['Building']['BedroomsAboveGround'].'
-      </td>
-      </tr>';
-    }
-
-  }
-
-  ?>
-    
-
-
-  <?php 
-  if(array_key_exists('BedroomsTotal',$json['Building'])){
-    if($json['Building']['BedroomsTotal']!='None'){
-      echo '<tr>
-      <td>
-      <strong>Bedrooms Total</strong>
-      </td>
-      <td class="text-right">
-      '.$json['Building']['BedroomsTotal'].'
-      </td>
-      </tr>';
-    }
-
-  }
-
-  ?>
-    
-
-
-
-  <?php 
-  if(array_key_exists('Age',$json['Building'])){
-    echo '<tr>
-    <td>
-      <strong>Age</strong>
-    </td>
-    <td class="text-right">
-      '.$json['Building']['Age'].'
-      </td>
-      </tr>';
-  }
-  ?>
-    
-
-
-  <?php 
-  if(array_key_exists('Appliances',$json['Building'])){
-    echo '<tr>
-    <td>
-    <strong>Appliances</strong>
-    </td><td class="text-right">
-      '.$json['Building']['Appliances'].'
-    </td>
-      </tr>';
-  }
-  ?>
-    
-
-
-  <?php 
-  if(array_key_exists('ArchitecturalStyle',$json['Building'])){
-    echo '<tr>
-    <td>
-    <strong>ArchitecturalStyle</strong>
-    </td>
-    <td class="text-right">
-      '.$json['Building']['ArchitecturalStyle'].'
-      </td>
-      </tr>';
-  }
-  ?>
-    
-
-
-  <?php 
-  if(array_key_exists('ConstructedDate',$json['Building'])){
-    echo '<tr>
-    <td>
-    <strong>Constructed Date</strong>
-    </td>
-    <td class="text-right">
-      '.$json['Building']['ConstructedDate'].'
-      </td>
-      </tr>';
-  }
-  ?>
-    
-
-<tr>
-    <td>
-    <strong>Construction Style Attachment</strong>
-    </td>
-  <?php 
-  if(array_key_exists('ConstructionStyleAttachment',$json['Building'])){
-    echo '<td class="text-right">
-      '.$json['Building']['ConstructionStyleAttachment'].'
-      </td>';
-  }
-  ?>
-    
-</tr>
-<tr>
-    <td>
-    <strong>Stories Total</strong>
-    </td>
-  <?php 
-  if(array_key_exists('StoriesTotal',$json['Building'])){
-    if($json['Building']['StoriesTotal']!='None'){
-      echo '<td class="text-right">
-      '.$json['Building']['StoriesTotal'].'
-      </td>';
-    }
-
-  }
-
-  ?>
-    
-</tr>
-<tr>
-    <td>
-    <strong>Basement Type</strong>
-    </td>
-  <?php 
-  if(array_key_exists('BasementType',$json['Building'])){
-    if($json['Building']['BasementType']!='None'){
-      echo '<td class="text-right">
-      '.$json['Building']['BasementType'].'
-      </td>';
-    }
-
-  }
-
-  ?>
-    
-</tr>
-<tr>
-    <td>
-    <strong>Cooling Type</strong>
-    </td>
-  <?php 
-  if(array_key_exists('CoolingType',$json['Building'])){
-    if($json['Building']['CoolingType']!='None'){
-      echo '<td class="text-right">
-      '.$json['Building']['CoolingType'].'
-      </td>';
-    }
-
-  }
-
-  ?>
-    
-</tr>
-<tr>
-    <td>
-    <strong>Exterior Finish</strong>
-    </td>
-  <?php 
-  if(array_key_exists('ExteriorFinish',$json['Building'])){
-    echo '<td class="text-right">
-      '.$json['Building']['ExteriorFinish'].'
-      </td>';
-  }
-  ?>
-    
-</tr>
-<tr>
-    <td>
-    <strong>FirePlace Present</strong>
-    </td>
-  <?php 
-  if(array_key_exists('FireplacePresent',$json['Building'])){
-    if($json['Building']['FireplacePresent']=='True'){
-      echo '<td class="text-right">
-      Yes
-      </td>';
-    }else{
-      echo '<td class="text-right">
-      No
-      </td>';
-    }
-  }
-  ?>
-    
-</tr>
-<tr>
-    <td>
-    <strong>Amenities NearBy</strong>
-    </td>
-  <?php 
-    echo '<td class="text-right">
-    '.$json['AmmenitiesNearBy'].'
-    </td>';
-  ?>
-    
-</tr>
-<tr>
-    <td>
-    <strong>Equipment Type</strong>
-    </td>
-  <?php 
-    echo '<td class="text-right">
-    '.$json['EquipmentType'].'
-    </td>';
-  ?>
-    
-</tr>
-<tr>
-    <td>
-    <strong>Features</strong>
-    </td>
-  <?php 
-    echo '<td class="text-right">
-    '.'
-    </td>';
-  ?>
-    
-</tr>
-<tr>
-    <td>
-    <strong>Parking Spaces Total</strong>
-    </td>
-  <?php 
-    echo '<td class="text-right">
-    '.$json['ParkingSpaceTotal'].'
-    </td>';
-  ?>
-    
-</tr>
-<tr>
-    <td>
-    <strong>Heating Type</strong>
-    </td>
-  <?php 
-  if(array_key_exists('HeatingType',$json['Building'])){
-    echo '<td class="text-right">
-      '.$json['Building']['HeatingType'].'
-      </td>';
-  }
-  ?>
-    
-</tr>
-<tr>
-    <td>
-    <strong>Heating Fuel</strong>
-    </td>
-  <?php 
-  if(array_key_exists('HeatingFuel',$json['Building'])){
-    echo '<td class="text-right">
-      '.$json['Building']['HeatingFuel'].'
-      </td>';
-  }
-  ?>
-    
-</tr>
-<tr>
-    <td>
-    <strong>Rental Equipment Type</strong>
-    </td>
-  <?php 
-    echo '<td class="text-right">
-    '.$json['RentalEquipmentType'].'
-    </td>';
-  ?>
-    
-</tr>
-<tr>
-    <td>
-    <strong>Size Interior</strong>
-    </td>
-  <?php 
-  if(array_key_exists('SizeInterior',$json['Building'])){
-      if(is_array($json['Building']['SizeInterior'])){
-        echo '<td class="text-right">
-        '.implode(" ",$json['Building']['SizeInterior']).'
-        </td>';
-      }else{
-        echo '<td class="text-right">
-        '.$json['Building']['SizeInterior'].'
-        </td>';
-        
-      }
-
-  }
-  ?>
-    
-</tr>
-<tr>
-    <td>
-    <strong>Utility Water</strong>
-    </td>
-  <?php 
-  if(array_key_exists('UtilityWater',$json['Building'])){
-    echo '<td class="text-right">
-      '.$json['Building']['UtilityWater'].'
-      </td>';
-  }
-  ?>
-    
-</tr>
-<tr>
-    <td>
-    <strong>Type</strong>
-    </td>
-  <?php 
-  if(array_key_exists('Type',$json['Building'])){
-    echo '<td class="text-right">
-      '.$json['Building']['Type'].'
-      </td>';
-  }
-  ?>
-    
-</tr>
-	</tbody>
-</table>
-   <!-- For Rooms PHP coding -->
-    <?php 
-    if(array_key_exists('Rooms',$json['Building'])){
-       echo '<h3>Rooms</h3>
-       <table border=1>
-         <thead>
-           <tr>
-             <th>Level</th>
-             <th>Type</th>
-             <th>Length</th>
-             <th>Width</th>
-             <th>Dimension</th>
-           </tr>
-         </thead>
-         <tbody>';
-      foreach($json['Building']['Rooms']['Room'] as $item){
-        echo '<tr>';
-        //for level
-        echo '<td colspan=1>'.$item['Level'].'</td>';
-        //for type
-        echo '<td colspan=1>'.$item['Type'].'</td>';
-        //for length
-        if(is_array($item['Length'])){
-          echo '<td colspan=1>'.implode(" ",$item['Length']).'</td>';
-        }else{
-          echo '<td colspan=1>'.$item['Length'].'</td>';
-        }
-        
-        //for width
-        if(is_array($item['Width'])){
-          echo '<td colspan=1>'.implode(" ",$item['Width']).'</td>';
-        }else{
-          echo '<td colspan=1>'.$item['Width'].'</td>';
-        }
-        
-        //for dimension
-        if(is_array($item['Dimension'])){
-          echo '<td colspan=1>'.implode($item['Dimension']).'</td>';
-        }else{
-          echo '<td colspan=1>'.$item['Dimension'].'</td>';
-        }
-        
-        //ending row
-        echo '</tr>';
-
-  
-      }//for each ends
-      echo '</tbody>
-          </table>';
-  
-    }
-  ?>
-  <!-- For Parking table -->
-  <?php 
-    if(array_key_exists('ParkingSpaces',$json)){
-        if(array_key_exists('Parking',$json['ParkingSpaces'])){
-            echo '<h3>Parking</h3>';
-            echo '<table border=1>';
-              
-            foreach($json['ParkingSpaces']['Parking'] as $item){
-              echo '<tr>';
-              // var_dump($item);
-              if(is_array($item)){
-                echo '<td>'.implode($item).'</td>';
-              }else{
-                echo '<td>'.$item.'</td>';
-              }
-              //echo '<td>'.$item.'</td>';  
-              echo '</tr>';
-            }//for each ends
-            echo '</table>';
-        }//Parking ends
-    }
-  ?>
-<!-- For Land Details table -->
-    <?php 
-    if(array_key_exists('Land',$json)){
-        
-        if(count($json['Land'])>0){
-          echo '<h3>Land</h3>';
-          echo '<table border=1 >';
-          
-          if(array_key_exists('Acreage',$json['Land'])){
-            if($json['Land']['Acreage']==true){
-              echo '<tr>';
-              echo '<td>Acreage</td><td>Yes</td>';
-              echo '</tr>';
-            }else{
-              echo '<tr>';
-              echo '<td>Acreage</td><td>No</td>';
-              echo '</tr>';
-            }
-          }
-
-          foreach($json['Land'] as $key=>$value){
-            echo '<tr>';
-            if($key=='Acreage'){
-              continue;
-              
-            }else{
-              $label = preg_replace('/(?<!\ )[A-Z]/', ' $0', $key);
-              echo '<td>'.$label.'</td>';
-              if(is_array($value)){
-                if(empty($value)){
-                  echo '<td>Unknown</td>';
-                }else{
-                  echo '<td>'.implode(" ",$value).'</td>';
-                }//check for empty ends
-                
-              }else{
-                echo '<td>'.$value.'</td>';
-              }
-              
-            }
-            echo '</tr>';
-          }//for each end
-          echo '</table>';
-        }//array length check end
-    }//check for existance of array end
-    get_footer();
-    ?>
-    
 
 <div class="bootstrap-realtypress">
 <div class="rps-single-listing">
@@ -818,119 +143,85 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
     </div>
       </div><!-- /.col-md-3 -->
     </div>
-	</div>	    	
+	</div>
+  <div class="container-fluid">	    	
 <div class="row rps-property-photo-row">
    <div class="col-md-9 col-xs-12">
-      
-                   <ul class="slides new_slide" style="width: 100%; overflow: hidden; position: relative; height: 650px;">
-                       <input type="radio" name="radio-btn" id="img-1" checked />
-                       <li class="slide-container my_slide_container">
-                           <div class="slide my_slide">
-                               <img src="http://farm9.staticflickr.com/8072/8346734966_f9cd7d0941_z.jpg" />
-                           </div>
-                           <div class="nav">
-                               <label for="img-6" class="prev">&#x2039;</label>
-                               <label for="img-2" class="next">&#x203a;</label>
-                           </div>
-                       </li>
-                   </ul>
-              
-       </div>
+   <div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+  <?php
+  foreach($json['Photo']['PropertyPhoto'] as $key=>$value){
+      if($key==0){
+       echo '<li data-target="#demo" data-slide-to="'.$key.'" class="active"></li>';
+      }else{
+       echo '<li data-target="#demo" data-slide-to="'.$key.'"></li>';
+      }
+    }
+  ?>
+    <!-- <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li> -->
+  </ul>
+  
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+  <?php 
+       foreach($json['Photo']['PropertyPhoto'] as $key=>$value){
+        if($key==0){
+         echo '<div class="carousel-item active">
+         <img class="img-responsive" src="'.$value['LargePhotoURL'].'" >
+       </div>';
+        }else{
+         echo '<div class="carousel-item">
+         <img class="img-responsive" src="'.$value['LargePhotoURL'].'">
+       </div>';
+        }
+      }
+    ?>
+    <!-- <div class="carousel-item active">
+      <img class="img-responsive" src="https://i.ytimg.com/vi/7WCbIjqjHM4/maxresdefault.jpg" alt="Los Angeles">
+    </div>
+    <div class="carousel-item">
+      <img class="img-responsive" src="https://ddfcdn.realtor.ca/listings/TS637228551264930000/reb82/medres/0/c4741370_1.jpg" alt="Chicago" width="1100" height="500">
+    </div>
+    <div class="carousel-item">
+      <img class="img-responsive" src="https://ddfcdn.realtor.ca/listings/TS637228551264930000/reb82/medres/0/c4741370_1.jpg" alt="New York" width="1100" height="500">
+    </div> -->
+  </div>
+  
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+     </div>
     <div class="col-md-3 col-xs-12">
         <div class="bx-pager-wrap">
            <ul class="bx-pager" >
-           <?php
+            <?php
 
-            if(empty($json['Photo'])){
-              echo '<h2>Images unavailable</h2>';
-            }else{
-              foreach($json['Photo']['PropertyPhoto'] as $key=>$photo){
-                echo '<li class="slide">
-                <a data-slide-index="'.$key.'" href="" rel="nofollow" style="display:block;width:100%;background:url('.$photo['PhotoURL'].') no-repeat center;background-size:contain;" class="active">
-                <img src="'.$photo['PhotoURL'].'"/></a>
-                </li>';
-                }
-            }
-
-
-?>                
-                  <!-- <li class="slide">
-                  <a data-slide-index="0" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-1.jpg) no-repeat center;background-size:contain;" class="active">
-                  <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li>
-                  <li class="slide">
-                  <a data-slide-index="1" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-2.jpg) no-repeat center;background-size:contain;">
-                  <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li>
-                  <li class="slide">
-                  <a data-slide-index="2" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-3.jpg) no-repeat center;background-size:contain;">
-                  <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li>
-                  <li class="slide">
-                  <a data-slide-index="3" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-4.jpg) no-repeat center;background-size:contain;">
-                  <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li>
-                  <li class="slide">
-                  <a data-slide-index="4" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-5.jpg) no-repeat center;background-size:contain;">
-                  <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li>
-                  <li class="slide">
-                  <a data-slide-index="5" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-6.jpg) no-repeat center;background-size:contain;">
-                  <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li>
-                  <li class="slide">
-                  <a data-slide-index="6" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-7.jpg) no-repeat center;background-size:contain;">
-                  <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li>
-                  <li class="slide">
-                  <a data-slide-index="7" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-8.jpg) no-repeat center;background-size:contain;">
-                  <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li>
-                  <li class="slide">
-                  <a data-slide-index="8" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-9.jpg) no-repeat center;background-size:contain;">
-                  <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li>
-                  <li class="slide">
-                  <a data-slide-index="9" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-10.jpg) no-repeat center;background-size:contain;">
-                  <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li>
-                  <li class="slide">
-                  <a data-slide-index="10" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-11.jpg) no-repeat center;background-size:contain;">
-                  <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li>
-                  <li class="slide">
-                  <a data-slide-index="11" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-12.jpg) no-repeat center;background-size:contain;">
-                  <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li>
-                  <li class="slide">
-                  <a data-slide-index="12" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-13.jpg) no-repeat center;background-size:contain;">
-                  <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li>
-                  <li class="slide">
-                  <a data-slide-index="13" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-14.jpg) no-repeat center;background-size:contain;">
-                  <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li>
-                  <li class="slide">
-                  <a data-slide-index="14" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-15.jpg) no-repeat center;background-size:contain;">
-                  <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li>
-                  <li class="slide">
-                  <a data-slide-index="15" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-16.jpg) no-repeat center;background-size:contain;">
-                  <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li>
-                  <li class="slide">
-                  <a data-slide-index="16" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-17.jpg) no-repeat center;background-size:contain;">
-                  <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li>
-                  <li class="slide">
-                  <a data-slide-index="17" href="" rel="nofollow" style="display:block;width:100%;background:url(https://princecowdry.com/wp-content/uploads/realtypress/images/listing/21799295/Property-21799295-LargePhoto-18.jpg) no-repeat center;background-size:contain;">
-                  <img src="https://princecowdry.com/wp-content/plugins/realtypress-premium/public/img/trans-256x200.png"></a>
-                  </li> -->
+              if(empty($json['Photo'])){
+                echo '<h2>Images unavailable</h2>';
+              }else{
+                foreach($json['Photo']['PropertyPhoto'] as $key=>$photo){
+                  echo '<li class="slide">
+                  <a data-slide-index="'.$key.'" href="" rel="nofollow" style="display:block;width:100%;background:url('.$photo['PhotoURL'].') no-repeat center;background-size:contain;" class="active">
+                  <img src="'.$photo['PhotoURL'].'"/></a>
+                  </li>';
+                  }
+              }
+              ?>                
            </ul>
             
-        </div>
-    </div>
-</div> 
+         </div>
+     </div><!--col-md-3-ends-->
+    </div><!--row ends-->
+</div> <!--container -ends-->
    <div class="row">
        <div class="col-md-9 col-sm-8 col-xs-12">
   <!-- Intro Specs -->
@@ -1685,7 +976,9 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
 </div>
 </div>
 </div>
-
+<?php 
+get_footer();
+?>
 
 
 
@@ -1700,6 +993,34 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+$(document).ready(function(){
+  // Activate Carousel
+  $("#myCarousel").carousel();
+    
+  // Enable Carousel Indicators
+  $(".item1").click(function(){
+    $("#myCarousel").carousel(0);
+  });
+  $(".item2").click(function(){
+    $("#myCarousel").carousel(1);
+  });
+  $(".item3").click(function(){
+    $("#myCarousel").carousel(2);
+  });
+  $(".item4").click(function(){
+    $("#myCarousel").carousel(3);
+  });
+    
+  // Enable Carousel Controls
+  $(".left").click(function(){
+    $("#myCarousel").carousel("prev");
+  });
+  $(".right").click(function(){
+    $("#myCarousel").carousel("next");
+  });
+});
+</script>
 
 </body>
 </html>
