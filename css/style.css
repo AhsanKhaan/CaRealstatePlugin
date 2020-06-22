@@ -1,0 +1,377 @@
+html, body{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  color: #222;
+}
+
+a{
+  text-decoration: none;
+}
+
+p, li, a{
+  font-size: 14px;
+}
+
+/* GRID */
+
+.twelve { width: 100%; }
+.eleven { width: 91.53%; }
+.ten { width: 83.06%; }
+.nine { width: 74.6%; }
+.eight { width: 66.13%; }
+.seven { width: 57.66%; }
+.six { width: 49.2%; }
+.five { width: 40.73%; }
+.four { width: 32.26%; }
+.three { width: 23.8%; }
+.two { width: 15.33%; }
+.one { width: 6.866%; }
+
+/* COLUMNS */
+
+.col {
+	display: block;
+	float:left;
+	margin: 1% 0 1% 1.6%;
+}
+
+.col:first-of-type {
+  margin-left: 0;
+}
+
+.container{
+  width: 100%;
+  max-width: 940px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+
+/* CLEARFIX */
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}
+
+/* GENERAL STYLES */
+
+.pagination{
+  padding: 30px 0;
+}
+
+.pagination ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.pagination a{
+  display: inline-block;
+  padding: 10px 18px;
+  color: #222;
+}
+
+
+/* TWELVE */
+
+.p12 a:first-of-type, .p12 a:last-of-type{
+  background-color: #2ecc71;
+  color: #fff;
+  font-weight: bold;
+}
+
+
+
+
+
+.wrapper{
+  margin: 60px auto;
+  text-align: center;
+}
+h1{
+  margin-bottom: 1.25em;
+}
+#pagination-demo-1,#pagination-demo{
+  display: inline-block;
+  
+}
+#pagination-demo-1,#pagination-demo li{
+  display: inline-block;
+}
+
+.page-content{
+  background: #eee;
+  display: inline-block;
+  padding: 10px;
+  width: 100%;
+  max-width: 660px;
+}
+/*most important styling for listing*/
+.cont{
+  
+  max-width: 100%!important;
+  /* margin-left: 0px!important; */
+}
+/*property search button */ 
+.btn-search{
+  padding:2px 30px;
+  margin-left: 10px;
+}
+/* ribbon */
+.ribbon {
+  width: 95px;
+  height: 95px;
+  overflow: hidden;
+  position: absolute;
+}
+.ribbon::before,
+.ribbon::after {
+  position: absolute;
+  z-index: -12;
+  content: '';
+  display: block;
+  border: 5px solid #2980b9;
+}
+.ribbon span {
+  position: absolute;
+  display: block;
+  width: 150px;
+  padding: 5px 0;
+  background-color: #6a7be7;
+  box-shadow: 0 5px 10px rgba(0,0,0,.1);
+  color: #fff;
+  font: 700 14px/1 'Lato', sans-serif;
+  text-shadow: 0 1px 1px rgba(0,0,0,.2);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* top left*/
+.ribbon-top-left {
+  top: -10px;
+  left: -10px;
+}
+.ribbon-top-left::before,
+.ribbon-top-left::after {
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.ribbon-top-left::before {
+  top: 0;
+  right: 0;
+}
+.ribbon-top-left::after {
+  bottom: 0;
+  left: 0;
+}
+.ribbon-top-left span {
+  right: -17px;
+  top: 30px;
+  transform: rotate(-45deg);
+}
+
+.chips{
+height: 100%;
+    width: auto;
+    background-color: #989898;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+
+/*--------------------------------------------------------------
+# Card CSS
+--------------------------------------------------------------*/
+.price{
+  
+
+
+  color: #989898;
+  font-size: 28px;
+  display: flex;
+
+  margin-top: 0px !important;
+      margin-bottom: 4px !important;
+}
+.city-province{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+  font-size: large;
+  color: #6a7be7;
+}
+.zoom-effect-container {
+  float: left;
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.image-card {
+    position: static;
+    /* top: 0; */
+    /* left: 0; */
+}
+
+.image-card img {
+-webkit-transition: 0.4s ease;
+transition: 0.4s ease;
+height: 200px;
+    object-fit: cover;
+    width: 100%;
+    max-height: 300px;
+}
+
+.zoom-effect-container:hover .image-card img {
+-webkit-transform: scale(1.08);
+transform: scale(1.08);
+}
+/*--------------------------------------------------------------
+# Responsive Media Queries
+--------------------------------------------------------------*/
+
+@media (min-width: 768px) {
+  #contact .contact-address,
+  #contact .contact-phone,
+  #contact .contact-email {
+    padding: 20px 0;
+  }
+
+  #contact .contact-phone {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+  }
+}
+
+@media (min-width: 992px) {
+  #testimonials .testimonial-item p {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1024px) {
+  #header #logo {
+    padding-left: 60px;
+  }
+
+  #intro p {
+    width: 60%;
+  }
+
+  #intro .carousel-control-prev,
+  #intro .carousel-control-next {
+    width: 5%;
+  }
+
+  #nav-menu-container {
+    padding-right: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 15px;
+  }
+
+  #header #logo h1 {
+    font-size: 28px;
+  }
+
+  #header #logo img {
+    max-height: 40px;
+  }
+
+  #intro h2 {
+    font-size: 28px;
+  }
+
+  #nav-menu-container {
+    display: none;
+  }
+
+  #mobile-nav-toggle {
+    display: inline;
+  }
+}
+
+
+
+#card-stack .col-lg-3{
+  padding-bottom: 15px;
+}
+#card-stack .card .card-body{
+  background-color: #f3f3f3;
+  border-top: 3px solid #6a7be7;
+  color: #6f6f6f;
+}
+
+
+#card-stack .card .lead{
+  font-size: 12px;
+  font-weight: bold;
+  font-style: normal;
+  margin-bottom: 0px !important;
+  margin-top: 15px !important;
+}
+.pagination-sm
+    {margin-left: 25%;}
+.pagination-sm .page-item{
+margin-left: 10px !important;
+    margin-right: 10px !important;
+}
+.pagination-sm .page-link {
+    
+    padding: 1rem 2rem !important;
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+        font-weight: bold;
+}
+.pagination-sm .page-item.first,.page-item.prev,.page-item.next,.page-item.last {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    
+}
+
+
+#property_search .card-header{
+    border-bottom: 1px solid rgb(106, 123, 231);
+    background-color: rgb(106, 123, 231);
+    font-family: serif;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+#property_search .card-body{
+    font-family: sans-serif;
+}
+
+#TransactionType,#input_province,#PropertyType,#input_mls,#input_city{
+        font-size: small !important; 
+        height: 35px;
+ }
+
+ #property_search .form-check-input{
+margin-right: 10px;
+
+ }
+  #property_search .btn-search{
+   background: #6a7be7;
+ }
