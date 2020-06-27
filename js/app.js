@@ -1,57 +1,66 @@
 $(document).ready(function(){
+  //url = new URL(window.location.href);
+  var baseURL="https://crea.bmsastech.com/";
+
   $('html, body').animate({
 	        scrollTop: $('#property_search').offset().top
-	    }, 200);
-  var baseURL="https://crea.bmsastech.com/";
+      }, 200);
+       
   init(baseURL);
   //setUserInterface();
  $("#search").click(function(){
     //get all data from for and build query string
     data_collection=$('#property_search').serialize();
     var url=baseURL+"card.php?"+data_collection;
-
-     $.get( url, function(dataset) {
-       var dataset = JSON.parse(dataset);
-  //    use for destroing old pages
-  $('#pagination-demo').twbsPagination('destroy');
-   
-      var Limit=12;
-    var totalPages=Math.ceil(dataset.TotalListing/Limit);
-    if(dataset.TotalListing<=Limit){
-      showdata(dataset);
-    }else if(!parseInt(totalPages)){
-      //console.log("Else if"+totalPages);
-      $("#card-stack").empty();
-      $("#card-stack").html("<h2>No Record Found</h2>");
-    }else{
-      console.log("Hello World"+totalPages);
-      array_chunks=chunkarray(dataset.property,Limit);
-      show_chunks(array_chunks[0],baseURL);
-      
-        //$('#pagination-demo-1').empty();
-    $('#pagination-demo').twbsPagination({
-      totalPages: totalPages,
-      visiblePages: 6,
-      next: 'Next',
-      prev: 'Prev',
-      onPageClick: function (event, page) {
-          //fetch content and render here
-          $("#card-stack").empty(); 
-          show_chunks(array_chunks[page-1],baseURL); 
-         
-      }
-  });//twbs Pagination
-
-    }
-
-     
-    
-
-    });//get ajax function ends
+    window.location.href+="?"+data_collection;
+    display_data_with_url(url);
   });//Search Button Ends click
    
-  
+function display_data_with_url(url){
 
+  $.get( url, function(dataset) {
+    var dataset = JSON.parse(dataset);
+//    use for destroing old pages
+$('#pagination-demo').twbsPagination('destroy');
+
+   var Limit=12;
+ var totalPages=Math.ceil(dataset.TotalListing/Limit);
+ if(dataset.TotalListing<=Limit){
+   showdata(dataset);
+ }else if(!parseInt(totalPages)){
+   //console.log("Else if"+totalPages);
+   $("#card-stack").empty();
+   $("#card-stack").html("<h2>No Record Found</h2>");
+ }else{
+   console.log("Hello World"+totalPages);
+   array_chunks=chunkarray(dataset.property,Limit);
+   show_chunks(array_chunks[0],baseURL);
+   
+     //$('#pagination-demo-1').empty();
+ $('#pagination-demo').twbsPagination({
+   totalPages: totalPages,
+   visiblePages: 6,
+   next: 'Next',
+   prev: 'Prev',
+   onPageClick: function (event, page) {
+       //fetch content and render here
+       $("#card-stack").empty(); 
+       show_chunks(array_chunks[page-1],baseURL); 
+      
+   }
+});//twbs Pagination
+
+ }
+
+  
+ 
+
+ });//get ajax function ends
+}  
+
+
+
+  
   function showdata(dataset,baseURL){
     $("#card-stack").empty();
     dataset.property.forEach(data => {
@@ -339,8 +348,12 @@ if(data['Size']==undefined){
   }
   
   function init(baseURL){
-    
-    //total number of pages can be shown from here
+  
+    if(window.location.search!=""){
+      var url=baseURL+"card.php"+window.location.search;
+      display_data_with_url(url);
+   }else{
+          //total number of pages can be shown from here
     //uses for displaying total pages
   $("#LastPage").text($('#TotalCount').text()/10);
   $.get(baseURL+"card.php?Page=1", function(data, status){
@@ -384,6 +397,10 @@ if(data['Size']==undefined){
     }
 });//twbs Pagination
     });
+   
+  }//else ends
+    
+
   }//init ends
 
 
