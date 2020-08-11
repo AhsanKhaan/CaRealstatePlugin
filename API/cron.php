@@ -1,37 +1,59 @@
 <?php
 include 'db_connection.php';
+use Datetime;
+
+
+
+$get_updated_time="SELECT * FROM wp_LastUpdated";
+$result=mysqli_query($conn,$get_updated_time);
+if (!$result) {
+    echo "Could not successfully run query ($get_updated_time) from DB: " . mysql_error();
+    exit;
+}
+
+if (mysqli_num_rows($result) == 0) {
+    echo "No rows found, nothing to print so am exiting";
+    exit;
+}
+$row=mysqli_fetch_assoc($result);
+
+
+// $date_now=new DateTime();
+// $date_now->setTimezone(new DateTimeZone('Asia/Karachi'));
+// $date_now->format('Y-m-d H:i:s');
+echo $row['start'];
+echo "<br/>";
+echo $row['end'];
+var_dump(date('Y-m-d H:i:s'));
+
+
+$prevTime=strtotime($row['start']);
+$currentTime=strtotime(date('Y-m-d H:i:s'));
+echo "prev:".$prevTime;
+echo "current:".$currentTime;
+
+
+// Formulate the Difference between two dates 
+$hours = abs($currentTime - $prevTime)/3600;  
+  
 
 
 
 
+$TimeBackPull=ceil($hours);
+echo "<h1>";
+print_r($TimeBackPull);
+echo "</h1>";
+exit();
 
 
-
-// 	//SCHEDULING EVENT
-// 	if (! wp_next_scheduled ( 'my_hourly_event' )) {
-// 	wp_schedule_event(time(), 'hourly', 'my_hourly_event');
-// 	}
-	
-
-
-    
-// }
-
-// add_action('my_hourly_event', 'do_this_hourly');
-
-// function do_this_hourly() {
 // do something every hour
 /* Script Variables */
 // Lots of output, saves requests to a local file.
 $debugMode = false; 
-// Initially, you should set this to something like "-2 years". Once you have all day, change this to "-48 hours" or so to pull incremental data
-//print_r($conn->query("SELECT * FROM test")->num_rows);
-//if($conn->query("SELECT * FROM wp_LastUpdated")->num_rows===0)
-//{
-$TimeBackPull = "-2 years";//-2 hours
-//}else{
-   $TimeBackPull="-73 hours";
-//}
+
+$TimeBackPull = "-2 years";
+
 $conn->close();
 /* RETS Variables */
 require("PHRets_CREA.php");
@@ -84,13 +106,7 @@ if(empty($totalAvailable) || $totalAvailable == 0)
  
       $index=0;
      
- //     if ($conn->query("UPDATE `wp_LastUpdated` (`Start`) SET (now())") === TRUE) {
-     //  echo "New record created successfully";
- //   print_r("Start Time Stamp Updated");    
- //  } else {
-  //     echo "Error:Not updated Start Time Stamp "  . $conn->error;
-  // }
-   //$conn -> close();
+ 
 
       for($i = 0; $i < ceil($totalAvailable/$RETS_LimitPerQuery); $i++)
       {	
@@ -112,11 +128,11 @@ if(empty($totalAvailable) || $totalAvailable == 0)
                // }
                // $index++;
                echo "<pre>";
-               //print_r($listing);
+               print_r($listing);
                echo "<hr>";
                // //print_r($results["Properties"]) ;     
                 echo "</pre>";
-               //exit();     
+               exit();     
                Update_to_database($listing,30828205);
             
             }
