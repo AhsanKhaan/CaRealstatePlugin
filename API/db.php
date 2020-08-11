@@ -80,7 +80,7 @@ $debugMode = false;
 //{
 $TimeBackPull = "-2 years";//-2 hours
 //}else{
-   $TimeBackPull="-24 hours";
+   $TimeBackPull="-73 hours";
 //}
 $conn->close();
 /* RETS Variables */
@@ -153,22 +153,22 @@ if(empty($totalAvailable) || $totalAvailable == 0)
          //print_r("-----Get IDs For ".$startOffset." to ".($startOffset + $RETS_LimitPerQuery).". Mem: ".round(memory_get_usage()/(1024*1024), 1)."MB-----");
          $params = array("Limit" => $RETS_LimitPerQuery, "Format" => "STANDARD-XML", "Count" => 1, "Offset" => $startOffset);
          $results = $RETS->SearchQuery("Property", "Property", $DBML, $params);			
-         //print_r($results);
-         //echo "<br>";
-         //echo "<br>";
-         //echo "<br>";
-         //print_r($results["properties"]);
-         //print_r($results["Properties"]);
-         $index=0;
-         //print_r($results["Properties"]);
+
          if(is_array($results["Properties"])){
             foreach($results["Properties"] as $listing)
             {	//print_r($listing);
-               if($index==1000){
-                  return;
-               }
-               $index++;     
-               Insert_to_database($listing);            
+               // if($index==1000){
+               //    return;
+               // }
+               // $index++;
+               // echo "<pre>";
+               // print_r($listing);
+               // echo "<hr>";
+               // //print_r($results["Properties"]) ;     
+               // echo "</pre>";
+                    
+               Insert_to_database($listing);
+//               exit();            
             }
          }else{
          
@@ -220,8 +220,13 @@ function Insert_to_database($data){
    // }
    // error_log("ID".$ID);
    
-   if(array_key_exists('LastUpdated',$data)){
-      $LastUpdated=$data['LastUpdated'];
+   if(array_key_exists('@attributes',$data)){
+      if(array_key_exists('LastUpdated',$data['@attributes'])){
+         $LastUpdated=$data['@attributes']['LastUpdated'];
+      }else{
+         $LastUpdated=json_encode(json_decode("{}"));
+      }
+      
    }else{
       $LastUpdated=json_encode(json_decode("{}"));
      
@@ -617,6 +622,7 @@ function Insert_to_database($data){
       //   $sql_insert="INSERT INTO `{$wpdb->base_prefix}properties`(ID,LastUpdated,ListingID,Board,Features,ListingContractDate,LocationDescription,OwnershipType,Price,PropertyType,PublicRemarks,TransactionType,WaterFrontType,ZoningDescription)        
       //           VALUES(`$ID`,`$LastUpdated`,`$ListingID`,`$Board`,`$Features`,`$ListingContractDate`,`$LocationDescription`,`$OwnershipType`,`$Price`,`$PropertyType`,`$PublicRemarks`,`$TransactionType`,`$WaterFrontType`,`$ZoningDescription`)";
 // valid query for insertion
+             $City_card=addslashes($City_card);
              $sql_insert="INSERT INTO wp_properties_2(LastUpdated,ListingID,AgentDetails,Board,Business,Building,Land,Address,AmmenitiesNearBy,AlternateURL,EquipmentType,Features,ListingContractDate,LocationDescription,OwnershipType,ParkingSpaces,ParkingSpaceTotal,Photo,Price,PropertyType,PublicRemarks,RentalEquipmentType,Structure,TransactionType,UtilitiesAvailable,WaterFrontType,ZoningDescription,ViewType,MoreInformationLink,Card,City,Province,Bedroom,Bathroom)
              VALUES('$LastUpdated','$ListingID','$AgentDetails','$Board','$Business','$Building','$Land','$Address','$AmmenitiesNearBy','$AlternateURL','$EquipmentType','$Features','$ListingContractDate','$LocationDescription','$OwnershipType','$ParkingSpaces','$ParkingSpaceTotal','$Photo','$Price','$PropertyType','$PublicRemarks','$RentalEquipmentType','$Structure','$TransactionType','$UtilitiesAvailable','$WaterFrontType','$ZoningDescription','$ViewType','$MoreInformationLink','$json','$City_card','$Province_card','$Building_bed_card','$Building_bath_card')";
  // Query Ends 
