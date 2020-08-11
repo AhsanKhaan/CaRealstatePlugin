@@ -111,13 +111,13 @@ if(empty($totalAvailable) || $totalAvailable == 0)
                //    return;
                // }
                // $index++;
-               // echo "<pre>";
-               // print_r($listing);
-               // echo "<hr>";
+               echo "<pre>";
+               //print_r($listing);
+               echo "<hr>";
                // //print_r($results["Properties"]) ;     
-               // echo "</pre>";
-                    
-               Insert_to_database($listing);
+                echo "</pre>";
+               //exit();     
+               Update_to_database($listing,30828205);
             
             }
          }else{
@@ -155,7 +155,7 @@ if(empty($totalAvailable) || $totalAvailable == 0)
 
 
 
-function Insert_to_database($data){
+function Update_to_database($data,$ListingID_to_update){
    
 
    
@@ -573,8 +573,41 @@ function Insert_to_database($data){
       //           VALUES(`$ID`,`$LastUpdated`,`$ListingID`,`$Board`,`$Features`,`$ListingContractDate`,`$LocationDescription`,`$OwnershipType`,`$Price`,`$PropertyType`,`$PublicRemarks`,`$TransactionType`,`$WaterFrontType`,`$ZoningDescription`)";
 // valid query for insertion
              $City_card=addslashes($City_card);
-             $sql_insert="INSERT INTO wp_properties_2(LastUpdated,ListingID,AgentDetails,Board,Business,Building,Land,Address,AmmenitiesNearBy,AlternateURL,EquipmentType,Features,ListingContractDate,LocationDescription,OwnershipType,ParkingSpaces,ParkingSpaceTotal,Photo,Price,PropertyType,PublicRemarks,RentalEquipmentType,Structure,TransactionType,UtilitiesAvailable,WaterFrontType,ZoningDescription,ViewType,MoreInformationLink,Card,City,Province,Bedroom,Bathroom)
-             VALUES('$LastUpdated','$ListingID','$AgentDetails','$Board','$Business','$Building','$Land','$Address','$AmmenitiesNearBy','$AlternateURL','$EquipmentType','$Features','$ListingContractDate','$LocationDescription','$OwnershipType','$ParkingSpaces','$ParkingSpaceTotal','$Photo','$Price','$PropertyType','$PublicRemarks','$RentalEquipmentType','$Structure','$TransactionType','$UtilitiesAvailable','$WaterFrontType','$ZoningDescription','$ViewType','$MoreInformationLink','$json','$City_card','$Province_card','$Building_bed_card','$Building_bath_card')";
+             $sql_update="UPDATE  wp_properties_2
+             SET LastUpdated=NOW(),
+             AgentDetails='$AgentDetails',
+             Board='$Board',
+             Business='$Business',
+             Building='$Building',
+             Land='$Land',
+             Address='$Address',
+             AmmenitiesNearBy='$AmmenitiesNearBy',
+             AlternateURL='$AlternateURL',
+             EquipmentType='$EquipmentType',
+             Features='$Features',
+             ListingContractDate='$ListingContractDate',
+             LocationDescription='$LocationDescription',
+             OwnershipType='$OwnershipType',
+             ParkingSpaces='$ParkingSpaces',
+             ParkingSpaceTotal='$ParkingSpaceTotal',
+             Photo='$Photo',
+             Price='$Price',
+             PropertyType='$PropertyType',
+             PublicRemarks='$PublicRemarks',
+             RentalEquipmentType='$RentalEquipmentType',
+             Structure='$Structure',
+             TransactionType='$TransactionType',
+             UtilitiesAvailable='$UtilitiesAvailable',
+             WaterFrontType='$WaterFrontType',
+             ZoningDescription='$ZoningDescription',
+             ViewType='$ViewType',
+             MoreInformationLink='$MoreInformationLink',
+             Card='$json',
+             City='$City_card',
+             Province='$Province_card',
+             Bedroom='$Building_bed_card',
+             Bathroom='$Building_bath_card'
+             WHERE ListingID='$ListingID_to_update';";
  // Query Ends 
  
 
@@ -586,7 +619,12 @@ function Insert_to_database($data){
          // echo "</pre>";
          //--`$AnalyticsClicks`,
  //data insertion function              
-              dbDelta($sql_insert);
+ echo "<pre>";             
+ print_r($sql_update);
+ echo "</pre>";
+ //exit();
+ //dbDelta($sql_update);
+
        
 }
 // register_deactivation_hook(__FILE__, 'my_deactivation');
@@ -605,7 +643,6 @@ function Insert_to_database($data){
 // }
 //function response( $ID,$Listing_Office,$Building_size,$Building_bed,$Building_bath,$Address,$City,$Province,$Photo,$Price,$TransactionType){
 function response($Listing_Office_card,$Building_size_card,$Building_bed_card,$Building_bath_card,$Address_card,$City_card,$Province_card,$Photo_card,$Price_card,$TransactionType_card){
-   //$response['order_id'] = $order_id;
    //$response['ID']=$ID;//get card.php at the time of ID
    $response['Listing Office']=$Listing_Office_card;
     $response['Size'] = $Building_size_card;
@@ -624,7 +661,7 @@ function response($Listing_Office_card,$Building_size_card,$Building_bed_card,$B
    $json_response = str_replace("'","\'",json_encode($response,true));
   return $json_response;
   }
-function dbDelta($sql_insert){
+function dbDelta($sql_update){
 
    include 'db_connection.php';
   
@@ -632,11 +669,11 @@ function dbDelta($sql_insert){
    
    
    
-   if ($conn->query($sql_insert) === TRUE) {
+   if ($conn->query($sql_update) === TRUE) {
      //  echo "New record created successfully";
      
    } else {
-       echo "Error: " ."<pre>". $sql_insert . "</pre>" . $conn->error;
+       echo "Error: " ."<pre>". $sql_update . "</pre>" . $conn->error;
        exit();
        
    }
