@@ -1,6 +1,6 @@
 <?php
 include 'db_connection.php';
-use Datetime;
+//use Datetime;
 
 
 
@@ -21,16 +21,16 @@ $row=mysqli_fetch_assoc($result);
 // $date_now=new DateTime();
 // $date_now->setTimezone(new DateTimeZone('Asia/Karachi'));
 // $date_now->format('Y-m-d H:i:s');
-echo $row['start'];
-echo "<br/>";
-echo $row['end'];
-var_dump(date('Y-m-d H:i:s'));
+//echo $row['start'];
+//echo "<br/>";
+//echo $row['end'];
+//var_dump(date('Y-m-d H:i:s'));
 
 
 $prevTime=strtotime($row['start']);
 $currentTime=strtotime(date('Y-m-d H:i:s'));
-echo "prev:".$prevTime;
-echo "current:".$currentTime;
+// echo "prev:".$prevTime;
+// echo "current:".$currentTime;
 
 
 // Formulate the Difference between two dates 
@@ -40,11 +40,7 @@ $hours = abs($currentTime - $prevTime)/3600;
 
 
 
-$TimeBackPull=ceil($hours);
-echo "<h1>";
-print_r($TimeBackPull);
-echo "</h1>";
-exit();
+
 
 
 // do something every hour
@@ -52,8 +48,11 @@ exit();
 // Lots of output, saves requests to a local file.
 $debugMode = false; 
 
-$TimeBackPull = "-2 years";
-
+$TimeBackPull="-".ceil($hours)." hours";
+// echo "<h1>";
+// print_r($TimeBackPull);
+// echo "</h1>";
+// $TimeBackPull="-51 hours";
 $conn->close();
 /* RETS Variables */
 require("PHRets_CREA.php");
@@ -101,8 +100,9 @@ if(empty($totalAvailable) || $totalAvailable == 0)
 {
       error_log(print_r($RETS->GetLastServerResponse(), true));	
  }
- print_r("Time:".$TimeBackPull);
- print_r("I am in IF loop");
+ //$TimeBackPull="-48 hours";
+ //print_r("Time:".$TimeBackPull);
+ 
  
       $index=0;
      
@@ -129,11 +129,10 @@ if(empty($totalAvailable) || $totalAvailable == 0)
                // $index++;
                echo "<pre>";
                print_r($listing);
-               echo "<hr>";
-               // //print_r($results["Properties"]) ;     
-                echo "</pre>";
+               echo "<hr>"; 
+               echo "</pre>";
                exit();     
-               Update_to_database($listing,30828205);
+               //Update_to_database($listing,30828205);
             
             }
          }else{
