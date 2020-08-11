@@ -17,42 +17,7 @@ include 'db_connection.php';
     
     
 //         //	create table command for properties
-//         $sql = "CREATE TABLE IF NOT EXISTs`{$wpdb->base_prefix}properties` (
-//         ID varchar(100) ,
-//         LastUpdated varchar(100) ,
-//         ListingID varchar(50) ,
-//         AgentDetails BLOB ,
-//         Board varchar(100) ,
-//         Business varchar(1000) ,
-//         Building varchar(500) ,
-//         Land  varchar(1500),
-//         Address varchar(2000) ,
-//         AmmenitiesNearBy varchar(100),
-//         AlternateURL varchar(200),
-//         EquipmentType  varchar(100),
-//         Features varchar(200),
-//         ListingContractDate  varchar(300),
-//         LocationDescription varchar(300),
-//         OwnershipType varchar(300),
-//         ParkingSpaces varchar(300),
-//         ParkingSpaceTotal varchar(100),
-//         Photo BLOB,
 
-//         Price DOUBLE ,
-//         PropertyType varchar(100) ,
-//         PublicRemarks varchar(1000),
-
-//         RentalEquipmentType varchar(100),
-//         Structure varchar(100),
-//         TransactionType varchar(30),
-//         UtilitiesAvailable varchar(1000),
-//         WaterFrontType varchar(20),
-//         ZoningDescription varchar(20),
-//         ViewType varchar(10),
-//         MoreInformationLink varchar(200) ) $charset_collate;";
-
-      
-//    dbDelta($sql);
 
 
 
@@ -69,13 +34,13 @@ include 'db_connection.php';
 /*Create last updated data */
 $create_lastupdated_table="CREATE TABLE IF NOT EXISTS wp_LastUpdated(
    ID int AUTO_INCREMENT,
-   start DATETIME,
-   end DATETIME,
+   start varchar(100),
+   end varchar(100),
    PRIMARY KEY(ID)
 )";
 dbDelta($create_lastupdated_table);
 
-$insert_lastupdated_start_column="INSERT INTO wp_LastUpdated(start) VALUES(NOW());";
+$insert_lastupdated_start_column="INSERT INTO wp_LastUpdated(start) VALUES('".date('Y-m-d H:i:s')."');";
 dbDelta($insert_lastupdated_start_column);
 // add_action('my_hourly_event', 'do_this_hourly');
 
@@ -189,7 +154,7 @@ if(empty($totalAvailable) || $totalAvailable == 0)
          }//if-else
          
       }//for loop ends
-      $insert_lastupdated_end_column="INSERT INTO wp_LastUpdated(end) VALUES(NOW());";
+      $insert_lastupdated_end_column="INSERT INTO wp_LastUpdated(end) VALUES('".date('Y-m-d H:i:s')."');";
       dbDelta($insert_lastupdated_end_column);
 
     //        if ($conn->query("INSERT INTO `wp_LastUpdated` (`End`) VALUES (now())") === TRUE) {
