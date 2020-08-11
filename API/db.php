@@ -66,7 +66,17 @@ include 'db_connection.php';
 
     
 // }
+/*Create last updated data */
+$create_lastupdated_table="CREATE TABLE IF NOT EXISTS wp_LastUpdated(
+   ID int AUTO_INCREMENT,
+   start DATETIME,
+   end DATETIME,
+   PRIMARY KEY(ID)
+)";
+dbDelta($create_lastupdated_table);
 
+$insert_lastupdated_start_column="INSERT INTO wp_LastUpdated(start) VALUES(NOW());";
+dbDelta($insert_lastupdated_start_column);
 // add_action('my_hourly_event', 'do_this_hourly');
 
 // function do_this_hourly() {
@@ -179,6 +189,8 @@ if(empty($totalAvailable) || $totalAvailable == 0)
          }//if-else
          
       }//for loop ends
+      $insert_lastupdated_end_column="INSERT INTO wp_LastUpdated(end) VALUES(NOW());";
+      dbDelta($insert_lastupdated_end_column);
 
     //        if ($conn->query("INSERT INTO `wp_LastUpdated` (`End`) VALUES (now())") === TRUE) {
      //  echo "New record created successfully";
