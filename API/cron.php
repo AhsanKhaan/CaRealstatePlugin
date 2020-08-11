@@ -701,3 +701,440 @@ function dbDelta($sql_update){
    
   
 }
+
+
+//insert to database
+function Insert_to_database($data){
+   
+
+   
+   
+
+   // if(array_key_exists('ID',$data)){
+   //    $ID="".$data['ID'];
+      
+   // }else{
+   //    $ID=json_encode(json_decode("{}"));
+   //   // error_log("---".$ID[0]["ID"]."----");
+   // }
+   // error_log("ID".$ID);
+   
+   if(array_key_exists('@attributes',$data)){
+      if(array_key_exists('LastUpdated',$data['@attributes'])){
+         $LastUpdated=$data['@attributes']['LastUpdated'];
+      }else{
+         $LastUpdated=json_encode(json_decode("{}"));
+      }
+      
+   }else{
+      $LastUpdated=json_encode(json_decode("{}"));
+     
+   }
+   
+    //$LASTUPDATED=$data['LastUpdated'];
+    $ListingID=json_encode($data['ListingID']);
+
+   
+
+    $AgentDetails=str_replace("'","\'",json_encode($data['AgentDetails']));
+
+   
+
+    $Board=$data['Board'];
+
+   
+    
+     //$wpdb = new wpdb();
+   //  $var = $wpdb->_real_escape( $string );
+   //@1
+    //$Business=json_encode(wptexturize($data['Business']));
+   //  $Business=json_encode(esc_attr($data['Business']));
+   $Business=str_replace("'","\'",json_encode($data['Business']));
+   //  if(preg_match('/[^0-9]*[\']/',json_encode($data['Business']))){
+       //$Business=json_encode(str_replace("'","",$data['Business']));
+
+   //  }else{
+   //    $Business=json_encode($data['Business']);
+      
+   //  }
+    
+    
+   
+
+    //$Building=json_encode(json_decode("{}"));
+    $Building=str_replace("'","\'",json_encode($data['Building']));
+
+   
+
+    //@2
+   //$Land=json_encode(wptexturize($data['Land']));
+   //  if(preg_match('/[\'][^\']/',json_encode($data['Land']))){
+       //$Land=json_encode(str_replace("'","",$data['Land']));
+      //  $Land=json_encode(esc_attr($data['Land']));
+       $Land=str_replace("'","\'",json_encode($data['Land']));
+
+   //  }else{
+   //    $Land=json_encode($data['Land']);
+      
+   //  }
+   
+
+   if (array_key_exists('Address',$data)) {
+      $Address=str_replace("'","\'",json_encode($data['Address']));
+   }else{
+      
+      $Address=json_encode(json_decode("{}"));
+   }
+    
+
+   
+
+     if (array_key_exists('AmmenitiesNearBy',$data)) {
+        $AmmenitiesNearBy=str_replace("'","\'","".$data['AmmenitiesNearBy']);
+     }else{
+        $AmmenitiesNearBy="";
+     }
+
+   
+
+     if (array_key_exists('AlternateURL',$data)) {
+        $AlternateURL=str_replace("'","\'",implode(" ",$data['AlternateURL']));
+     }else{
+        $AlternateURL=json_encode(json_decode("{}"));
+     }
+
+   
+
+     if (array_key_exists('EquipmentType',$data)) {
+        $EquipmentType=str_replace("'","\'",$data['EquipmentType']);
+     }else{
+        $EquipmentType="";
+     }
+
+   
+
+     if (array_key_exists('Features',$data)) {
+        $Features=str_replace("'","\'",$data['Features']);
+     }else{
+        $Features=json_encode(json_decode("{}"));
+     }
+
+   
+     
+
+
+     if (array_key_exists('ListingContractDate',$data)) {
+                 
+         $ListingContractDate=str_replace("'","\'",$data['ListingContractDate']);
+         
+         //error_log("TullaTullaTullaTullaa".var_dump($ListingContractDate));
+     }else{
+        $ListingContractDate="";
+     }
+     
+   
+
+     if (array_key_exists('LocationDescription',$data)) {
+        $LocationDescription=str_replace("'","\'",$data['LocationDescription']);
+     }else{
+        $LocationDescription="";
+     }
+        if (array_key_exists('OwnershipType',$data)) {
+        $OwnershipType=str_replace("'","\'",$data['OwnershipType']);
+     }else{
+        $OwnershipType="";
+     }
+
+   
+    
+     if (array_key_exists('ParkingSpaces',$data)) {
+        $ParkingSpaces=str_replace("'","\'",json_encode($data['ParkingSpaces']));
+     }else{
+        $ParkingSpaces=json_encode(json_decode("{}"));
+     }
+   
+     if(array_key_exists('ParkingSpaceTotal',$data)){
+        $ParkingSpaceTotal=str_replace("'","\'",$data['ParkingSpaceTotal']);
+     }else{
+        $ParkingSpaceTotal="";
+     }
+   
+    //photo
+     if(array_key_exists('Photo',$data)){
+      $Photo=str_replace("'","\'",json_encode($data['Photo']));
+   }else{
+      $Photo=json_encode(json_decode("{}"));
+   }
+   // $Photo=json_encode($data['Photo']);
+
+   
+    //$Price=$data['Price'];
+    if(array_key_exists('Price',$data)){
+      $Price=str_replace("'","\'",$data['Price']);
+   }else{
+      //$Price=0;
+      $Price=0;
+      
+   }
+
+   
+
+     $PropertyType=str_replace("'","\'",json_encode($data['PropertyType']));
+
+   
+
+   //@3
+    //$PublicRemarks=json_encode(wptexturize($data['PublicRemarks']));
+     //$PublicRemarks=json_encode(str_replace("'","",$data['PublicRemarks']));
+   //   $PublicRemarks=json_encode(esc_attr($data['PublicRemarks']));
+   $PublicRemarks=str_replace("'","\'",$data['PublicRemarks']);
+//    if(strpos($PublicRemarks,"\\'CHEERS\\'")!==false){
+
+// $PublicRemarks=str_replace("\\'CHEERS\\'","CHEERS",$data['PublicRemarks']);
+//    }
+   
+
+    if(array_key_exists('RentalEquipmentType',$data)){
+        $RentalEquipmentType=str_replace("'","\'",$data['RentalEquipmentType']);
+     }else{
+        $RentalEquipmentType='';
+     }
+
+   
+
+     if(array_key_exists('Structure',$data)){
+        $Structure=str_replace("'","\'",$data['Structure']);
+     }else{
+        $Structure='';
+     }
+   
+    
+    $TransactionType=$data['TransactionType'];
+    
+   
+
+    if(array_key_exists('UtilitiesAvailable',$data)){
+        $UtilitiesAvailable=str_replace("'","\'",json_encode($data['UtilitiesAvailable']));
+     }else{
+        $UtilitiesAvailable=json_encode(json_decode("{}"));
+     }
+
+   
+
+     if(array_key_exists('WaterFrontType',$data)){
+        $WaterFrontType=str_replace("'","\'",$data['WaterFrontType']);
+     }else{
+        $WaterFrontType='';
+     }
+
+    
+    
+     if(array_key_exists('ZoningDescription',$data)){
+        $ZoningDescription=str_replace("'","\'",$data['ZoningDescription']);
+     }else{
+        $ZoningDescription='';
+     }
+
+        
+     if(array_key_exists('ViewType',$data)){
+        $ViewType=$data['ViewType'];
+     }else{
+        $ViewType='';
+     }
+    
+    
+
+   // $AnalyticsClicks=$data['AnalyticsClick'];
+
+   
+
+    $MoreInformationLink=str_replace("'","\'",$data['MoreInformationLink']);
+
+     /////////////////////////////////////////////////////////////////////////////
+     ///////////////////Data INSERTION fOR CARD /////////////////////////////////
+     ///////////////////////////////////////////////////////////////////////////
+     //$ID_card;//get this at the time of card
+     //Card:agent office location
+     $Listing_Office_card;
+     $temp=json_decode($AgentDetails,true);
+           //var_dump($temp);
+           if(is_array($temp)){
+               if(array_key_exists(0,$temp)){
+                  $Listing_Office_card=$temp[0]['Office']['Name'];
+               }else{
+                  $Listing_Office_card=$temp['Office']['Name'];
+               }
+               
+           } else{
+               $Listing_Office_card=$temp['Office']['Name'];
+           }
+      //Card:Building Size Interior     
+     $Building_size_card;
+     $Building_bed_card;
+     $Building_bath_card;
+     $temp_Building=json_decode($Building,true);
+     if($temp_Building==null){
+        // print_r($data['ID']);
+         //print_r($Building);
+         $temp_arr=explode(',"Rooms":',$Building);
+         //for bedroom ,bath room ,
+         $valid_json_str=$temp_arr[0]."}";
+         //echo '<pre>';
+         $valid_json=json_decode($valid_json_str,true);
+
+         //echo '</pre>';
+         //for bedroom and bath room 
+         //1)For Bath room
+         $Building_bath_card=$valid_json['BathroomTotal'];
+         //2)For Bed room
+         $Building_bed_card=$valid_json['BedroomsTotal'];
+         $temp_size_arr=explode('"SizeInterior":',$Building);
+         if(array_key_exists(1,$temp_size_arr)){
+         $temp_size=explode(",",$temp_size_arr[1]);
+         //3)Size Interior
+         $Building_size_card=substr($temp_size[0],1,-1);
+         }else{
+            //3)Size Interior
+            $Building_size_card="";
+         }
+        
+         
+         //exit();
+     }else{
+         if(array_key_exists('SizeInterior',$temp_Building)){
+            // $Building_size=json_decode($row['Building']);
+            $Building_size_card=$temp_Building['SizeInterior'];
+            
+         }else{
+            $Building_size_card="";
+         }
+         //Card:Building bedrooms   
+      if(array_key_exists('BedroomsTotal',$temp_Building)){
+         $Building_bed_card=$temp_Building['BedroomsTotal'];
+      }else{
+         $Building_bed_card="";
+      }
+      //Card: Building bathroom 
+      if(array_key_exists('BathroomTotal',$temp_Building)){
+         $Building_bath_card=$temp_Building['BathroomTotal'];
+      }else{
+         $Building_bath_card="";
+      }
+     }
+
+  //Card: 1)For Street Address 
+  //      2)City
+  //      3)Province
+
+
+     $Address_card;
+     $City_card;
+     $Province_card;
+     $temp_add=$Address;
+            
+     if($temp_add==="{}"){
+         $Address_card="Address Not Available";
+         $City_card="";
+         $Province_card="";
+     }else{
+     $temp_add=json_decode($Address);
+      if($temp_add==NULL){
+            //if any exception occurs then display
+            $temp_add=json_decode(stripslashes($Address));
+            //1)
+            $Address_card=$temp_add->StreetAddress;
+            //2)
+            $City_card=$temp_add->City;//['City'];
+            //3)
+            $Province_card=$temp_add->Province;
+            // echo "<pre>";
+            // print_r($Address_card);
+            // print_r($City_card);
+            // print_r($Province_card);
+            // echo "</pre>";
+            // var_dump($temp_add);
+            // exit();
+         }else{
+            //1)
+            $Address_card=$temp_add->StreetAddress;
+            //2)
+            $City_card=$temp_add->City;//['City'];
+            //3)
+            $Province_card=$temp_add->Province;//['Province'];
+            //   var_dump($Address_card);
+            //   var_dump($City_card);
+            //   var_dump($Province_card);
+            //   exit();
+         }
+
+     }
+
+     //Card:Price
+     $Price_card=$Price;
+     //Card:Transaction Type
+     $TransactionType_card=$TransactionType;
+     //Card:Photo
+     $Photo_card;   
+     $temp2=json_decode($Photo);
+     if($temp2==NULL){
+      
+         $split_arr=explode('"PhotoURL":',$Photo);
+         $photo_url_arr=explode(',"LargePhotoURL":',$split_arr[1]);
+         $Photo_card=substr($photo_url_arr[0],1,-1);
+      
+     //     exit();
+    }else{
+
+        if(!array_key_exists('Photo',$data)){
+            $path=getcwd();
+            chdir('Assets');
+            
+            $path=getcwd().'/default.jpg';
+            chmod($path,0755);
+            $Photo_card=$path;
+            //echo "<pre>";
+            //print_r($data['ListingID']);
+            //print_r($path);
+            // var_dump($temp2);
+            // var_dump($Photo);
+            //echo "</pre>";
+            //exit();
+         }else{
+            $temp_Photo=$temp2->PropertyPhoto;//['PropertyPhoto'];//[0]['Thembnail URL'];
+        
+            //var_dump($temp_Photo);
+            if(is_array($temp_Photo)){
+               $Photo_card=$temp2->PropertyPhoto[0]->PhotoURL;
+            }else{
+               $Photo_card=$temp2->PropertyPhoto->PhotoURL;
+            }
+         }
+        
+        
+    }//IF else NULL ends
+    $json=response($Listing_Office_card,$Building_size_card,$Building_bed_card,$Building_bath_card,$Address_card,$City_card,$Province_card,$Photo_card,$Price_card,$TransactionType_card);
+      //   echo "<pre>"; 
+      //   print_r(json_decode($json,true));
+      //   echo "</pre>";
+      // exit();
+     //--AnalyticsClicks,  
+      //   $sql_insert="INSERT INTO `{$wpdb->base_prefix}properties`(ID,LastUpdated,ListingID,Board,Features,ListingContractDate,LocationDescription,OwnershipType,Price,PropertyType,PublicRemarks,TransactionType,WaterFrontType,ZoningDescription)        
+      //           VALUES(`$ID`,`$LastUpdated`,`$ListingID`,`$Board`,`$Features`,`$ListingContractDate`,`$LocationDescription`,`$OwnershipType`,`$Price`,`$PropertyType`,`$PublicRemarks`,`$TransactionType`,`$WaterFrontType`,`$ZoningDescription`)";
+// valid query for insertion
+             $City_card=addslashes($City_card);
+             $sql_insert="INSERT INTO wp_properties_2(LastUpdated,ListingID,AgentDetails,Board,Business,Building,Land,Address,AmmenitiesNearBy,AlternateURL,EquipmentType,Features,ListingContractDate,LocationDescription,OwnershipType,ParkingSpaces,ParkingSpaceTotal,Photo,Price,PropertyType,PublicRemarks,RentalEquipmentType,Structure,TransactionType,UtilitiesAvailable,WaterFrontType,ZoningDescription,ViewType,MoreInformationLink,Card,City,Province,Bedroom,Bathroom)
+             VALUES('$LastUpdated','$ListingID','$AgentDetails','$Board','$Business','$Building','$Land','$Address','$AmmenitiesNearBy','$AlternateURL','$EquipmentType','$Features','$ListingContractDate','$LocationDescription','$OwnershipType','$ParkingSpaces','$ParkingSpaceTotal','$Photo','$Price','$PropertyType','$PublicRemarks','$RentalEquipmentType','$Structure','$TransactionType','$UtilitiesAvailable','$WaterFrontType','$ZoningDescription','$ViewType','$MoreInformationLink','$json','$City_card','$Province_card','$Building_bed_card','$Building_bath_card')";
+ // Query Ends 
+ 
+
+ 
+ //VALUES('$ID','$LastUpdated','$ListingID','$AgentDetails','$Board','$Business','$Building','$Land','$Address','$AmmenitiesNearBy','$AlternateURL','$EquipmentType','$Features','$ListingContractDate','$LocationDescription','$OwnershipType','$ParkingSpaces','$ParkingSpaceTotal','$Photo','$Price','$PropertyType','$PublicRemarks','$RentalEquipmentType','$Structure','$TransactionType','$UtilitiesAvailable','$WaterFrontType','$ZoningDescription','$ViewType','$AnalyticsClicks','$MoreInformationLink')";
+                
+         // echo "<pre>";
+         // print_r($sql_insert);
+         // echo "</pre>";
+         //--`$AnalyticsClicks`,
+ //data insertion function              
+              dbDelta($sql_insert);
+       
+}
