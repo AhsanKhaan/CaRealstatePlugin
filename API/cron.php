@@ -647,7 +647,7 @@ function Update_to_database($data,$ListingID_to_update){
  //data insertion function              
 
  
- //dbDelta($sql_update);
+ dbDelta($sql_update);
 
        
 }
