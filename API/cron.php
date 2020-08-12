@@ -135,14 +135,12 @@ if(empty($totalAvailable) || $totalAvailable == 0)
                $count=$results['count'];
                if($count==0){
                  Insert_to_database($listing);
-                 //exit(); 
+                 
                }else if($count==1){
                   Update_to_database($listing,$listing['ListingID']);
-                  //exit();
+                 
                }else{
                   echo "Duplicate data is Present";
-                  exit();
-               exit();     
                   exit();
                }     
                //Update_to_database($listing,30828205);
@@ -480,7 +478,7 @@ function Update_to_database($data,$ListingID_to_update){
          }
         
          
-         //exit();
+
      }else{
          if(array_key_exists('SizeInterior',$temp_Building)){
             // $Building_size=json_decode($row['Building']);
@@ -534,7 +532,6 @@ function Update_to_database($data,$ListingID_to_update){
             // print_r($Province_card);
             // echo "</pre>";
             // var_dump($temp_add);
-            // exit();
          }else{
             //1)
             $Address_card=$temp_add->StreetAddress;
@@ -545,7 +542,6 @@ function Update_to_database($data,$ListingID_to_update){
             //   var_dump($Address_card);
             //   var_dump($City_card);
             //   var_dump($Province_card);
-            //   exit();
          }
 
      }
@@ -563,7 +559,7 @@ function Update_to_database($data,$ListingID_to_update){
          $photo_url_arr=explode(',"LargePhotoURL":',$split_arr[1]);
          $Photo_card=substr($photo_url_arr[0],1,-1);
       
-     //     exit();
+
     }else{
 
         if(!array_key_exists('Photo',$data)){
@@ -579,7 +575,7 @@ function Update_to_database($data,$ListingID_to_update){
             // var_dump($temp2);
             // var_dump($Photo);
             //echo "</pre>";
-            //exit();
+
          }else{
             $temp_Photo=$temp2->PropertyPhoto;//['PropertyPhoto'];//[0]['Thembnail URL'];
         
@@ -597,7 +593,7 @@ function Update_to_database($data,$ListingID_to_update){
       //   echo "<pre>"; 
       //   print_r(json_decode($json,true));
       //   echo "</pre>";
-      // exit();
+
      //--AnalyticsClicks,  
       //   $sql_insert="INSERT INTO `{$wpdb->base_prefix}properties`(ID,LastUpdated,ListingID,Board,Features,ListingContractDate,LocationDescription,OwnershipType,Price,PropertyType,PublicRemarks,TransactionType,WaterFrontType,ZoningDescription)        
       //           VALUES(`$ID`,`$LastUpdated`,`$ListingID`,`$Board`,`$Features`,`$ListingContractDate`,`$LocationDescription`,`$OwnershipType`,`$Price`,`$PropertyType`,`$PublicRemarks`,`$TransactionType`,`$WaterFrontType`,`$ZoningDescription`)";
@@ -650,7 +646,7 @@ function Update_to_database($data,$ListingID_to_update){
          //--`$AnalyticsClicks`,
  //data insertion function              
 
- //exit();
+ 
  //dbDelta($sql_update);
 
        
@@ -1012,7 +1008,7 @@ function Insert_to_database($data){
          }
         
          
-         //exit();
+
      }else{
          if(array_key_exists('SizeInterior',$temp_Building)){
             // $Building_size=json_decode($row['Building']);
@@ -1066,7 +1062,7 @@ function Insert_to_database($data){
             // print_r($Province_card);
             // echo "</pre>";
             // var_dump($temp_add);
-            // exit();
+
          }else{
             //1)
             $Address_card=$temp_add->StreetAddress;
@@ -1074,10 +1070,7 @@ function Insert_to_database($data){
             $City_card=$temp_add->City;//['City'];
             //3)
             $Province_card=$temp_add->Province;//['Province'];
-            //   var_dump($Address_card);
-            //   var_dump($City_card);
-            //   var_dump($Province_card);
-            //   exit();
+
          }
 
      }
@@ -1095,7 +1088,7 @@ function Insert_to_database($data){
          $photo_url_arr=explode(',"LargePhotoURL":',$split_arr[1]);
          $Photo_card=substr($photo_url_arr[0],1,-1);
       
-     //     exit();
+
     }else{
 
         if(!array_key_exists('Photo',$data)){
@@ -1111,7 +1104,7 @@ function Insert_to_database($data){
             // var_dump($temp2);
             // var_dump($Photo);
             //echo "</pre>";
-            //exit();
+
          }else{
             $temp_Photo=$temp2->PropertyPhoto;//['PropertyPhoto'];//[0]['Thembnail URL'];
         
@@ -1126,13 +1119,7 @@ function Insert_to_database($data){
         
     }//IF else NULL ends
     $json=response($Listing_Office_card,$Building_size_card,$Building_bed_card,$Building_bath_card,$Address_card,$City_card,$Province_card,$Photo_card,$Price_card,$TransactionType_card);
-      //   echo "<pre>"; 
-      //   print_r(json_decode($json,true));
-      //   echo "</pre>";
-      // exit();
-     //--AnalyticsClicks,  
-      //   $sql_insert="INSERT INTO `{$wpdb->base_prefix}properties`(ID,LastUpdated,ListingID,Board,Features,ListingContractDate,LocationDescription,OwnershipType,Price,PropertyType,PublicRemarks,TransactionType,WaterFrontType,ZoningDescription)        
-      //           VALUES(`$ID`,`$LastUpdated`,`$ListingID`,`$Board`,`$Features`,`$ListingContractDate`,`$LocationDescription`,`$OwnershipType`,`$Price`,`$PropertyType`,`$PublicRemarks`,`$TransactionType`,`$WaterFrontType`,`$ZoningDescription`)";
+
 // valid query for insertion
              $City_card=addslashes($City_card);
              $sql_insert="INSERT INTO wp_properties_2(LastUpdated,ListingID,AgentDetails,Board,Business,Building,Land,Address,AmmenitiesNearBy,AlternateURL,EquipmentType,Features,ListingContractDate,LocationDescription,OwnershipType,ParkingSpaces,ParkingSpaceTotal,Photo,Price,PropertyType,PublicRemarks,RentalEquipmentType,Structure,TransactionType,UtilitiesAvailable,WaterFrontType,ZoningDescription,ViewType,MoreInformationLink,Card,City,Province,Bedroom,Bathroom)
