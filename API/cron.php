@@ -198,7 +198,7 @@ function Update_to_database($data,$ListingID_to_update){
    }
    
     //$LASTUPDATED=$data['LastUpdated'];
-    $ListingID=json_encode($data['ListingID']);
+    $ListingID=$data['ListingID'];
 
    
 
