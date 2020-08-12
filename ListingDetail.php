@@ -22,8 +22,9 @@
 </head>
 <body>
 <?php 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/wp-load.php');
+$SiteDir="/wordpress";
+require_once($_SERVER['DOCUMENT_ROOT'].$SiteDir.'/wp-load.php');
+//exit();
 get_header();
 
 if (isset($_GET['ID'])&& $_GET['ID']!="" ) {
