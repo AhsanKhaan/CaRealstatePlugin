@@ -1,6 +1,7 @@
 $(document).ready(function(){
   //url = new URL(window.location.href);
   var baseURL="https://crea.bmsastech.com/";
+  var SiteURL="http://localhost/wordpress/";
 
   $('html, body').animate({
 	        scrollTop: $('#property_search').offset().top
@@ -26,7 +27,7 @@ $('#pagination-demo').twbsPagination('destroy');
    var Limit=12;
  var totalPages=Math.ceil(dataset.TotalListing/Limit);
  if(dataset.TotalListing<=Limit){
-   showdata(dataset);
+   showdata(dataset,SiteURL);
  }else if(!parseInt(totalPages)){
    //console.log("Else if"+totalPages);
    $("#card-stack").empty();
@@ -61,7 +62,7 @@ $('#pagination-demo').twbsPagination('destroy');
 
 
   
-  function showdata(dataset,baseURL){
+  function showdata(dataset,SiteURL){
     $("#card-stack").empty();
     dataset.property.forEach(data => {
      // alert(data["TotalCount"]);
@@ -74,7 +75,7 @@ if(data['Size']==undefined){
 <div class="view overlay zoom-effect-container">
 
   
-  <a href="https://www.carealestate.bmsastech.com/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
+  <a href="`+SiteURL+`/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
     <div class="mask rgba-white-slight image-card">
     <img class="card-img-top img-fluid" src="`+data['Photo']+`" alt="Card image cap"></div>
   </a>
@@ -112,7 +113,7 @@ if(data['Size']==undefined){
 <div class="view overlay zoom-effect-container">
 
   
-  <a href="https://www.carealestate.bmsastech.com/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
+  <a href="`+SiteURL+`/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
     <div class="mask rgba-white-slight image-card">
     <img class="card-img-top img-fluid" src="`+data['Photo']+`" alt="Card image cap"></div>
   </a>
@@ -150,7 +151,7 @@ if(data['Size']==undefined){
 <div class="view overlay zoom-effect-container">
 
   
-  <a href="https://www.carealestate.bmsastech.com/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
+  <a href="`+SiteURL+`/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
     <div class="mask rgba-white-slight image-card">
     <img class="card-img-top img-fluid" src="`+data['Photo']+`" alt="Card image cap"></div>
   </a>
@@ -233,7 +234,7 @@ if(data['Size']==undefined){
       <div class="view overlay zoom-effect-container">
       
         
-        <a href="https://www.carealestate.bmsastech.com/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
+        <a href="`+SiteURL+`/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
           <div class="mask rgba-white-slight image-card">
           <img class="card-img-top img-fluid" src="`+data['Photo']+`" alt="Card image cap"></div>
         </a>
@@ -271,7 +272,7 @@ if(data['Size']==undefined){
       <div class="view overlay zoom-effect-container">
       
         
-        <a href="https://www.carealestate.bmsastech.com/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
+        <a href="`+SiteURL+`/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
           <div class="mask rgba-white-slight image-card">
           <img class="card-img-top img-fluid" src="`+data['Photo']+`" alt="Card image cap"></div>
         </a>
@@ -309,7 +310,7 @@ if(data['Size']==undefined){
       <div class="view overlay zoom-effect-container">
       
         
-        <a href="https://www.carealestate.bmsastech.com/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
+        <a href="`+SiteURL+`/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
           <div class="mask rgba-white-slight image-card">
           <img class="card-img-top img-fluid" src="`+data['Photo']+`" alt="Card image cap"></div>
         </a>
