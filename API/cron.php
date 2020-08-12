@@ -732,7 +732,7 @@ function Insert_to_database($data){
    }
    
     //$LASTUPDATED=$data['LastUpdated'];
-    $ListingID=json_encode($data['ListingID']);
+    $ListingID=$data['ListingID'];
 
    
 
