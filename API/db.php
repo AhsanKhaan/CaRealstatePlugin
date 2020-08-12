@@ -55,7 +55,7 @@ $debugMode = false;
 //{
 $TimeBackPull = "-2 years";//-2 hours
 //}else{
-   $TimeBackPull="-73 hours";
+   // $TimeBackPull="-73 hours";
 //}
 $conn->close();
 /* RETS Variables */
