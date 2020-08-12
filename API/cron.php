@@ -106,7 +106,8 @@ if(empty($totalAvailable) || $totalAvailable == 0)
  
       $index=0;
      
- 
+      $insert_lastupdated_start_column="UPDATE wp_LastUpdated SET start='".date('Y-m-d H:i:s')."' WHERE ID=1;";
+      dbDelta($insert_lastupdated_start_column);
       
       for($i = 0; $i < ceil($totalAvailable/$RETS_LimitPerQuery); $i++)
       {	
@@ -156,6 +157,8 @@ if(empty($totalAvailable) || $totalAvailable == 0)
          }//if-else
          
       }//for loop ends
+      $insert_lastupdated_end_column="UPDATE wp_LastUpdated SET end='".date('Y-m-d H:i:s')."' WHERE ID=1;";
+      dbDelta($insert_lastupdated_end_column);
 
     //        if ($conn->query("INSERT INTO `wp_LastUpdated` (`End`) VALUES (now())") === TRUE) {
      //  echo "New record created successfully";
