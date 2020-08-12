@@ -565,10 +565,10 @@ function Insert_to_database($data){
 
         if(!array_key_exists('Photo',$data)){
             $path=getcwd();
-            chdir('Assets');
+            
             
             $path=getcwd().'/default.jpg';
-            chmod($path,0755);
+            
             $Photo_card=$path;
             //echo "<pre>";
             //print_r($data['ListingID']);

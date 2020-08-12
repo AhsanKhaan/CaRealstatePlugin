@@ -107,10 +107,12 @@ if(empty($totalAvailable) || $totalAvailable == 0)
       $index=0;
      
  
-
+      
       for($i = 0; $i < ceil($totalAvailable/$RETS_LimitPerQuery); $i++)
       {	
-         // return;
+         //mysqli_listing id
+         
+         
           ceil($totalAvailable/$RETS_LimitPerQuery);
           $startOffset = $i*$RETS_LimitPerQuery;
           print_r($i." off".$startOffset);
@@ -122,16 +124,26 @@ if(empty($totalAvailable) || $totalAvailable == 0)
 
          if(is_array($results["Properties"])){
             foreach($results["Properties"] as $listing)
-            {	//print_r($listing);
-               // if($index==1000){
-               //    return;
-               // }
-               // $index++;
-               echo "<pre>";
-               print_r($listing);
-               echo "<hr>"; 
-               echo "</pre>";
+            {	
+
+               include('db_connection.php');
+               //echo "<h1>".$listing['ListingID']."</h1>";
+               $sql="SELECT COUNT(*) AS count FROM wp_properties_2 WHERE ListingID='".$listing['ListingID']."'";
+               //print_r($sql);
+               $results= mysqli_fetch_assoc(mysqli_query($conn,$sql));
+               $count=$results['count'];
+               if($count==0){
+                 Insert_to_database($listing);
+                 //exit(); 
+               }else if($count==1){
+                  Update_to_database($listing,$listing['ListingID']);
+                  //exit();
+               }else{
+                  echo "Duplicate data is Present";
+                  exit();
                exit();     
+                  exit();
+               }     
                //Update_to_database($listing,30828205);
             
             }
@@ -553,10 +565,10 @@ function Update_to_database($data,$ListingID_to_update){
 
         if(!array_key_exists('Photo',$data)){
             $path=getcwd();
-            chdir('Assets');
+            //chdir('Assets');
             
             $path=getcwd().'/default.jpg';
-            chmod($path,0755);
+            //chmod($path,0755);
             $Photo_card=$path;
             //echo "<pre>";
             //print_r($data['ListingID']);
@@ -634,9 +646,7 @@ function Update_to_database($data,$ListingID_to_update){
          // echo "</pre>";
          //--`$AnalyticsClicks`,
  //data insertion function              
- echo "<pre>";             
- print_r($sql_update);
- echo "</pre>";
+
  //exit();
  //dbDelta($sql_update);
 
