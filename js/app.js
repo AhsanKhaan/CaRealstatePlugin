@@ -75,7 +75,7 @@ if(data['Size']==undefined){
 <div class="view overlay zoom-effect-container">
 
   
-  <a href="`+SiteURL+`/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
+  <a href="`+SiteURL+`wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
     <div class="mask rgba-white-slight image-card">
     <img class="card-img-top img-fluid" src="`+data['Photo']+`" alt="Card image cap"></div>
   </a>
@@ -113,7 +113,7 @@ if(data['Size']==undefined){
 <div class="view overlay zoom-effect-container">
 
   
-  <a href="`+SiteURL+`/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
+  <a href="`+SiteURL+`wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
     <div class="mask rgba-white-slight image-card">
     <img class="card-img-top img-fluid" src="`+data['Photo']+`" alt="Card image cap"></div>
   </a>
@@ -151,7 +151,7 @@ if(data['Size']==undefined){
 <div class="view overlay zoom-effect-container">
 
   
-  <a href="`+SiteURL+`/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
+  <a href="`+SiteURL+`wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
     <div class="mask rgba-white-slight image-card">
     <img class="card-img-top img-fluid" src="`+data['Photo']+`" alt="Card image cap"></div>
   </a>
@@ -234,7 +234,7 @@ if(data['Size']==undefined){
       <div class="view overlay zoom-effect-container">
       
         
-        <a href="`+SiteURL+`/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
+        <a href="`+SiteURL+`wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
           <div class="mask rgba-white-slight image-card">
           <img class="card-img-top img-fluid" src="`+data['Photo']+`" alt="Card image cap"></div>
         </a>
@@ -272,7 +272,7 @@ if(data['Size']==undefined){
       <div class="view overlay zoom-effect-container">
       
         
-        <a href="`+SiteURL+`/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
+        <a href="`+SiteURL+`wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
           <div class="mask rgba-white-slight image-card">
           <img class="card-img-top img-fluid" src="`+data['Photo']+`" alt="Card image cap"></div>
         </a>
@@ -310,7 +310,7 @@ if(data['Size']==undefined){
       <div class="view overlay zoom-effect-container">
       
         
-        <a href="`+SiteURL+`/wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
+        <a href="`+SiteURL+`wp-content/plugins/crea/ListingDetail.php?ID=`+data['ID']+`" target="_blank">
           <div class="mask rgba-white-slight image-card">
           <img class="card-img-top img-fluid" src="`+data['Photo']+`" alt="Card image cap"></div>
         </a>
@@ -389,7 +389,7 @@ if(data['Size']==undefined){
             $('#card-stack').text('No Listing was found');
           }else{
             var data = JSON.parse(data);
-            showdata(data,baseURL);
+            showdata(data,SiteURL);
           }
           
           
