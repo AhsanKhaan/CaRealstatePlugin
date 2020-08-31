@@ -170,8 +170,16 @@ curl_close($ch);
   
   <!-- The slideshow -->
   <div class="carousel-inner">
-  <?php 
-       foreach($json['Photo']['PropertyPhoto'] as $key=>$value){
+  <?php
+    $check_if_array=is_array($json['Photo']['PropertyPhoto'][0])? true: false; 
+    if($check_if_array==true){
+      foreach($json['Photo']['PropertyPhoto'] as $key=>$value){
+        // echo "<pre>";
+        
+        // var_dump($val);
+        // print_r($json['Photo']['PropertyPhoto']);
+        // echo "</pre>";
+        // exit();
         if($key==0){
          echo '<div class="carousel-item active">
          <img class="img-responsive" src="'.$value['LargePhotoURL'].'" >
@@ -182,6 +190,19 @@ curl_close($ch);
        </div>';
         }
       }
+    }else if($check_if_array==false){
+      if($key==0){
+        echo '<div class="carousel-item active">
+        <img class="img-responsive" src="'.$json['Photo']['PropertyPhoto']['LargePhotoURL'].'" >
+      </div>';
+       }else{
+        echo '<div class="carousel-item">
+        <img class="img-responsive" src="'.$json['Photo']['PropertyPhoto']['LargePhotoURL'].'">
+      </div>';
+       }
+    }
+  
+    
     ?>
     <!-- <div class="carousel-item active">
       <img class="img-responsive" src="https://i.ytimg.com/vi/7WCbIjqjHM4/maxresdefault.jpg" alt="Los Angeles">
@@ -211,12 +232,26 @@ curl_close($ch);
               if(empty($json['Photo'])){
                 echo '<h2>Images unavailable</h2>';
               }else{
-                foreach($json['Photo']['PropertyPhoto'] as $key=>$photo){
+                // echo "<pre>";
+                // var_dump($val);
+                // print_r($json['Photo']['PropertyPhoto']);
+                // echo "</pre>";
+                // exit();
+                $check_if_array=is_array($json['Photo']['PropertyPhoto'][0])? true: false;
+                if($check_if_array==true){
+                  foreach($json['Photo']['PropertyPhoto'] as $key=>$photo){
+                    echo '<li class="slide">
+                    <a data-slide-index="'.$key.'" href="" rel="nofollow" style="display:block;width:100%;background:url('.$photo['PhotoURL'].') no-repeat center;background-size:contain;" class="active">
+                    <img src="'.$photo['PhotoURL'].'"/></a>
+                    </li>';
+                    }
+                }else if($check_if_array==false){
                   echo '<li class="slide">
-                  <a data-slide-index="'.$key.'" href="" rel="nofollow" style="display:block;width:100%;background:url('.$photo['PhotoURL'].') no-repeat center;background-size:contain;" class="active">
-                  <img src="'.$photo['PhotoURL'].'"/></a>
+                  <a data-slide-index="0" href="" rel="nofollow" style="display:block;width:100%;background:url('.$photo['PhotoURL'].') no-repeat center;background-size:contain;" class="active">
+                  <img src="'.$json['Photo']['PropertyPhoto']['PhotoURL'].'"/></a>
                   </li>';
-                  }
+                }
+
               }
               ?>                
            </ul>
