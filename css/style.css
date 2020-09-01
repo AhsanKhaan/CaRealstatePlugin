@@ -338,9 +338,10 @@ margin-left: 10px !important;
     margin-right: 10px !important;
 }
 .pagination-sm .page-link {
-    
-    padding: 1rem 2rem !important;
-    font-size: 1.5rem !important;
+  padding: 0rem 8px !important;
+  font-size: 20px !important;
+    /* padding: 1rem 2rem !important;
+    font-size: 1.5rem !important; */
     line-height: 1.5 !important;
         font-weight: bold;
 }
