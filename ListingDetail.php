@@ -26,7 +26,11 @@ $SiteDir="/wordpress";
 require_once($_SERVER['DOCUMENT_ROOT'].$SiteDir.'/wp-load.php');
 //exit();
 get_header();
-
+?>
+<div id="primary" class="content-area">
+  <div id="content" class="site-content">
+    
+    <?php
 if (isset($_GET['ID'])&& $_GET['ID']!="" ) {
    // echo "<mark>ID=".$_GET['ID']."</mark><br/>";
 
@@ -1014,8 +1018,14 @@ if(((is_string($json['Features']))&&($json['Features']==NULL))||((is_array($json
 </div>
 </div>
 </div>
+
+  </div>
+</div>
+
 <?php 
+//get_sidebar();
 get_footer();
+
 ?>
 
 
